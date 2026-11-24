@@ -28,6 +28,10 @@ const TadAbout = lazy(() => import("@/pages/company/about-us"));
 const TadFaq = lazy(() => import("@/pages/company/faq"));
 const TadSitemap = lazy(() => import("@/pages/company/sitemap"));
 const TadThanks = lazy(() => import("@/pages/company/thank-you"));
+const TadPricing = lazy(() => import("@/pages/company/pricing"));
+const TadPortfolio = lazy(() => import("@/pages/company/portfolio"));
+const TadFeatures = lazy(() => import("@/pages/company/features"));
+const TadDemo = lazy(() => import("@/pages/company/book-a-demo"));
 
 function NotFoundBody() {
   // A missing page must not be indexed. (The host should also answer it with status 404; see README.)
@@ -42,6 +46,10 @@ function NotFoundBody() {
           <Link className="btn btn-outline" to={ROUTES.services}>Our services</Link>
           <Link className="btn btn-outline" to={ROUTES.sitemap}>Sitemap</Link>
         </div>
+        <h2 style={{ fontSize: 20, marginTop: 34 }}>Popular pages</h2>
+        <ul className="xplore">
+          {([["Taxi app pricing", "Indicative packages and timelines.", ROUTES.pricing], ["Taxi app features", "Everything a taxi platform can include.", ROUTES.features], ["Portfolio", "The St Lu Taxi & Tours case study.", ROUTES.portfolio], ["Book a demo", "See the prototype with the team.", ROUTES.demo]] as const).map(([h, p, to]) => <li key={to}><h3><Link to={to}>{h}</Link></h3><p>{p}</p></li>)}
+        </ul>
       </div>
     </section>
   );
@@ -76,6 +84,10 @@ export default function AgencyApp() {
           <Route path={ROUTES.faq} element={<TadFaq />} />
           <Route path={ROUTES.sitemap} element={<TadSitemap />} />
           <Route path={ROUTES.thankYou} element={<TadThanks />} />
+          <Route path={ROUTES.pricing} element={<TadPricing />} />
+          <Route path={ROUTES.portfolio} element={<TadPortfolio />} />
+          <Route path={ROUTES.features} element={<TadFeatures />} />
+          <Route path={ROUTES.demo} element={<TadDemo />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

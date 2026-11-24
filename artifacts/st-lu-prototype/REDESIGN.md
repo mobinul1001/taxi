@@ -532,3 +532,8 @@ Fixed: hooks in `ContactDialog` were declared after the early return, which stop
 - Legal pages: no placeholders or draft banner. Legal entity "Taxi App Development", no postal address, no email, no governing-law section. Services disclosed: Netlify, Formspree, Microsoft Clarity. No cookie banner.
 - Footer rebuilt: brand, social icons (unlinked until official URLs exist), Services, Company, Contact (form link and working hours Mon to Fri 9 to 5 ET), newsletter wired to Formspree, legal links in the bottom bar.
 - Blog button removed until a real blog exists. Fake admin.example.com URL bar removed from the mockup.
+
+## v33
+- New pages: /pricing/ (MVP, Growth, Custom indicative USD ranges), /portfolio/ (St Lu case study), /features/ (28 features, filter by passenger, driver, admin, backend), /book-a-demo/ (request form via the contact page, kind "Request a demo"). Branded 404 now lists popular pages.
+- Header: Services, Solutions, Features, Portfolio, Pricing, About, Contact. Burger menu now below 1140px so the nav never overflows. Footer links the new pages. All four are in sitemap.xml and the HTML sitemap.
+- Pricing ranges are indicative, derived from published market ranges (see the pricing research note in the project). Owner must confirm before relying on them.

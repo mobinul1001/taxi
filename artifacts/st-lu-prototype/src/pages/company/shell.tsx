@@ -166,8 +166,7 @@ function Header({ onQuote, say }: { onQuote: () => void; say: Say }) {
           <nav className="nav" aria-label="Main">
             <Drop k="s" label="Services" items={SERVICES} />
             <Drop k="o" label="Solutions" items={SOLUTIONS} />
-            <div className="nav-i"><button type="button" className="nav-b" onClick={() => toSection(ROUTES.home, "features")}>Features</button></div>
-            <div className="nav-i"><Link className="nav-b" to={ROUTES.contact} onClick={close}>Contact</Link></div>
+            {([["Features", ROUTES.features], ["Portfolio", ROUTES.portfolio], ["Pricing", ROUTES.pricing], ["About", ROUTES.about], ["Contact", ROUTES.contact]] as const).map(([t, to]) => <div className="nav-i" key={t}><Link className="nav-b" to={to} onClick={close}>{t}</Link></div>)}
           </nav>
           <div className="hdr-cta">
             <button type="button" className="btn btn-primary btn-sm" onClick={onQuote}>Get a Quote</button>
@@ -180,7 +179,11 @@ function Header({ onQuote, say }: { onQuote: () => void; say: Say }) {
             <div className="sub">{SERVICES.map((s) => item(s, true))}</div>
             <button type="button" onClick={() => { close(); toSection(ROUTES.home, "ecosystem"); }}>Solutions</button>
             <div className="sub">{item(SOLUTIONS[0], true)}</div>
-            <button type="button" onClick={() => { close(); toSection(ROUTES.home, "features"); }}>Features</button>
+            <Link to={ROUTES.features} onClick={close}>Features</Link>
+            <Link to={ROUTES.portfolio} onClick={close}>Portfolio</Link>
+            <Link to={ROUTES.pricing} onClick={close}>Pricing</Link>
+            <Link to={ROUTES.about} onClick={close}>About</Link>
+            <Link to={ROUTES.demo} onClick={close}>Book a demo</Link>
             <Link to={ROUTES.contact} onClick={close}>Contact</Link>
             <button type="button" className="btn btn-primary" style={{ width: "100%", marginTop: 14, borderBottom: 0 }} onClick={() => { setMob(false); onQuote(); }}>Get a Quote</button>
           </nav>
@@ -265,11 +268,11 @@ function Footer({ onContact }: { say: Say; onContact: () => void }) {
           </div>
           <div>
             <h4>Services</h4>
-            <ul>{page("Taxi App Development", ROUTES.dev)}{page("Taxi Booking App Development", ROUTES.booking)}{page("Custom Taxi App Development", ROUTES.custom)}{page("White Label Taxi App", ROUTES.whiteLabel)}{page("Uber-Like App Development", ROUTES.uber)}{page("Taxi Dispatch Software", ROUTES.dispatch)}{page("Taxi App Development Services", ROUTES.services)}</ul>
+            <ul>{page("Taxi App Development", ROUTES.dev)}{page("Taxi Booking App Development", ROUTES.booking)}{page("Custom Taxi App Development", ROUTES.custom)}{page("White Label Taxi App", ROUTES.whiteLabel)}{page("Uber-Like App Development", ROUTES.uber)}{page("Taxi Dispatch Software", ROUTES.dispatch)}{page("Taxi App Development Services", ROUTES.services)}{page("Taxi App Features", ROUTES.features)}</ul>
           </div>
           <div>
             <h4>Company</h4>
-            <ul>{page("About Us", ROUTES.about)}{page("Taxi App Developers", ROUTES.developers)}{page("Taxi App Solutions", ROUTES.solutions)}{page("Taxi App Development Cost", ROUTES.cost)}{page("FAQ", ROUTES.faq)}{page("Contact", ROUTES.contact)}</ul>
+            <ul>{page("About Us", ROUTES.about)}{page("Portfolio", ROUTES.portfolio)}{page("Pricing", ROUTES.pricing)}{page("Book a Demo", ROUTES.demo)}{page("Taxi App Developers", ROUTES.developers)}{page("Taxi App Solutions", ROUTES.solutions)}{page("Taxi App Development Cost", ROUTES.cost)}{page("FAQ", ROUTES.faq)}{page("Contact", ROUTES.contact)}</ul>
           </div>
           <div>
             <h4>Contact</h4>

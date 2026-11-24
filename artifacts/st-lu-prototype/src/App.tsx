@@ -29,6 +29,10 @@ const TadAbout = lazy(() => import("@/pages/company/about-us"));
 const TadFaq = lazy(() => import("@/pages/company/faq"));
 const TadSitemap = lazy(() => import("@/pages/company/sitemap"));
 const TadThanks = lazy(() => import("@/pages/company/thank-you"));
+const TadPricing = lazy(() => import("@/pages/company/pricing"));
+const TadPortfolio = lazy(() => import("@/pages/company/portfolio"));
+const TadFeatures = lazy(() => import("@/pages/company/features"));
+const TadDemo = lazy(() => import("@/pages/company/book-a-demo"));
 const DeviceLab = lazy(() => import("@/pages/lab").then((m) => ({ default: m.DeviceLab })));
 import { PhoneFrame } from "@/components/mobile";
 import { startTicker, useAppState } from "@/lib/store";
@@ -144,6 +148,10 @@ function App() {
         <Route path={ROUTES.faq} element={<TadFaq />} />
         <Route path={ROUTES.sitemap} element={<TadSitemap />} />
         <Route path={ROUTES.thankYou} element={<TadThanks />} />
+          <Route path={ROUTES.pricing} element={<TadPricing />} />
+          <Route path={ROUTES.portfolio} element={<TadPortfolio />} />
+          <Route path={ROUTES.features} element={<TadFeatures />} />
+          <Route path={ROUTES.demo} element={<TadDemo />} />
         <Route path="/demo" element={<GuidedDemo />} />
         <Route path="/lab" element={<DeviceLab />} />
         <Route path="/previews/messages" element={<Messages />} />

@@ -17,6 +17,10 @@ const T: Partial<Record<K, [string, string]>> = {
   developers: ["Meet the roles on a taxi app team", "The skills involved and how to evaluate any developer you hire."],
   solutions: ["Find the setup that fits your kind of taxi business", "Taxi companies, airport transfers, corporate and chauffeur services compared."],
   faq: ["Quick answers to common questions", "Passenger and driver apps, dispatch, integrations, support and cost."],
+  pricing: ["Indicative packages and timelines", "MVP, Growth and Custom packages, add-ons and how we turn a scope into a quote."],
+  portfolio: ["A case study: St Lu Taxi & Tours", "The problem, the platform we designed and what the prototype shows."],
+  features: ["Every feature a taxi platform can include", "Passenger, driver, admin and backend features in one catalogue."],
+  demo: ["See a working prototype first", "Open the St Lu prototype and request a guided walkthrough."],
   about: ["About the team behind this site", "What we build and the principles we apply to every project."],
 };
 
@@ -32,6 +36,10 @@ const MAP: Partial<Record<K, K[]>> = {
   cost: ["booking", "dispatch", "solutions", "faq"],
   developers: ["custom", "uber", "about", "solutions"],
   about: ["booking", "custom", "whiteLabel", "dispatch"],
+  pricing: ["cost", "whiteLabel", "custom", "features"],
+  portfolio: ["booking", "dispatch", "features", "pricing"],
+  features: ["booking", "dispatch", "custom", "pricing"],
+  demo: ["portfolio", "features", "pricing", "solutions"],
 };
 
 export function Related({ page }: { page: K }) {

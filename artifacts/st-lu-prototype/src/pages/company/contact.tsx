@@ -19,7 +19,7 @@ const FAQS: [string, string][] = [
   ["Is my information kept private?", "The details you send are used to answer your enquiry. The form is sent through Formspree, a form-handling service."],
 ];
 
-const KINDS = ["Taxi booking app", "Custom taxi app", "White label taxi app", "Uber-like app", "Taxi dispatch software", "Not sure yet"];
+const KINDS = ["Taxi booking app", "Custom taxi app", "White label taxi app", "Uber-like app", "Taxi dispatch software", "Request a demo", "Not sure yet"];
 const BIZ = ["Taxi company", "Ride-hailing start-up", "Airport transfer operator", "Corporate transport", "Chauffeur or limousine", "Tour operator", "Other"];
 const STAGE = ["Just an idea", "Planning and comparing options", "I have an app that needs work", "Ready to start"];
 const NEXT: [string, string][] = [

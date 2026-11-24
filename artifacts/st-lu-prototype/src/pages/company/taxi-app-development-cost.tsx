@@ -133,7 +133,7 @@ function Body() {
           <div className="txt">
             <p className="eyebrow light">Taxi app development cost</p>
             <h1>Taxi App Development Cost: What Really <em>Drives the Budget</em></h1>
-            <p className="sub">No guessed price tags. This guide explains what moves the cost of a taxi app, where the money goes and what to budget beyond the build, then lets you size your own scope.</p>
+            <p className="sub">No guessed price tags here; for indicative packages see our pricing page. This guide explains what moves the cost of a taxi app, where the money goes and what to budget beyond the build, then lets you size your own scope.</p>
             <div className="hero-btns">
               <button type="button" className="btn btn-primary" onClick={() => go("estimator")}>Size Your Scope</button>
               <button type="button" className="btn btn-ghost-dark" onClick={() => go("drivers")}>See the Cost Drivers</button>
