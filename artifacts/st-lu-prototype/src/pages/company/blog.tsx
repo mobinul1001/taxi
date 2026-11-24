@@ -5,6 +5,7 @@ import { BLOG_AUTHOR, BLOG_CATS, POSTS, postPath, readMins, type BlogCat } from 
 import { Crumbs, crumbLd, useSeo, webPageLd } from "./seo";
 import { FinalCta, Shell, useShell } from "./shell";
 import { ROUTES } from "./routes";
+import { Cover } from "./covers";
 
 const TITLE = "Taxi App Blog: Guides on Dispatch, Payments, Launch";
 const DESC = "Practical guides for taxi and ride-hailing businesses: how dispatch works, what to build first, driver onboarding, payments and launching in a new market.";
@@ -31,11 +32,14 @@ function Body() {
         <div className="wrap">
           {cat === "All" && (
             <article className="post-feat">
+              <Link to={postPath(feat.slug)} tabIndex={-1} aria-hidden className="cover-link"><Cover slug={feat.slug} size="lg" eager /></Link>
+              <div className="post-feat-t">
               <p className="eyebrow">Featured</p>
               <h2 className="h2" id="h-posts"><Link to={postPath(feat.slug)}>{feat.title}</Link></h2>
               <p className="lede">{feat.summary}</p>
               <p className="meta"><span className="chipc">{feat.cat}</span><span><Clock size={14} aria-hidden /> {readMins(feat)} min read</span><span>{fmtDate(feat.date)}</span></p>
               <Link className="link" to={postPath(feat.slug)}>Read the guide <ArrowRight size={16} aria-hidden /></Link>
+              </div>
             </article>
           )}
           <div className="feat-filter" role="group" aria-label="Filter posts by category">
@@ -46,6 +50,7 @@ function Body() {
           <ul className="post-grid">
             {list.map((p) => (
               <li key={p.slug}>
+                <Link to={postPath(p.slug)} tabIndex={-1} aria-hidden className="cover-link"><Cover slug={p.slug} /></Link>
                 <span className="chipc">{p.cat}</span>
                 <h3><Link to={postPath(p.slug)}>{p.title}</Link></h3>
                 <p>{p.summary}</p>

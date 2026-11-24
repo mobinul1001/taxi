@@ -5,6 +5,7 @@ import {
   MapPin, Palette, Puzzle, ShieldCheck, Smartphone, Sparkles, Star, Tag, Timer, Users, Wallet, Server, Zap,
 } from "lucide-react";
 import { AdminDash, BLUE, BrandVis, BookingVis, DriverScreen, FlowVis, GpsVis, LiveWidget, MatchVis, PassengerScreen, Phone, RideCard, RouteMap, STLU, Scaled, WorkflowVis } from "./mockups";
+import { MarketsStrip } from "./markets";
 import { Faq, FinalCta, Pic, Shell, Tick, go, useShell } from "./shell";
 import { ROUTES } from "./routes";
 import { StluLink } from "./stluLink";
@@ -307,6 +308,7 @@ function HomeBody() {
       <Compare onConsult={consult} />
       <Tech />
       <Explore />
+      <MarketsStrip />
       <Faq items={FAQS} onAsk={() => ask("Ask us a question")} />
       <Related page="home" />
       <FinalCta onConsult={consult} onStart={start} />

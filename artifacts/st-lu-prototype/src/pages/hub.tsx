@@ -1,9 +1,12 @@
 import { Photo } from "@/components/photo";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowUpRight, CarFront, LayoutGrid, Link2, Megaphone, MessageSquare, MonitorSmartphone, PlayCircle, RotateCcw, Smartphone, TabletSmartphone, User } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CarFront, LayoutGrid, Link2, Megaphone, MessageSquare, MonitorSmartphone, PlayCircle, RotateCcw, Smartphone, TabletSmartphone, User } from "lucide-react";
 import { Btn, Card, Logo, Modal, ThemeButton } from "@/components/kit";
 import { actions, safeStore, setSession, toast, useAppState } from "@/lib/store";
+
+/** Set only for the copy of the prototype inside the agency site (VITE_AGENCY_BACK=1): the page it can return to. */
+const AGENCY_BACK: string | null = import.meta.env.VITE_AGENCY_BACK ? "/portfolio/" : null;
 
 export default function Hub() {
   const s = useAppState();
@@ -35,7 +38,7 @@ export default function Hub() {
         <span aria-hidden className="scrim-top pointer-events-none absolute inset-x-0 top-0 h-40" />
         <div className={`${wrap} relative flex min-h-[72px] flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-4`}>
           <Logo />
-          <div className="flex items-center gap-3"><span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[12.5px] font-semibold"><span className="h-2 w-2 shrink-0 rounded-full bg-orange" /><span className="whitespace-nowrap"><span className="min-[380px]:hidden">Dated Mon 14 Dec 2026</span><span className="max-[379px]:hidden">Everything is dated Mon 14 Dec 2026</span></span></span><ThemeButton className="glass-photo !border-white/30 !text-white !shadow-none" /></div>
+          <div className="flex flex-wrap items-center gap-3">{AGENCY_BACK && <a href={AGENCY_BACK} data-testid="link-back-agency" className="tap inline-flex min-h-11 items-center gap-1.5 rounded-full border border-white/30 bg-white/10 px-4 text-[13px] font-semibold text-white hover:bg-white/20"><ArrowLeft size={15} aria-hidden />Back to TaxiAppDevelopment.org</a>}<span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[12.5px] font-semibold"><span className="h-2 w-2 shrink-0 rounded-full bg-orange" /><span className="whitespace-nowrap"><span className="min-[380px]:hidden">Dated Mon 14 Dec 2026</span><span className="max-[379px]:hidden">Everything is dated Mon 14 Dec 2026</span></span></span><ThemeButton className="glass-photo !border-white/30 !text-white !shadow-none" /></div>
         </div>
         <div className={`${wrap} relative mt-[clamp(28px,5vw,64px)]`}>
           <h1 className="t-display max-w-[780px] text-[clamp(32px,5.4vw,60px)]">St Lu Taxi And Tours, <i className="text-hl">the whole ride in one place.</i></h1>

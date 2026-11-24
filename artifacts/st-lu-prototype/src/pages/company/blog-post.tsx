@@ -5,6 +5,7 @@ import { fmtDate } from "./blog";
 import { Crumbs, crumbLd, orgRef, useSeo } from "./seo";
 import { FinalCta, Shell, useShell } from "./shell";
 import { ROUTES, ORIGIN, canonicalOf } from "./routes";
+import { Cover } from "./covers";
 
 function Missing() {
   useSeo({ title: "Post not found | TaxiAppDevelopment.org", description: "This blog post does not exist.", path: ROUTES.blog, ld: [], robots: "noindex, follow" });
@@ -49,6 +50,7 @@ function Post({ slug }: { slug: string }) {
             <ol>{post.sections.map((s) => <li key={s.id}><a href={`#${s.id}`}>{s.h}</a></li>)}</ol>
           </aside>
           <article className="post-body">
+            <figure className="post-cover"><Cover slug={post.slug} size="lg" eager /></figure>
             <div className="takeaways"><h2><ListChecks size={20} aria-hidden /> Key takeaways</h2><ul>{post.takeaways.map((t) => <li key={t}>{t}</li>)}</ul></div>
             {post.sections.map((s) => (
               <section key={s.id} id={s.id} aria-labelledby={`h-${s.id}`}>
@@ -66,7 +68,7 @@ function Post({ slug }: { slug: string }) {
         <div className="wrap">
           <p className="eyebrow">Keep reading</p>
           <h2 className="h2 wide" id="h-more">More guides from the blog</h2>
-          <ul className="post-grid">{rel.map((p) => <li key={p.slug}><span className="chipc">{p.cat}</span><h3><Link to={postPath(p.slug)}>{p.title}</Link></h3><p>{p.summary}</p></li>)}</ul>
+          <ul className="post-grid">{rel.map((p) => <li key={p.slug}><Link to={postPath(p.slug)} tabIndex={-1} aria-hidden className="cover-link"><Cover slug={p.slug} /></Link><span className="chipc">{p.cat}</span><h3><Link to={postPath(p.slug)}>{p.title}</Link></h3><p>{p.summary}</p></li>)}</ul>
         </div>
       </section>
       <FinalCta title="Planning a Taxi App or Dispatch Platform?" text="Tell us about your business and we reply with questions and a suggested next step." startLabel="Get a Quote" consultLabel="Request a Demo" onStart={() => ask("Get a quote", { kind: "Not sure yet" })} onConsult={() => ask("Request a demo", { kind: "Request a demo" })} />

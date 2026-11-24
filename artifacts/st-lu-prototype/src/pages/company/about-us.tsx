@@ -4,6 +4,7 @@ import { StluLink } from "./stluLink";
 import { ArrowRight, Boxes, Code2, Smartphone } from "lucide-react";
 import { AdminDash, Phone, PassengerScreen, DriverScreen, STLU, Scaled } from "./mockups";
 import { Crumbs, crumbLd, useSeo } from "./seo";
+import { MarketsStrip } from "./markets";
 import { FinalCta, Pic, Shell, Tick, useShell } from "./shell";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
@@ -84,6 +85,8 @@ function Body() {
           <p className="note">Not sure which of these describes you? Our <Link to={ROUTES.solutions}>taxi app solutions guide</Link> maps each business type to a setup, and the <Link to={ROUTES.faq}>FAQ</Link> answers common questions.</p>
         </div>
       </section>
+
+      <MarketsStrip />
 
       <section className="sec sec-white" id="project" aria-labelledby="h-pr">
         <div className="wrap">

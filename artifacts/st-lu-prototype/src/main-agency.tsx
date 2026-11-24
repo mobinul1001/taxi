@@ -40,7 +40,8 @@ void styles().then(() => {
   if (pre) {
     host = document.createElement('div');
     host.setAttribute('style', 'position:absolute;top:0;left:0;right:0;visibility:hidden;pointer-events:none');
-    root.after(host);
+    // Before the static copy, so document.getElementById / querySelector find the live page first.
+    root.before(host);
     const y = window.scrollY;
     let done = false;
     const swap = () => {

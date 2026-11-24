@@ -298,3 +298,20 @@
   .tad .ftr { padding-bottom: 8px; }
   .tad { scroll-padding-bottom: 80px; }
 }
+
+/* Footer polish (v43) */
+.tad .ftr-logo { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; font-size: 18px; min-height: 44px; text-decoration: none; }
+.tad .ftr-logo b { color: var(--blue-soft); font-weight: 700; }
+.tad .ftr-note { font-size: 15px; margin: 0 0 12px; color: var(--on-navy); }
+.tad .ftr .ftr-msg { background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.28); color: #fff; }
+.tad .ftr .ftr-msg:hover { background: rgba(255,255,255,.16); }
+.tad .ftr-hours { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; margin: 16px 0 0; padding: 14px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); }
+.tad .ftr-hours svg { flex: none; margin-top: 3px; color: var(--cyan); }
+.tad .ftr-h2 { margin-top: 26px; }
+.tad .news { flex-wrap: nowrap; margin-top: 8px; }
+.tad .news input { flex: 1 1 auto; }
+.tad .news .btn { flex: none; }
+@media (max-width: 379px) { .tad .news { flex-wrap: wrap; } }
+.tad .ftr-bot a { color: var(--on-navy); font-weight: 500; }
+.tad .ftr-bot a:hover { color: #fff; }
+.tad .ftr-bot { margin-top: 48px; }
