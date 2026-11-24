@@ -35,6 +35,7 @@ export function useSeo({ title, description, path, ld, robots }: { title: string
     if (link) { const prev = link.href; link.href = url; undo.push(() => { link!.href = prev; }); }
     else { link = document.createElement("link"); link.rel = "canonical"; link.href = url; document.head.appendChild(link); undo.push(() => link!.remove()); }
 
+    document.head.querySelectorAll('script[type="application/ld+json"]:not([data-tad])').forEach((n) => n.remove());
     for (const item of JSON.parse(key) as Json[]) {
       const s = document.createElement("script");
       s.type = "application/ld+json"; s.dataset.tad = "1"; s.text = JSON.stringify(item);

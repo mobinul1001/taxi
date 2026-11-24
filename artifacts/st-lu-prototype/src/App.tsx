@@ -29,6 +29,8 @@ const TadAbout = lazy(() => import("@/pages/company/about-us"));
 const TadFaq = lazy(() => import("@/pages/company/faq"));
 const TadSitemap = lazy(() => import("@/pages/company/sitemap"));
 const TadThanks = lazy(() => import("@/pages/company/thank-you"));
+const TadBlog = lazy(() => import("@/pages/company/blog"));
+const TadPost = lazy(() => import("@/pages/company/blog-post"));
 const TadPricing = lazy(() => import("@/pages/company/pricing"));
 const TadPortfolio = lazy(() => import("@/pages/company/portfolio"));
 const TadFeatures = lazy(() => import("@/pages/company/features"));
@@ -148,6 +150,8 @@ function App() {
         <Route path={ROUTES.faq} element={<TadFaq />} />
         <Route path={ROUTES.sitemap} element={<TadSitemap />} />
         <Route path={ROUTES.thankYou} element={<TadThanks />} />
+          <Route path={ROUTES.blog} element={<TadBlog />} />
+          <Route path="/blog/:slug/" element={<TadPost />} />
           <Route path={ROUTES.pricing} element={<TadPricing />} />
           <Route path={ROUTES.portfolio} element={<TadPortfolio />} />
           <Route path={ROUTES.features} element={<TadFeatures />} />

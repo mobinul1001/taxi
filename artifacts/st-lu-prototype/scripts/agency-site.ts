@@ -16,8 +16,12 @@ import { ORIGIN, PATHS } from '../src/pages/company/routePaths';
  *  listed: they are not landing pages. The thank-you page is noindex and never listed. */
 const SKIP = new Set<string>(['thankYou', 'privacy', 'terms', 'cookies', 'disclaimer', 'sitemap']);
 
-export const sitemapUrls = () =>
-  (Object.keys(PATHS) as (keyof typeof PATHS)[]).filter((k) => !SKIP.has(k)).map((k) => (k === 'home' ? `${ORIGIN}/` : `${ORIGIN}${PATHS[k]}`));
+const postSlugs = () => [...fs.readFileSync(new URL('../src/pages/company/blogData.ts', import.meta.url), 'utf8').matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]);
+
+export const sitemapUrls = () => [
+  ...(Object.keys(PATHS) as (keyof typeof PATHS)[]).filter((k) => !SKIP.has(k)).map((k) => (k === 'home' ? `${ORIGIN}/` : `${ORIGIN}${PATHS[k]}`)),
+  ...postSlugs().map((s) => `${ORIGIN}/blog/${s}/`),
+];
 
 const TITLE = 'Taxi App Development Company | TaxiAppDevelopment.org';
 const DESC = 'Taxi app development company building taxi booking apps, white label and custom taxi apps, Uber-like ride-hailing platforms, driver apps and admin dashboards.';

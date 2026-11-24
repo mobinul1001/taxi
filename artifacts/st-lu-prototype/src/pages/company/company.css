@@ -65,7 +65,7 @@
 .tad .mnav { border-top: 1px solid rgba(255,255,255,.08); padding: 10px 0 18px; }
 .tad .mnav button { display: flex; width: 100%; text-align: left; align-items: center; justify-content: space-between; min-height: 48px; padding: 0 4px; background: none; border: 0; color: #e7ecff; font-size: 16px; font-weight: 560; border-bottom: 1px solid rgba(255,255,255,.06); }
 .tad .mnav .sub button { padding-left: 18px; font-size: 15px; font-weight: 500; color: var(--on-navy); }
-@media (max-width: 1139px) { .tad .nav, .tad .hdr-cta .btn { display: none; } .tad .burger { display: grid; } .tad .hdr-cta { margin-left: auto; } }
+@media (max-width: 1219px) { .tad .nav, .tad .hdr-cta .btn { display: none; } .tad .burger { display: grid; } .tad .hdr-cta { margin-left: auto; } }
 
 /* hero */
 .tad .hero { position: relative; background: radial-gradient(900px 520px at 78% 30%, rgba(43,99,255,.34), transparent 62%), radial-gradient(520px 320px at 12% 90%, rgba(34,211,238,.1), transparent 70%), var(--navy-900); color: #fff; overflow: hidden; }
