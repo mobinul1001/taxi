@@ -634,3 +634,10 @@
 .tad .sh .h2 { max-width: none; }
 .tad .ill { display: block; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 14px 34px rgba(11,27,77,.14); border: 1px solid rgba(43,99,255,.12); }
 @media (max-width: 899px) { .tad .sh { grid-template-columns: minmax(0, 1fr); gap: 20px; } .tad .ill { max-width: 520px; } }
+
+/* Integrations cards (v44): examples label and chips sit at the bottom of every card, chips stay on one line when they fit */
+.tad .intg > li { display: flex; flex-direction: column; }
+.tad .intg .eg { margin-top: auto; padding-top: 14px; }
+.tad .intg .chips-t li { font-size: 13px; padding: 6px 11px; }
+@media (min-width: 1100px) { .tad .intg .chips-t li { white-space: nowrap; } }
+@media (min-width: 900px) { .tad .intg > li > p:not(.eg) { min-height: 6.4em; } .tad .intg .eg { margin-top: 0; } }

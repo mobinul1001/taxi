@@ -175,7 +175,7 @@ const INTEG: { t: string; what: string; eg: string[] }[] = [
   { t: "Maps and routing", what: "Route and distance for fares, address search and live driver position.", eg: ["Google Maps Platform", "Mapbox"] },
   { t: "Payments", what: "Card and wallet gateway, a cash option and receipts. Availability depends on your country.", eg: ["Stripe", "PayPal", "Square"] },
   { t: "Messaging", what: "Push notifications, SMS and WhatsApp job links for passengers and drivers.", eg: ["Twilio", "WhatsApp Business Platform", "Firebase Cloud Messaging"] },
-  { t: "Operations", what: "The admin booking panel, driver and vehicle records and document expiry alerts, built into the platform itself.", eg: ["Built in, no third party needed"] },
+  { t: "Operations", what: "The admin booking panel, driver and vehicle records and document expiry alerts, built into the platform itself.", eg: ["Built in"] },
 ];
 
 function Body() {

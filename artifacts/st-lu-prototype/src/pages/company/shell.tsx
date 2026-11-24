@@ -265,36 +265,43 @@ function Footer({ onContact }: { say: Say; onContact: () => void }) {
   return (
     <footer className="ftr">
       <div className="wrap">
-        <div className="ftr-grid">
-          <div>
+        <div className="ftr-top">
+          <div className="ftr-brand">
             <Link className="logo ftr-logo" to={ROUTES.home} onClick={() => window.scrollTo({ top: 0 })} aria-label="TaxiAppDevelopment, homepage"><span className="logo-mark" aria-hidden><Navigation size={17} color="#fff" /></span><span>TaxiApp<b>Development</b></span></Link>
-            <p style={{ fontSize: 15, marginTop: 14 }}>Taxi app, ride-hailing and dispatch software for taxi operators, fleets and start-ups.</p>
+            <p>Taxi app, ride-hailing and dispatch software for taxi operators, fleets and start-ups. Serving the USA, UK, Canada, Australia, Europe and the Caribbean.</p>
             <ul className="soc" aria-label="Social media (links coming soon)">{SOCIALS.map(([n, I]) => <li key={n}><span className="soc-i" role="img" aria-label={n}><I size={18} aria-hidden /></span></li>)}</ul>
-            <p style={{ fontSize: 14, marginTop: 14, color: "var(--on-navy-mute)" }}>Serving the USA, UK, Canada, Australia, Europe and the Caribbean.</p>
           </div>
-          <div>
-            <h3>Services</h3>
-            <ul>{page("Taxi App Development", ROUTES.dev)}{page("Taxi Booking App Development", ROUTES.booking)}{page("Custom Taxi App Development", ROUTES.custom)}{page("White Label Taxi App", ROUTES.whiteLabel)}{page("Uber-Like App Development", ROUTES.uber)}{page("Taxi Dispatch Software", ROUTES.dispatch)}{page("Taxi App Development Services", ROUTES.services)}{page("Taxi App Features", ROUTES.features)}</ul>
-          </div>
-          <div>
-            <h3>Company</h3>
-            <ul>{page("About Us", ROUTES.about)}{page("Portfolio", ROUTES.portfolio)}{page("Pricing", ROUTES.pricing)}{page("Blog", ROUTES.blog)}{page("Book a Demo", ROUTES.demo)}{page("Taxi App Developers", ROUTES.developers)}{page("Taxi App Solutions", ROUTES.solutions)}{page("Taxi App Development Cost", ROUTES.cost)}{page("FAQ", ROUTES.faq)}{page("Contact", ROUTES.contact)}</ul>
-          </div>
-          <div>
-            <h3>Contact</h3>
-            <p className="ftr-note">Tell us about your project through the contact form.</p>
-            <button type="button" className="btn btn-outline btn-sm ftr-msg" onClick={onContact}><MessageCircleQuestion size={16} aria-hidden /> Send us a message</button>
-            <p className="ftr-hours"><Clock size={16} aria-hidden /><span>Monday to Friday, 9:00 AM to 5:00 PM<br />Eastern Time (ET), USA</span></p>
-            <h3 className="ftr-h2">Stay in the loop</h3>
+          <div className="ftr-news">
+            <h3>Stay in the loop</h3>
             <form className="news" onSubmit={subscribe}>
               <label className="sr" htmlFor="tad-news">Email address</label>
               <input id="tad-news" name="email" type="email" required placeholder="Your email" autoComplete="email" />
               <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }} />
               <button type="submit" className="btn btn-primary btn-sm" disabled={state === "busy"}>{state === "busy" ? "Sending…" : "Subscribe"}</button>
             </form>
-            <p style={{ fontSize: 13, marginTop: 8, color: "var(--on-navy-mute)" }}>Taxi software ideas now and then. By subscribing you agree to our <Link to={ROUTES.privacy} style={{ textDecoration: "underline" }}>Privacy Policy</Link>.</p>
+            <p className="ftr-fine">Taxi software ideas now and then. By subscribing you agree to our <Link to={ROUTES.privacy} style={{ textDecoration: "underline" }}>Privacy Policy</Link>.</p>
             {state === "done" && <p className="ok-msg" role="status">Thanks, you are subscribed.</p>}
             {state === "fail" && <p className="ok-msg" role="alert" style={{ color: "#ffb4a8" }}>We could not subscribe you. Please try again.</p>}
+          </div>
+        </div>
+        <div className="ftr-grid">
+          <div>
+            <h3>Services</h3>
+            <ul>{page("Taxi App Development", ROUTES.dev)}{page("Taxi Booking App Development", ROUTES.booking)}{page("Custom Taxi App Development", ROUTES.custom)}{page("White Label Taxi App", ROUTES.whiteLabel)}{page("Uber-Like App Development", ROUTES.uber)}{page("Taxi Dispatch Software", ROUTES.dispatch)}{page("Taxi App Development Services", ROUTES.services)}</ul>
+          </div>
+          <div>
+            <h3>Learn</h3>
+            <ul>{page("Taxi App Solutions", ROUTES.solutions)}{page("Taxi App Features", ROUTES.features)}{page("Taxi App Development Cost", ROUTES.cost)}{page("Taxi App Developers", ROUTES.developers)}{page("Blog", ROUTES.blog)}{page("FAQ", ROUTES.faq)}</ul>
+          </div>
+          <div>
+            <h3>Company</h3>
+            <ul>{page("About Us", ROUTES.about)}{page("Portfolio", ROUTES.portfolio)}{page("Pricing", ROUTES.pricing)}{page("Book a Demo", ROUTES.demo)}{page("Contact", ROUTES.contact)}</ul>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <p className="ftr-note">Tell us about your project through the contact form.</p>
+            <button type="button" className="btn btn-outline btn-sm ftr-msg" onClick={onContact}><MessageCircleQuestion size={16} aria-hidden /> Send us a message</button>
+            <p className="ftr-hours"><Clock size={16} aria-hidden /><span>Monday to Friday, 9:00 AM to 5:00 PM<br />Eastern Time (ET), USA</span></p>
           </div>
         </div>
         <div className="ftr-bot">

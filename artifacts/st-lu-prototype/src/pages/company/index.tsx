@@ -184,16 +184,15 @@ function Project() {
         <h2 className="h2 wide" id="h-proj">A taxi booking platform for St Lu Taxi &amp; Tours</h2>
         <div className="proj">
           <div className="proj-vis" aria-hidden>
-            <Scaled w={560} h={700}>
-              <div style={{ position: "absolute", left: 0, top: 4 }}><AdminDash w={372} accent={STLU} title="Dispatch" /></div>
-              <Phone style={{ position: "absolute", left: 372, top: 4, transform: "scale(.84)", transformOrigin: "0 0" }}><PassengerScreen accent={STLU} brand="Hewanorra Airport" /></Phone>
-              <Phone style={{ position: "absolute", left: 40, top: 360, transform: "scale(.72)", transformOrigin: "0 0" }}><DriverScreen accent={STLU} /></Phone>
-              <div style={{ position: "absolute", left: 292, top: 440, width: 240, color: "#c7d6ff", fontSize: 14, lineHeight: 1.5 }}>One job, three views: the passenger books, the driver accepts and the dispatcher assigns.</div>
+            <Scaled w={560} h={610}>
+              <div style={{ position: "absolute", left: 20, top: 6 }}><AdminDash w={520} accent={STLU} title="Dispatch" /></div>
+              <Phone style={{ position: "absolute", left: 92, top: 268, transform: "scale(.8)", transformOrigin: "0 0" }}><PassengerScreen accent={STLU} brand="Hewanorra Airport" /></Phone>
+              <Phone style={{ position: "absolute", left: 292, top: 268, transform: "scale(.8)", transformOrigin: "0 0" }}><DriverScreen accent={STLU} /></Phone>
             </Scaled>
           </div>
           <div className="proj-txt">
             <div className="tags"><span className="tag">Passenger app</span><span className="tag">Driver app</span><span className="tag">Admin dispatch panel</span><span className="tag">Landing page</span></div>
-            <p className="lede" style={{ marginTop: 0 }}>A ride-sharing and tours platform for a St. Lucia taxi operator: airport transfers, tours and taxi bookings, with a dispatcher panel behind them.</p>
+            <p className="lede" style={{ marginTop: 0 }}>A ride-sharing and tours platform for a St. Lucia taxi operator: airport transfers, tours and taxi bookings, with a dispatcher panel behind them. One job, three views: the passenger books, the driver accepts and the dispatcher assigns.</p>
             <div><h3 style={{ fontSize: 17, marginBottom: 12 }}>Features developed</h3>
               <Tick items={["Passenger booking with online payment", "Driver app with job status updates", "Dispatcher assigns in-house and outside drivers", "SMS and WhatsApp job links and alerts", "Document expiry alerts for drivers and vehicles", "Live map and trip timeline"]} /></div>
             <p className="note">The St Lu app you can open here is a clickable design prototype. It shows the product direction, not live client results.</p>

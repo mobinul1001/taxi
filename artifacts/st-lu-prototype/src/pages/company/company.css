@@ -315,3 +315,20 @@
 .tad .ftr-bot a { color: var(--on-navy); font-weight: 500; }
 .tad .ftr-bot a:hover { color: #fff; }
 .tad .ftr-bot { margin-top: 48px; }
+
+/* Footer v44: brand and newsletter band on top, four equal columns below, tighter link rows */
+.tad .ftr { padding-top: clamp(40px, 5vw, 60px); }
+.tad .ftr-top { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px 56px; align-items: start; padding-bottom: 36px; margin-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.tad .ftr-brand p { font-size: 15px; margin: 10px 0 0; max-width: 56ch; color: var(--on-navy); }
+.tad .ftr-brand .soc { margin-top: 18px; }
+.tad .ftr-news h3 { margin-bottom: 4px; }
+.tad .ftr-news .news { margin-top: 10px; max-width: 440px; }
+.tad .ftr-fine { font-size: 13px; margin: 10px 0 0; color: var(--on-navy-mute); }
+.tad .ftr-grid { gap: 28px 40px; align-items: stretch; }
+.tad .ftr-grid ul { display: flex; flex-direction: column; gap: 0; }
+.tad .ftr li button, .tad .ftr li a { min-height: 34px; }
+.tad .ftr-h2 { margin-top: 0; }
+.tad .ftr-bot { margin-top: 36px; }
+@media (max-width: 899px) { .tad .ftr-top { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 599px) { .tad .ftr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tad .ftr-grid > div:last-child { grid-column: 1 / -1; } }
+@media (max-width: 479px) { .tad .ftr-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }

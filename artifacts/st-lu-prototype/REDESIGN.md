@@ -619,3 +619,10 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 - Nine original illustrations (960x540 WebP, 8 to 17 KB each, drawn as SVG, no text, no people, no client or team images) now sit beside the heading of nine text-and-table sections: dispatch modes, developer skills, solutions by need, custom build phases, budget planning, booking integrations, how we quote, About "What we do", Book a demo "Get the most from it". Component `Illus` in `covers.tsx`; header layout `.sh` in `pages.css` (two columns on desktop, image below the heading on screens under 900px). Decorative: `alt=""`, lazy-loaded.
 - Checked: no horizontal overflow on all 31 agency pages at 375, 768, 1440; no console errors; Lighthouse accessibility, best practices, SEO 100 and CLS 0 on pricing, developers, book-a-demo.
 - Not done on purpose: team photo, client image (to be added later).
+
+## v45 — Featured project visual, footer layout, integration chips
+
+- **Featured project (home)**: admin dispatch dashboard on top at full width, the passenger and driver phones side by side centred below it and overlapping its lower edge. The "One job, three views" sentence moved from the picture into the text.
+- **Footer**: top band with brand, one-paragraph description, social icons and the newsletter; below it four columns (Services 7 links, Learn 6, Company 5, Contact block) with tighter link rows (34px high, still above the 24px WCAG minimum). One column on phones.
+- **Integrations (booking page)**: provider chips stay on one line on screens 1100px and wider, "Examples" labels line up across the four cards, the Operations example is just "Built in".
+- Checked: no horizontal overflow on 31 pages at 375, 768, 1440; no console errors.
