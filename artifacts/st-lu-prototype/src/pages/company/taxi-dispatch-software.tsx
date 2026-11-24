@@ -5,6 +5,7 @@ import { ArrowRight, Bell, FileText, Headset, Smartphone, Users } from "lucide-r
 import { AdminDash, DriverScreen, Phone, RouteMap, Scaled } from "./mockups";
 import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
 import { Faq, FinalCta, Pic, Shell, Tick, go, useShell } from "./shell";
+import { Illus } from "./covers";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
 
@@ -152,8 +153,10 @@ function Body() {
 
       <section className="sec sec-white" id="modes" aria-labelledby="h-modes">
         <div className="wrap">
+          <div className="sh"><div>
           <p className="eyebrow">Dispatch modes</p>
           <h2 className="h2 wide" id="h-modes">Four ways to assign a taxi job, and when each fits</h2>
+          </div><Illus name="dispatch-modes" /></div>
           <table className="tbl">
             <caption className="sr">Taxi dispatch modes compared</caption>
             <thead><tr><th scope="col">Mode</th><th scope="col">How it works</th><th scope="col">Best for</th><th scope="col">Trade-off</th></tr></thead>

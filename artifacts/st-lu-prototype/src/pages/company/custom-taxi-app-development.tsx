@@ -3,6 +3,7 @@ import { ArrowRight, Building2, Check, CreditCard, FileText, Globe2, Plug, Route
 import { Link } from "react-router-dom";
 import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
 import { Faq, FinalCta, Pic, Shell, go, useShell } from "./shell";
+import { Illus } from "./covers";
 import { Scaled } from "./mockups";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
@@ -158,8 +159,10 @@ function Phases() {
   return (
     <section className="sec sec-white" id="how-a-custom-build-runs" aria-labelledby="h-ph">
       <div className="wrap">
+        <div className="sh"><div>
         <p className="eyebrow">How a custom build runs</p>
         <h2 className="h2 wide" id="h-ph">Six phases, and what you hold at the end of each</h2>
+        </div><Illus name="roadmap" /></div>
         <ol className="phs" style={{ listStyle: "none", padding: 0 }}>
           {PHASES.map(([t, d, gets], i) => (
             <li className="ph" key={t}>

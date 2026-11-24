@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
 import { Faq, FinalCta, Pic, Shell, Tick, go, useShell } from "./shell";
+import { Illus } from "./covers";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
 
@@ -217,8 +218,10 @@ function Body() {
 
       <section className="sec sec-white" id="plan" aria-labelledby="h-plan">
         <div className="wrap">
+          <div className="sh"><div>
           <p className="eyebrow">Budget planning</p>
           <h2 className="h2 wide" id="h-plan">How to plan a taxi app budget without surprises</h2>
+          </div><Illus name="budget" /></div>
           <ol className="askl" style={{ listStyle: "none", padding: 0 }}>{PLAN.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ol>
           <div className="more">
             <button type="button" className="btn btn-primary" onClick={est}>Get a Written Estimate</button>

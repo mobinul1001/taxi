@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Cloud, Compass, Layers, PenTool, ServerCog, ShieldCheck, Smartphone } from "lucide-react";
 import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
 import { Faq, FinalCta, Pic, Shell, Tick, go, useShell } from "./shell";
+import { Illus } from "./covers";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
 
@@ -133,9 +134,11 @@ function Body() {
 
       <section className="sec sec-gray" id="skills" aria-labelledby="h-sk">
         <div className="wrap">
+          <div className="sh"><div>
           <p className="eyebrow">Technical expertise</p>
           <h2 className="h2 wide" id="h-sk">What good taxi app developers know how to build</h2>
           <p className="lede">These are the areas that decide whether a taxi app works at rush hour, not just in a demo. Specific tools, such as native or cross-platform frameworks, are chosen per project.</p>
+          </div><Illus name="tech-stack" /></div>
           <table className="tbl">
             <caption className="sr">Technical areas taxi app developers handle and why each matters</caption>
             <thead><tr><th scope="col">Area</th><th scope="col">What developers handle</th><th scope="col">Why it matters</th></tr></thead>

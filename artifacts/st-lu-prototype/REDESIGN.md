@@ -613,3 +613,9 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 - **Way back from the prototype**: in the copy of the prototype inside the agency site (`/st-lucia-taxi-app/`, built with `VITE_AGENCY_BACK=1`) the start page shows "Back to TaxiAppDevelopment.org" (to `/portfolio/`). Other screens already lead to the start page via their "Start" button. The St Lu hosted build is unchanged (the flag is off there).
 - **Bug found and fixed**: the v42 static copy and the live page briefly coexist, and `document.querySelector` found the static footer, so the mobile "Get a Quote" bar did not hide at the footer. The live container is now placed before the static copy.
 - Checked: tsc clean, St Lu e2e 37/37, no horizontal overflow on all 31 agency pages at 375/768/1440, no console errors, Lighthouse accessibility 100, best practices 100, SEO 100 on home, About, Solutions (the prototype is noindex on purpose). Not checked: real devices, Netlify gzip numbers.
+
+## v44 — Section illustrations (WebP)
+
+- Nine original illustrations (960x540 WebP, 8 to 17 KB each, drawn as SVG, no text, no people, no client or team images) now sit beside the heading of nine text-and-table sections: dispatch modes, developer skills, solutions by need, custom build phases, budget planning, booking integrations, how we quote, About "What we do", Book a demo "Get the most from it". Component `Illus` in `covers.tsx`; header layout `.sh` in `pages.css` (two columns on desktop, image below the heading on screens under 900px). Decorative: `alt=""`, lazy-loaded.
+- Checked: no horizontal overflow on all 31 agency pages at 375, 768, 1440; no console errors; Lighthouse accessibility, best practices, SEO 100 and CLS 0 on pricing, developers, book-a-demo.
+- Not done on purpose: team photo, client image (to be added later).

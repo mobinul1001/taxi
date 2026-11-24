@@ -6,6 +6,7 @@ import { AdminDash, Phone, PassengerScreen, DriverScreen, STLU, Scaled } from ".
 import { Crumbs, crumbLd, useSeo } from "./seo";
 import { MarketsStrip } from "./markets";
 import { FinalCta, Pic, Shell, Tick, useShell } from "./shell";
+import { Illus } from "./covers";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
 
@@ -57,8 +58,10 @@ function Body() {
 
       <section className="sec sec-white" id="what" aria-labelledby="h-what">
         <div className="wrap">
+          <div className="sh"><div>
           <p className="eyebrow">What we do</p>
           <h2 className="h2 wide" id="h-what">Mobility software, from first idea to live platform</h2>
+          </div><Illus name="platform" /></div>
           <ul className="need4 c3">{DO.map(([h, p, I]) => <li key={h}><I size={22} color="#2b63ff" aria-hidden /><h3>{h}</h3><p>{p}</p></li>)}</ul>
           <div className="more">
             <Link className="link" to={ROUTES.dev}>Taxi app development <ArrowRight size={16} /></Link>

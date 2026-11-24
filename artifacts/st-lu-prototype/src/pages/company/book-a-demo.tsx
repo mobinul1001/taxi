@@ -4,6 +4,7 @@ import { CalendarCheck, Clock, MousePointerClick, Presentation } from "lucide-re
 import { StluLink } from "./stluLink";
 import { Crumbs, crumbLd, faqLd, useSeo, webPageLd } from "./seo";
 import { Faq, FinalCta, Shell, Tick, useShell } from "./shell";
+import { Illus } from "./covers";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
 
@@ -63,8 +64,10 @@ function Body() {
 
       <section className="sec sec-gray" id="prepare" aria-labelledby="h-pp">
         <div className="wrap">
+          <div className="sh"><div>
           <p className="eyebrow">Get the most from it</p>
           <h2 className="h2 wide" id="h-pp"><CalendarCheck size={26} aria-hidden style={{ verticalAlign: "-4px", marginRight: 8 }} />Helpful to mention in your request</h2>
+          </div><Illus name="demo" /></div>
           <Tick items={["The type of business you run, for example taxi company or airport transfers", "The city or area you serve and roughly how many vehicles", "Which parts you care about most: booking, driver app or dispatch", "Whether you already have an app or are starting from scratch"]} />
           <p className="note">Prefer to see the work first? Read the <Link to={ROUTES.portfolio}>St Lu case study</Link>, or check <Link to={ROUTES.pricing}>indicative pricing</Link>.</p>
         </div>

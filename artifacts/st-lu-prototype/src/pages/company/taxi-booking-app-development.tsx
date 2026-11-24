@@ -4,6 +4,7 @@ import { ArrowRight, Bell, CalendarClock, Car, CheckCircle2, CreditCard, History
 import { LiveWidget, PassengerScreen, Phone, RideCard, RouteMap, STLU, Scaled } from "./mockups";
 import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
 import { Faq, FinalCta, Pic, Shell, go, useShell } from "./shell";
+import { Illus } from "./covers";
 import { ROUTES } from "./routes";
 import { StluLink } from "./stluLink";
 import { Related } from "./related";
@@ -237,9 +238,11 @@ function Body() {
 
       <section className="sec sec-white" id="integrations" aria-labelledby="h-int">
         <div className="wrap">
+          <div className="sh"><div>
           <p className="eyebrow">Integrations</p>
           <h2 className="h2 wide" id="h-int">Connect the booking app to the services you already use</h2>
           <p className="lede">Bookings can come from the app or be entered by your dispatcher, and both end up in the same place. Providers are chosen with you during the backend phase.</p>
+          </div><Illus name="integrations" /></div>
           <ul className="techg intg">{INTEG.map(({ t, what, eg }) => <li key={t}><h3>{t}</h3><p>{what}</p><p className="eg">Examples</p><ul className="chips-t">{eg.map((x) => <li key={x}>{x}</li>)}</ul></li>)}</ul>
           <p className="note">These are examples of well-known providers, not partnerships or endorsements. The right choice depends on your country and volume, and we agree it with you.</p>
         </div>

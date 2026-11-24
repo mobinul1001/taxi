@@ -628,3 +628,9 @@
 .tad .mks li small { display: block; margin-top: 2px; color: var(--on-navy); font-size: 13.5px; line-height: 1.35; }
 @media (max-width: 859px) { .tad .mks { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
 @media (max-width: 479px) { .tad .mks ul { grid-template-columns: minmax(0, 1fr); } }
+
+/* Section header with an illustration beside it (v44) */
+.tad .sh { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 36px; align-items: center; margin-bottom: 8px; }
+.tad .sh .h2 { max-width: none; }
+.tad .ill { display: block; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 14px 34px rgba(11,27,77,.14); border: 1px solid rgba(43,99,255,.12); }
+@media (max-width: 899px) { .tad .sh { grid-template-columns: minmax(0, 1fr); gap: 20px; } .tad .ill { max-width: 520px; } }

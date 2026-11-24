@@ -3,6 +3,7 @@ import { Ic } from "./sectionicons";
 import { ArrowRight, CalendarClock, Layers, Rocket, Wallet } from "lucide-react";
 import { Crumbs, crumbLd, faqLd, useSeo, webPageLd } from "./seo";
 import { Faq, FinalCta, Shell, Tick, useShell } from "./shell";
+import { Illus } from "./covers";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
 
@@ -122,8 +123,10 @@ function Body() {
 
       <section className="sec sec-gray" id="quote" aria-labelledby="h-q">
         <div className="wrap">
+          <div className="sh"><div>
           <p className="eyebrow">How we quote</p>
           <h2 className="h2 wide" id="h-q">From your first message to a written price</h2>
+          </div><Illus name="quote" /></div>
           <ol className="askl" style={{ listStyle: "none", padding: 0 }}>{HOW.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ol>
           <div className="more"><Link className="link" to={ROUTES.features}>See the features you can include <ArrowRight size={16} aria-hidden /></Link></div>
         </div>

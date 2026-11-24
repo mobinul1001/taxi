@@ -11,3 +11,12 @@ export function Cover({ slug, size = "sm", eager = false, className }: { slug: s
   const sm = size === "sm";
   return <img className={`cover ${className ?? ""}`} src={src} width={sm ? 600 : 1200} height={sm ? 315 : 630} alt="" aria-hidden loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : "auto"} decoding="async" />;
 }
+
+const ILL = import.meta.glob<string>("./img/ill-*.webp", { eager: true, query: "?url", import: "default" });
+
+/** A section illustration (original artwork, decorative), shown beside a section heading. */
+export function Illus({ name }: { name: string }) {
+  const src = ILL[`./img/ill-${name}.webp`];
+  if (!src) return null;
+  return <img className="ill" src={src} width={960} height={540} alt="" aria-hidden loading="lazy" decoding="async" />;
+}

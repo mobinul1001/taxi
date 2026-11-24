@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase, Car, Compass, Plane, Users, Zap } from "lucide-react";
 import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
 import { Faq, FinalCta, Pic, Shell, go, useShell } from "./shell";
+import { Illus } from "./covers";
 import { ROUTES } from "./routes";
 
 const TITLE = "Taxi App Development Solutions for Every Taxi Business";
@@ -153,8 +154,10 @@ function Body() {
 
       <section className="sec sec-white" id="needs" aria-labelledby="h-need">
         <div className="wrap">
+          <div className="sh"><div>
           <p className="eyebrow">Solutions by operational need</p>
           <h2 className="h2 wide" id="h-need">What each part of your operation needs from the platform</h2>
+          </div><Illus name="ops-hub" /></div>
           <table className="tbl">
             <caption className="sr">Operational needs of a taxi business and the solution for each</caption>
             <thead><tr><th scope="col">Operational need</th><th scope="col">The solution</th><th scope="col">Where it lives</th><th scope="col">Read more</th></tr></thead>
