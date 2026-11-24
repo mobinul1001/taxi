@@ -773,6 +773,8 @@ html.dark .leaflet-container.leaflet-container { background: #133552; }
 .map-rim .r { right: 0; -webkit-mask-image: linear-gradient(to left, #000 78%, transparent); mask-image: linear-gradient(to left, #000 78%, transparent); }
 .map-rim .t { top: 0; -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent); mask-image: linear-gradient(to bottom, #000 78%, transparent); }
 .map-rim .b { bottom: 0; -webkit-mask-image: linear-gradient(to top, #000 78%, transparent); mask-image: linear-gradient(to top, #000 78%, transparent); }
+/* No blur anywhere on the map: the soft patches under pins and the blurred rim are switched off so the map reads crisp. */
+.map-knock, .map-rim { display: none !important; }
 .map-chip.leaflet-tooltip { background: var(--color-paper); color: var(--color-ink); border: 1px solid var(--color-line); box-shadow: var(--shadow-e1); font-size: 13px; font-weight: 700; padding: 2px 7px; }
 .map-chip.leaflet-tooltip::before { border-top-color: var(--color-line); }
 .map-chip.leaflet-tooltip.sm { font-size: 13px; font-weight: 600; padding: 1px 6px; background: color-mix(in srgb, var(--color-paper) 88%, transparent); }
