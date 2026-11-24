@@ -595,3 +595,11 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 - Shows only after the first screen (scrolled about 520px). Hidden on /contact/ and /thank-you/ and while the footer is on screen. Not rendered on desktop or tablet. No pop-up, banner or consent UI.
 - Safe-area padding for phones with a home bar; the page keeps scroll padding so focused items are not hidden behind it.
 - Checked at 375px: hidden at top, appears mid-page, hidden at footer, click opens /contact/, no horizontal overflow, not visible at 1280px. Lighthouse accessibility, SEO and best practices 100 on home and FAQ.
+
+## v42 — Page-body prerender
+
+- `qa/prerender_agency.py` now stores each page's rendered body (captured at 390px) in `<div id="root" data-pre>` next to the head it already wrote. The boot splash and the old "needs JavaScript" list are gone from those pages; the app stylesheet is a normal render-blocking link so the static body is never unstyled. Decorative mockups are hidden in the static copy (their scale is measured in JS).
+- `src/main-agency.tsx`: if `#root` has `data-pre`, the live app renders into a second invisible container (kept measurable, so mockups scale correctly) and replaces the static copy in one step once its `<h1>` exists (6 s safety timeout); scroll position is kept. No hydration, so no mismatch errors.
+- Checked in Chromium: with JavaScript off, 390px and 1280px show the real H1 and page, no horizontal overflow; with JavaScript on, home, FAQ, pricing and a blog post swap with one `#root`, no console errors, no overflow.
+- Lighthouse mobile (local server **without gzip**, so sizes are inflated): home LCP 4.8 s to 3.0 s, performance 60-77 to 82; FAQ 84 to 93. CLS 0. Real numbers on Netlify (gzip) should be better; not measured there.
+- `/home/claude/tools/agency.sh` is the one-command agency build for this workspace (not part of the repository).

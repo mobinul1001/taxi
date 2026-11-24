@@ -4,8 +4,10 @@ title, description, canonical, robots, Open Graph tags and schema, plus a plain 
 Usage:  python3 qa/prerender_agency.py dist/agency        (run after the VITE_SITE=agency build)
 Needs:  Python 3 and Playwright with Chromium (pip install playwright && playwright install chromium).
 
-It loads each route in a real browser, reads the head that the app itself produced, and writes it into a copy of
-index.html at <route>/index.html (the homepage becomes index.html). The page body is still drawn by JavaScript.
+It loads each route in a real browser, reads the head AND the body that the app itself produced, and writes both into
+a copy of index.html at <route>/index.html (the homepage becomes index.html). The body sits inside <div id="root"
+data-pre>, so crawlers and slow phones get real text at once; main-agency.tsx draws the live app next to it and
+swaps it in when ready. The stylesheet link is made render-blocking here so the static body is never unstyled.
 """
 import functools, html, http.server, json, re, socket, socketserver, sys, threading
 from pathlib import Path
@@ -39,7 +41,11 @@ JS = """() => {
   return { title: document.title, description: g('meta[name=description]', 'content'), robots: g('meta[name=robots]', 'content'),
            canonical: g('link[rel=canonical]', 'href'), meta: m,
            ld: [...document.head.querySelectorAll('script[type="application/ld+json"]')].map((x) => x.textContent),
-           h1: document.querySelector('h1')?.innerText.trim() ?? '' };
+           h1: document.querySelector('h1')?.innerText.trim() ?? '',
+           body: (() => { const r = document.getElementById('root'); if (!r) return ''; const c = r.cloneNode(true);
+             c.querySelectorAll('.sticky-q, [role=dialog], dialog').forEach((x) => x.remove());
+             c.querySelectorAll('[style*="transform"]').forEach((x) => { if (x.classList.contains('scaled-in')) x.removeAttribute('style'); });
+             return c.innerHTML; })() };
 }"""
 
 def collect(pg, route):
@@ -48,7 +54,7 @@ def collect(pg, route):
 
 data = {}
 with sync_playwright() as pw:
-    b = pw.chromium.launch(); pg = b.new_page()
+    b = pw.chromium.launch(); pg = b.new_page(viewport={"width": 390, "height": 844})
     for r in routes: data[r] = collect(pg, r)
     data["/404.html"] = collect(pg, "/this-page-does-not-exist/")
     b.close(); srv.shutdown()
@@ -72,7 +78,14 @@ nav = "".join(f'<li><a href="{r}">{html.escape(data[r]["h1"] or r)}</a></li>' fo
 noscript = f'<noscript><p style="font-family:sans-serif;padding:24px">TaxiAppDevelopment.org needs JavaScript to run. Pages: </p><ul style="font-family:sans-serif">{nav}</ul></noscript>'
 for r, d in data.items():
     doc = put(template, d)
-    doc = re.sub(r"<noscript>.*?</noscript>", lambda _: noscript, doc, count=1, flags=re.S)
+    # Static body: replaces the boot splash, and the app stylesheet becomes a normal (render-blocking) link.
+    doc = re.sub(r'<link rel="stylesheet" data-app-css href="([^"]+)" media="print" onload="this.media=\'all\'">', lambda m: f'<link rel="stylesheet" data-app-css href="{m.group(1)}">', doc)
+    if d["body"]:
+        root = re.search(r'<div id="root">\s*<div id="boot">.*?</div>\s*</div>', doc, flags=re.S)
+        assert root, "boot block not found in the template"
+        doc = doc[:root.start()] + '<div id="root" data-pre>' + d["body"] + '</div>' + doc[root.end():]
+    # With a static body the page already carries its links, so the old "needs JavaScript" list is dropped.
+    doc = re.sub(r"<noscript>.*?</noscript>", "", doc, flags=re.S) if d["body"] else re.sub(r"<noscript>.*?</noscript>", lambda _: noscript, doc, count=1, flags=re.S)
     out = dist / "index.html" if r == "/" else dist / "404.html" if r == "/404.html" else dist / r.strip("/") / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True); out.write_text(doc)
 print(f"prerendered {len(data)} heads into {dist}")

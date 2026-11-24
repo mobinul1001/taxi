@@ -27,11 +27,33 @@ const styles = () => {
   ]);
 };
 
+/**
+ * The prerendered pages (qa/prerender_agency.py) already hold the page body in #root[data-pre], so text shows at
+ * once and crawlers read it. The live app is drawn in a second, invisible container; when its page is on screen
+ * it replaces the static copy in one step. Without data-pre (dev server, 404 fallback) it renders into #root.
+ */
 void styles().then(() => {
-  // Take the splash out ourselves rather than relying on React to clear the container.
   document.getElementById('boot')?.remove();
+  const root = document.getElementById('root')!;
+  const pre = root.hasAttribute('data-pre');
+  let host = root;
+  if (pre) {
+    host = document.createElement('div');
+    host.setAttribute('style', 'position:absolute;top:0;left:0;right:0;visibility:hidden;pointer-events:none');
+    root.after(host);
+    const y = window.scrollY;
+    let done = false;
+    const swap = () => {
+      if (done) return; done = true; mo.disconnect();
+      root.remove(); host.removeAttribute('style'); host.id = 'root';
+      if (y > 0) window.scrollTo(0, y);
+    };
+    const mo = new MutationObserver(() => { if (host.querySelector('h1')) requestAnimationFrame(swap); });
+    mo.observe(host, { childList: true, subtree: true });
+    setTimeout(swap, 6000);
+  }
 
-  createRoot(document.getElementById('root')!, {
+  createRoot(host, {
     // Keeps caught errors off reportError(), which would raise the dev overlay.
     onCaughtError: (error, errorInfo) => {
       console.error(error, errorInfo.componentStack);
