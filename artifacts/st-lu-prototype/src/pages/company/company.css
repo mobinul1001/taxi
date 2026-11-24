@@ -204,6 +204,10 @@
 .tad .news input::placeholder { color: #8d9cc8; }
 .tad .ftr-bot { margin-top: 44px; padding-block: 22px; border-top: 1px solid rgba(255,255,255,.1); display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; font-size: 14px; color: var(--on-navy-mute); }
 .tad .ftr-bot a { color: var(--blue-soft); font-weight: 600; }
+.tad .ftr-legal { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.tad .ftr-legal a { display: inline-flex; align-items: center; min-height: 36px; }
+.tad .soc { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.tad .soc-i { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); color: var(--on-navy); cursor: default; }
 .tad .ftr-bot a:hover { text-decoration: underline; }
 .tad .ok-msg { margin-top: 10px; font-size: 14px; color: #7ee7c0; }
 

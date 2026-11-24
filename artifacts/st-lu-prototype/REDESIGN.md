@@ -526,3 +526,9 @@ Fixed: hooks in `ContactDialog` were declared after the early return, which stop
 - Every "Get a Quote" / "Contact" / quote CTA now goes to `/contact/` (same page). The quote dialog is no longer opened (code kept, unused).
 - A CTA that carries a project type or notes pre-fills the contact form (`kind`, message) via router state. On the contact page itself the button scrolls to and focuses the form.
 - Other St Lu mentions (home "Featured project", About client-project section) untouched.
+
+## v32
+- Case study hosting: the St Lu prototype is built (hash router) into `agency-build/st-lucia-taxi-app/`. "Open the St Lu prototype" = `/st-lucia-taxi-app/`, "View the St Lu website" = `/st-lucia-taxi-app/#/landing`. Marked noindex via `_headers`. `npm run build:agency` builds both.
+- Legal pages: no placeholders or draft banner. Legal entity "Taxi App Development", no postal address, no email, no governing-law section. Services disclosed: Netlify, Formspree, Microsoft Clarity. No cookie banner.
+- Footer rebuilt: brand, social icons (unlinked until official URLs exist), Services, Company, Contact (form link and working hours Mon to Fri 9 to 5 ET), newsletter wired to Formspree, legal links in the bottom bar.
+- Blog button removed until a real blog exists. Fake admin.example.com URL bar removed from the mockup.

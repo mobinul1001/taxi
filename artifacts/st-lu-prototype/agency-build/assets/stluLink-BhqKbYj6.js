@@ -1,0 +1,1 @@
+import{j as n}from"./react-CMVXFKhj.js";const e="/st-lucia-taxi-app/";function o({to:r,...t}){return n.jsx("a",{href:r==="/"?e:`${e}#${r}`,target:"_blank",rel:"noopener noreferrer",...t})}export{o as S};

@@ -1,0 +1,1 @@
+import{r as t}from"./react-JPq-ZrGQ.js";function f(){const r=t.useRef(null),[o,c]=t.useState(4e3);return t.useLayoutEffect(()=>{const e=r.current;if(!e)return;const s=()=>c(e.clientWidth);s();const n=new ResizeObserver(s);return n.observe(e),()=>n.disconnect()},[]),[r,o]}export{f as u};

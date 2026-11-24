@@ -1,14 +1,17 @@
 import type { AnchorHTMLAttributes } from "react";
 import { Link } from "react-router-dom";
-import { SITE_ORIGIN } from "@/lib/config";
 import { AGENCY } from "./routes";
 
+/** Where the St Lu case study lives on the agency site: the whole prototype, built as a static folder. */
+export const STLU_BASE = "/st-lucia-taxi-app/";
+
 /**
- * A link to the St Lu prototype. Inside the prototype build it is a normal router link; on the agency site
- * (which does not contain the prototype) it is an ordinary link to the prototype's own address.
+ * A link to the St Lu prototype. Inside the prototype build it is a normal router link. On the agency site the
+ * prototype is a separate static build kept under /st-lucia-taxi-app/ (its own hash routes), so the link opens it
+ * in a new tab: "/" is the prototype start page, "/landing" is the St Lu website.
  */
 export function StluLink({ to, ...rest }: { to: string } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href">) {
   return AGENCY
-    ? <a href={`${SITE_ORIGIN}${to === "/" ? "/" : to}`} rel="noopener" {...rest} />
+    ? <a href={to === "/" ? STLU_BASE : `${STLU_BASE}#${to}`} target="_blank" rel="noopener noreferrer" {...rest} />
     : <Link to={to} {...rest} />;
 }

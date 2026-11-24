@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { StluLink } from "./stluLink";
 import { ArrowRight, Boxes, Code2, Smartphone } from "lucide-react";
 import { AdminDash, Phone, PassengerScreen, DriverScreen, STLU, Scaled } from "./mockups";
 import { Crumbs, crumbLd, useSeo } from "./seo";
@@ -85,11 +86,15 @@ function Body() {
 
       <section className="sec sec-white" id="project" aria-labelledby="h-pr">
         <div className="wrap">
-          <p className="eyebrow">Client project</p>
+          <p className="eyebrow">Case study</p>
           <h2 className="h2 wide" id="h-pr">St Lu Taxi &amp; Tours</h2>
           <div className="split2">
             <div><h3>The project</h3><p style={{ color: "var(--mute)", marginTop: 8 }}>A ride-sharing and tours platform for a St. Lucia taxi operator, covering airport transfers, tours and taxi bookings, with a dispatcher panel behind them.</p>
-              <p className="note">The St Lu app on this site is a clickable design prototype. It shows the product direction, not live client results.</p></div>
+              <p className="note">The St Lu app is a clickable design prototype, shown here as a case study. It shows the product direction, not live client results.</p>
+              <div className="hero-btns" style={{ marginTop: 16 }}>
+                <StluLink to="/" className="btn btn-primary">Open the St Lu prototype</StluLink>
+                <StluLink to="/landing" className="btn btn-outline">View the St Lu website</StluLink>
+              </div></div>
             <div><h3>What was developed</h3><Tick items={["Passenger booking with online payment", "Driver app with job status updates", "Dispatcher assigns in-house and outside drivers", "Live map and trip timeline"]} /></div>
           </div>
         </div>
@@ -101,9 +106,9 @@ function Body() {
           <h2 className="h2 wide" id="h-det">Who is behind this website</h2>
           <dl className="facts">
             <div><dt>Website</dt><dd>TaxiAppDevelopment.org</dd></div>
-            <div><dt>Legal entity</dt><dd><mark className="phold">[legal entity name]</mark></dd></div>
-            <div><dt>Location</dt><dd><mark className="phold">[office or registered location]</mark></dd></div>
-            <div><dt>Contact</dt><dd><Link className="ref" to={ROUTES.contact}>Contact page</Link> or <mark className="phold">[contact email address]</mark></dd></div>
+            <div><dt>Legal entity</dt><dd>Taxi App Development</dd></div>
+            <div><dt>Working hours</dt><dd>Monday to Friday, 9:00 AM to 5:00 PM Eastern Time (ET), USA</dd></div>
+            <div><dt>Contact</dt><dd><Link className="ref" to={ROUTES.contact}>Contact page</Link></dd></div>
           </dl>
         </div>
       </section>

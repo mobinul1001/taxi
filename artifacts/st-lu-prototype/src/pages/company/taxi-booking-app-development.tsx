@@ -247,14 +247,14 @@ function Body() {
       <section className="sec sec-gray" id="example" aria-labelledby="h-ex">
         <div className="wrap hero-grid" style={{ paddingBlock: 0 }}>
           <div>
-            <p className="eyebrow">A booking app in use</p>
+            <p className="eyebrow">Case study</p>
             <h2 className="h2 wide" id="h-ex">Built for airport transfers, fleets and tour operators</h2>
-            <p className="lede">Our client St Lu Taxi &amp; Tours runs fixed-price airport transfers, private tours and chauffeur service in St. Lucia. Its prototype shows a booking app, a driver app and a dispatcher panel working together.</p>
+            <p className="lede">St Lu Taxi &amp; Tours is our case study: a design project for a St. Lucia operator offering fixed-price airport transfers, private tours and chauffeur service. The prototype shows a booking app, a driver app and a dispatcher panel working together.</p>
             <div className="more">
+              <StluLink className="btn btn-primary" to="/">Open the St Lu prototype</StluLink>
               <StluLink className="btn btn-outline" to="/landing">View the St Lu website</StluLink>
-              <StluLink className="link" to="/">Open the St Lu prototype <ArrowRight size={16} /></StluLink>
             </div>
-            <p className="note">The St Lu prototype is a clickable design prototype, not live client results.</p>
+            <p className="note">The St Lu app is a clickable design prototype, not live client results.</p>
           </div>
           <Pic label="St Lu Taxi and Tours booking app prototype: an orange route on a map with a ride confirmed card" style={{ background: "linear-gradient(180deg,#fff0e2,#ffe0c6)", borderRadius: 24, padding: "24px 20px 0", overflow: "hidden" }}>
             <Scaled w={440} h={400}>

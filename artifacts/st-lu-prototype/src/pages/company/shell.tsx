@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Boxes, Check, ChevronDown, LayoutDashboard, Mail, Menu, Navigation, Palette, Plus, Puzzle, Smartphone, Users, X, Zap } from "lucide-react";
+import { Boxes, Check, ChevronDown, Clock, Facebook, Instagram, LayoutDashboard, Linkedin, Menu, Navigation, Palette, Plus, Puzzle, Smartphone, Twitter, Users, X, Youtube, Zap } from "lucide-react";
 import "./company.css";
 import "./pages.css";
 import { ROUTES } from "./routes";
@@ -15,7 +15,6 @@ export const go = (id: string) => {
 };
 
 export type Say = (m: string) => void;
-export const SOON = "That page is not part of this prototype yet.";
 
 type AskOpts = { notes?: string; kind?: string };
 type Ctx = { ask: (topic: string, o?: AskOpts) => void; say: Say };
@@ -137,6 +136,8 @@ function Header({ onQuote, say }: { onQuote: () => void; say: Say }) {
   const [mob, setMob] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const toSection = useToSection();
+  const { pathname } = useLocation();
+  useEffect(() => { setOpen(null); setMob(false); }, [pathname]);
   useEffect(() => {
     const out = (e: MouseEvent) => { if (!ref.current?.contains(e.target as Node)) setOpen(null); };
     const esc = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(null); };
@@ -166,8 +167,6 @@ function Header({ onQuote, say }: { onQuote: () => void; say: Say }) {
             <Drop k="s" label="Services" items={SERVICES} />
             <Drop k="o" label="Solutions" items={SOLUTIONS} />
             <div className="nav-i"><button type="button" className="nav-b" onClick={() => toSection(ROUTES.home, "features")}>Features</button></div>
-            <div className="nav-i"><button type="button" className="nav-b" onClick={() => toSection(ROUTES.home, "process")}>Process</button></div>
-            <div className="nav-i"><button type="button" className="nav-b" onClick={() => say(SOON)}>Blog</button></div>
             <div className="nav-i"><Link className="nav-b" to={ROUTES.contact} onClick={close}>Contact</Link></div>
           </nav>
           <div className="hdr-cta">
@@ -182,8 +181,6 @@ function Header({ onQuote, say }: { onQuote: () => void; say: Say }) {
             <button type="button" onClick={() => { close(); toSection(ROUTES.home, "ecosystem"); }}>Solutions</button>
             <div className="sub">{item(SOLUTIONS[0], true)}</div>
             <button type="button" onClick={() => { close(); toSection(ROUTES.home, "features"); }}>Features</button>
-            <button type="button" onClick={() => { close(); toSection(ROUTES.home, "process"); }}>Process</button>
-            <button type="button" onClick={() => { setMob(false); say(SOON); }}>Blog</button>
             <Link to={ROUTES.contact} onClick={close}>Contact</Link>
             <button type="button" className="btn btn-primary" style={{ width: "100%", marginTop: 14, borderBottom: 0 }} onClick={() => { setMob(false); onQuote(); }}>Get a Quote</button>
           </nav>
@@ -242,44 +239,57 @@ export function FinalCta({ onConsult, onStart, title = "Ready to Build Your Taxi
 }
 
 /* ---------------- footer ---------------- */
-function Footer({ say, onContact }: { say: Say; onContact: () => void }) {
-  const [done, setDone] = useState(false);
-  const toSection = useToSection();
-  const soon = (t: string) => <li key={t}><button type="button" onClick={() => say(SOON)}>{t}</button></li>;
+const SOCIALS = [["LinkedIn", Linkedin], ["Facebook", Facebook], ["X", Twitter], ["Instagram", Instagram], ["YouTube", Youtube]] as const;
+
+function Footer({ onContact }: { say: Say; onContact: () => void }) {
+  const [state, setState] = useState<"idle" | "busy" | "done" | "fail">("idle");
   const page = (t: string, to: string) => <li key={t}><Link to={to} onClick={() => window.scrollTo({ top: 0 })}>{t}</Link></li>;
-  const sec = (t: string, id: string) => <li key={t}><button type="button" onClick={() => toSection(ROUTES.home, id)}>{t}</button></li>;
+  const subscribe = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const f = e.currentTarget;
+    const fd = new FormData(f);
+    if (fd.get("_gotcha")) { setState("done"); return; } // a bot filled the hidden field: pretend, send nothing
+    setState("busy");
+    const r = await submitEnquiry({ email: String(fd.get("email") ?? ""), form: "Newsletter sign-up", _subject: "New newsletter sign-up from TaxiAppDevelopment.org" });
+    if (r.ok) { f.reset(); setState("done"); } else setState("fail");
+  };
   return (
     <footer className="ftr">
       <div className="wrap">
         <div className="ftr-grid">
           <div>
-            <h4>Company</h4>
-            <ul>{page("About Us", ROUTES.about)}{page("Contact", ROUTES.contact)}{sec("Our Process", "process")}{page("Sitemap", ROUTES.sitemap)}</ul>
-            <h4 style={{ marginTop: 22 }}>Legal</h4>
-            <ul>{page("Privacy Policy", ROUTES.privacy)}{page("Terms & Conditions", ROUTES.terms)}{page("Cookie Policy", ROUTES.cookies)}{page("Disclaimer", ROUTES.disclaimer)}</ul>
+            <h4>TaxiAppDevelopment.org</h4>
+            <p style={{ fontSize: 15 }}>Taxi app, ride-hailing and dispatch software for taxi operators, fleets and start-ups.</p>
+            <ul className="soc" aria-label="Social media (links coming soon)">{SOCIALS.map(([n, I]) => <li key={n}><span className="soc-i" role="img" aria-label={n}><I size={18} aria-hidden /></span></li>)}</ul>
+            <p style={{ fontSize: 14, marginTop: 14, color: "var(--on-navy-mute)" }}>Serving the USA, UK, Canada, Australia, Europe and the Caribbean.</p>
           </div>
           <div>
             <h4>Services</h4>
-            <ul>{page("Taxi App Development", ROUTES.dev)}{page("Taxi Booking App Development", ROUTES.booking)}{page("Custom Taxi App Development", ROUTES.custom)}{page("White Label Taxi App", ROUTES.whiteLabel)}{page("Uber-Like App Development", ROUTES.uber)}{page("Taxi Dispatch Software", ROUTES.dispatch)}{page("Taxi App Development Services", ROUTES.services)}{page("Taxi App Developers", ROUTES.developers)}{page("Taxi App Solutions", ROUTES.solutions)}</ul>
+            <ul>{page("Taxi App Development", ROUTES.dev)}{page("Taxi Booking App Development", ROUTES.booking)}{page("Custom Taxi App Development", ROUTES.custom)}{page("White Label Taxi App", ROUTES.whiteLabel)}{page("Uber-Like App Development", ROUTES.uber)}{page("Taxi Dispatch Software", ROUTES.dispatch)}{page("Taxi App Development Services", ROUTES.services)}</ul>
           </div>
           <div>
-            <h4>Resources</h4>
-            <ul>{soon("Blog")}{page("Taxi App Development Cost", ROUTES.cost)}{page("FAQ", ROUTES.faq)}</ul>
+            <h4>Company</h4>
+            <ul>{page("About Us", ROUTES.about)}{page("Taxi App Developers", ROUTES.developers)}{page("Taxi App Solutions", ROUTES.solutions)}{page("Taxi App Development Cost", ROUTES.cost)}{page("FAQ", ROUTES.faq)}{page("Contact", ROUTES.contact)}</ul>
           </div>
           <div>
-            <h4>Stay in the loop</h4>
-            <p style={{ fontSize: 15 }}>Taxi software ideas and launch tips, now and then.</p>
-            <form className="news" onSubmit={(e) => { e.preventDefault(); setDone(true); }}>
+            <h4>Contact</h4>
+            <p style={{ fontSize: 15 }}><button type="button" onClick={onContact} style={{ background: "none", border: 0, color: "#6c9bff", fontWeight: 650, padding: 0, minHeight: 36, textDecoration: "underline" }}>Send us a message</button> through the contact form.</p>
+            <p style={{ fontSize: 15, display: "flex", gap: 8, alignItems: "flex-start" }}><Clock size={16} aria-hidden style={{ marginTop: 4, flex: "none" }} /><span>Monday to Friday, 9:00 AM to 5:00 PM<br />Eastern Time (ET), USA</span></p>
+            <h4 style={{ marginTop: 20 }}>Stay in the loop</h4>
+            <form className="news" onSubmit={subscribe}>
               <label className="sr" htmlFor="tad-news">Email address</label>
-              <input id="tad-news" type="email" required placeholder="Your email" autoComplete="email" />
-              <button type="submit" className="btn btn-primary btn-sm">Subscribe</button>
+              <input id="tad-news" name="email" type="email" required placeholder="Your email" autoComplete="email" />
+              <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }} />
+              <button type="submit" className="btn btn-primary btn-sm" disabled={state === "busy"}>{state === "busy" ? "Sending…" : "Subscribe"}</button>
             </form>
-            {done && <p className="ok-msg" role="status">Thanks. This is a prototype, so nothing was saved.</p>}
-            <p style={{ marginTop: 18, fontSize: 15, display: "flex", gap: "2px 8px", alignItems: "center", flexWrap: "wrap" }}><span style={{ display: "inline-flex", gap: 8, alignItems: "center", whiteSpace: "nowrap" }}><Mail size={16} aria-hidden />Questions?</span> <button type="button" onClick={onContact} style={{ background: "none", border: 0, color: "#6c9bff", fontWeight: 650, padding: 0, minHeight: 36, textDecoration: "underline", whiteSpace: "nowrap" }}>Send us a note</button></p>
+            <p style={{ fontSize: 13, marginTop: 8, color: "var(--on-navy-mute)" }}>Taxi software ideas now and then. By subscribing you agree to our <Link to={ROUTES.privacy} style={{ textDecoration: "underline" }}>Privacy Policy</Link>.</p>
+            {state === "done" && <p className="ok-msg" role="status">Thanks, you are subscribed.</p>}
+            {state === "fail" && <p className="ok-msg" role="alert" style={{ color: "#ffb4a8" }}>We could not subscribe you. Please try again.</p>}
           </div>
         </div>
         <div className="ftr-bot">
-          <span>&copy; TaxiAppDevelopment.org. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Taxi App Development (TaxiAppDevelopment.org). All rights reserved.</span>
+          <nav className="ftr-legal" aria-label="Legal"><Link to={ROUTES.privacy}>Privacy Policy</Link><Link to={ROUTES.terms}>Terms and Conditions</Link><Link to={ROUTES.cookies}>Cookie Policy</Link><Link to={ROUTES.disclaimer}>Disclaimer</Link><Link to={ROUTES.sitemap}>Sitemap</Link></nav>
         </div>
       </div>
     </footer>

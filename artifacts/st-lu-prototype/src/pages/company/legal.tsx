@@ -4,8 +4,8 @@ import { Crumbs, useSeo } from "./seo";
 import { Shell } from "./shell";
 import { ROUTES } from "./routes";
 
-/** A clearly marked gap: something only the business owner can supply. */
-const PH = ({ children }: { children: ReactNode }) => <mark className="phold">[{children}]</mark>;
+/** The date these pages were last reviewed and published. */
+const UPDATED = "24 November 2026";
 
 type Sec = { id: string; h: string; body: ReactNode };
 
@@ -20,7 +20,7 @@ function DocPage({ title, description, path, name, intro, sections }: { title: s
           <Crumbs items={crumbs} />
           <h1>{name}</h1>
           <p className="sub">{intro}</p>
-          <p className="meta">Last updated: <PH>date to be added on publication</PH></p>
+          <p className="meta">Last updated: {UPDATED}</p>
         </div>
       </section>
       <section className="sec sec-white docs">
@@ -30,9 +30,6 @@ function DocPage({ title, description, path, name, intro, sections }: { title: s
             <ol>{sections.map((s) => <li key={s.id}><a href={`#${s.id}`} onClick={(e) => { e.preventDefault(); document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}>{s.h}</a></li>)}</ol>
           </nav>
           <article className="doc">
-            <aside className="draft" aria-label="Draft notice">
-              <strong>Draft for review.</strong> This is a general website policy draft, not legal advice and not a substitute for jurisdiction-specific legal review. Items in <PH>square brackets</PH> are details we could not verify and must be completed before publication.
-            </aside>
             {sections.map((s) => <section key={s.id} id={s.id} aria-labelledby={`${s.id}-h`}><h2 id={`${s.id}-h`}>{s.h}</h2>{s.body}</section>)}
           </article>
         </div>
@@ -41,7 +38,7 @@ function DocPage({ title, description, path, name, intro, sections }: { title: s
   );
 }
 
-const Contact = () => <>Contact us through the <Link to={ROUTES.contact}>contact page</Link> or at <PH>contact email address</PH>.</>;
+const Contact = () => <>Contact us through the <Link to={ROUTES.contact}>contact page</Link>.</>;
 
 /* ---------------- Privacy Policy ---------------- */
 function PrivacyBody() {
@@ -52,32 +49,33 @@ function PrivacyBody() {
       path={ROUTES.privacy} name="Privacy Policy"
       intro="This policy explains what personal information we may collect through this website, why, how it is handled and what choices you have."
       sections={[
-        { id: "who", h: "Who we are", body: <><p>This website, TaxiAppDevelopment.org, is operated by <PH>legal entity name</PH> (&ldquo;we&rdquo;, &ldquo;us&rdquo;). Our registered address is <PH>registered address</PH>. For privacy questions, <Contact /></p></> },
+        { id: "who", h: "Who we are", body: <><p>This website, TaxiAppDevelopment.org, is operated by Taxi App Development (&ldquo;we&rdquo;, &ldquo;us&rdquo;). We do not publish a postal address on this website. For privacy questions, <Contact /></p></> },
         { id: "collect", h: "Information we may collect", body: <>
           <p>We collect only what is needed to run the website and respond to people who contact us. Depending on how you use the site, this may include:</p>
           <h3>Information you give us</h3>
-          <ul><li>Contact and enquiry form details: your name, work email address, company name, type of business, what you want to build, your project stage and the notes you write.</li><li>Newsletter sign-up: your email address, if you use that form.</li><li>Anything else you choose to include when you write to us.</li></ul>
+          <ul><li>Contact and enquiry form details: your name, work email address, company name, type of business, what you want to build, your project stage and the notes you write.</li><li>Newsletter sign-up: your email address, if you use the form in the page footer. It is sent through Formspree.</li><li>Anything else you choose to include when you write to us.</li></ul>
           <h3>Information collected automatically</h3>
-          <p>Web servers and hosting services commonly record technical information such as IP address, browser and device type, pages requested and the time of the request. <PH>Confirm which technical logs the hosting provider keeps</PH></p>
+          <p>Web servers and hosting services commonly record technical information such as IP address, browser and device type, pages requested and the time of the request. Our hosting provider, Netlify, may keep such logs. Our analytics tool, Microsoft Clarity, also collects usage information, as described under Analytics and cookies below.</p>
           <p>Please do not send sensitive personal information, such as payment card numbers or government identification numbers, through the website forms.</p></> },
         { id: "use", h: "How we use information", body: <>
           <p>We may use the information above to:</p>
-          <ul><li>read and reply to your enquiry and discuss a possible project;</li><li>prepare scopes, proposals and estimates you ask for;</li><li>send the newsletter, where you signed up for it;</li><li>keep the website secure and working, and understand how it is used;</li><li>meet legal obligations and protect our rights.</li></ul>
-          <p>Where data protection law requires a legal basis for this use, we will rely on the basis that applies. <PH>Legal bases to be confirmed in legal review</PH></p></> },
+          <ul><li>read and reply to your enquiry and discuss a possible project;</li><li>prepare scopes, proposals and estimates you ask for;</li><li>send occasional taxi software news, if you signed up for it;</li><li>keep the website secure and working, and understand how it is used;</li><li>meet legal obligations and protect our rights.</li></ul>
+          <p>Where data protection law requires a legal basis for this use, we rely on the one that fits: steps you ask us to take before a project agreement, our legitimate interests in running and securing the website and replying to enquiries, a legal obligation, or your consent where the law requires it.</p></> },
         { id: "forms", h: "Contact and enquiry forms", body: <>
           <p>When you submit the contact form or the quote request, the details you enter are used to respond to you. Fields marked as required are needed for us to reply; the others are optional.</p>
-          <p>Form submissions are sent to Formspree, a third-party form service, which passes them to us. Formspree handles that data under its own terms and privacy policy. <PH>Add where submissions are then stored (for example email or a CRM) and who can access them</PH></p></> },
+          <p>Form submissions are sent to Formspree, a third-party form service, which passes them to us. Formspree handles that data under its own terms and privacy policy, and may keep a copy of submissions in the form&rsquo;s dashboard, which we use to read and manage enquiries. Access is limited to the people who handle enquiries.</p></> },
         { id: "analytics", h: "Analytics and cookies", body: <>
-          <p>We use Microsoft Clarity, a website analytics tool, to see how visitors use this website, for example which pages they open and where they click. Clarity may set cookies and record anonymised usage data such as clicks, scrolling and page views, and Microsoft processes that data for us. We have not configured advertising tools on this website. Where the law requires it, we will ask for your consent first.</p>
+          <p>This website uses Microsoft Clarity, an analytics tool, to understand how visitors use the pages, for example which pages are opened, where people click and scroll, and where they leave. Clarity may collect device and browser type, screen size, approximate location (country or region), referring page and interaction data such as clicks, scrolling and mouse movement, and it may create session recordings and heatmaps. It may set cookies or use browser storage to do this. Microsoft processes this data under its own privacy statement (<a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">privacy.microsoft.com/privacystatement</a>).</p>
+          <p>We do not use advertising tools on this website. We do not show a cookie banner. If you do not want analytics, you can block cookies and scripts in your browser settings or with a content blocker.</p>
           <p>For details on cookies and similar technologies, see our <Link to={ROUTES.cookies}>Cookie Policy</Link>.</p></> },
         { id: "sharing", h: "How we share information", body: <>
           <p>We may share personal information with:</p>
-          <ul><li>service providers that help us run the website and handle enquiries, such as hosting, email and similar tools (<PH>list providers once confirmed</PH>);</li><li>professional advisers, such as lawyers and accountants, where needed;</li><li>authorities, where the law requires it;</li><li>a successor business, if our business is sold or reorganised.</li></ul>
+          <ul><li>service providers that help us run the website and handle enquiries, namely Netlify (website hosting), Formspree (contact and enquiry forms) and Microsoft Clarity (analytics);</li><li>professional advisers, such as lawyers and accountants, where needed;</li><li>authorities, where the law requires it;</li><li>a successor business, if our business is sold or reorganised.</li></ul>
           <p>Where a provider handles information for us, it should do so only for the purpose we have given it.</p></> },
         { id: "storage", h: "Storage and security", body: <>
-          <p>We aim to protect personal information with measures that suit its sensitivity, such as access limits. <PH>Describe the actual security measures once confirmed</PH> No method of transmission over the internet or of electronic storage is completely secure, so we cannot guarantee absolute security.</p>
-          <p>Information may be stored in <PH>countries or regions where data is stored</PH>. Where information is transferred across borders, we will use the safeguards the law requires.</p></> },
-        { id: "retention", h: "Data retention", body: <><p>We keep enquiry information for as long as it is needed to respond to you and to follow up on a possible project, and for <PH>retention period</PH> afterwards unless the law requires us to keep it longer. We then delete it or make it anonymous.</p></> },
+          <p>We aim to protect personal information with measures that suit its sensitivity, such as serving the website over an encrypted HTTPS connection and limiting access to enquiries to the people who handle them. No method of transmission over the internet or of electronic storage is completely secure, so we cannot guarantee absolute security.</p>
+          <p>Our service providers may process information in the United States and in other countries where they operate. Where information is transferred across borders, we use the safeguards the law requires.</p></> },
+        { id: "retention", h: "Data retention", body: <><p>We retain personal information only for as long as reasonably necessary for the purpose it was collected, including responding to enquiries, running our business, meeting legal obligations and resolving disputes where applicable. When it is no longer needed, we delete it or make it anonymous.</p></> },
         { id: "rights", h: "Your rights", body: <>
           <p>Depending on where you live, you may have the right to:</p>
           <ul><li>ask what personal information we hold about you and receive a copy;</li><li>ask us to correct information that is wrong;</li><li>ask us to delete information, or to restrict or stop certain uses;</li><li>object to certain uses, or withdraw consent where we rely on it;</li><li>ask for your information in a portable format;</li><li>complain to your local data protection authority.</li></ul>
@@ -100,7 +98,7 @@ function TermsBody() {
       path={ROUTES.terms} name="Terms and Conditions"
       intro="These terms apply to your use of this website. They do not set the terms of any software development project, which are agreed separately in writing."
       sections={[
-        { id: "accept", h: "Accepting these terms", body: <p>By using this website you agree to these terms. If you do not agree, please do not use the website. The website is operated by <PH>legal entity name</PH>.</p> },
+        { id: "accept", h: "Accepting these terms", body: <p>By using this website you agree to these terms. If you do not agree, please do not use the website. The website is operated by Taxi App Development.</p> },
         { id: "about", h: "About the website and our services", body: <>
           <p>This website describes taxi app, ride-hailing and custom software development services. The descriptions are for general information. Any actual project, including its scope, timeline, price and ownership of the work, is governed only by a separate written agreement signed by both parties.</p>
           <p>Sending an enquiry, using a tool on the site or receiving a reply does not create a contract or a commitment to provide services.</p></> },
@@ -116,7 +114,6 @@ function TermsBody() {
         { id: "info", h: "Accuracy of information", body: <p>We try to keep the website accurate and current, but we do not promise that it is complete, error-free or up to date. See our <Link to={ROUTES.disclaimer}>Disclaimer</Link> for how to read the information on the site.</p> },
         { id: "liability", h: "Limitation of liability", body: <p>To the fullest extent permitted by law, we are not liable for any loss or damage arising from your use of, or inability to use, the website or from relying on its content. Nothing in these terms limits liability that cannot be limited by law.</p> },
         { id: "changes", h: "Changes to the website and terms", body: <p>We may change, suspend or remove any part of the website, and update these terms, at any time. The updated terms apply from the date shown on this page. Continuing to use the website means you accept the updated terms.</p> },
-        { id: "law", h: "Governing law", body: <p>These terms are governed by the laws of <PH>governing law and jurisdiction</PH>, and the courts of that place have jurisdiction over disputes, unless the law of your country gives you rights that cannot be waived.</p> },
         { id: "general", h: "General", body: <p>If any part of these terms is found unenforceable, the rest remains in effect. Our failure to enforce a term is not a waiver of it. These terms are the entire agreement about use of the website, and do not replace any separate written agreement for services.</p> },
         { id: "contact", h: "Contact", body: <p>Questions about these terms: <Contact /></p> },
       ]}
@@ -135,16 +132,17 @@ function CookieBody() {
       sections={[
         { id: "what", h: "What cookies are", body: <p>Cookies are small text files that a website can place on your device. Similar technologies, such as local storage, can also keep information in your browser. They are used to make websites work, remember choices, and understand how a site is used.</p> },
         { id: "use", h: "How this website uses them", body: <>
-          <p>When this policy was written, we reviewed the pages of this website and found that they do not set cookies of their own for essential functions and do not load advertising or social media tracking tools. The pages do load Microsoft Clarity for analytics, which may set cookies and use your browser&rsquo;s storage (see below). <PH>Re-check this statement against the live deployment before publication</PH></p>
+          <p>The pages of this website do not set cookies of their own and do not load advertising or social media tracking tools. They do load Microsoft Clarity for analytics, which may set cookies and use your browser&rsquo;s storage to tell visits apart and to record how pages are used. Microsoft lists the cookies Clarity uses, and how long each lasts, in its Clarity documentation. We do not show a cookie banner.</p>
+          <p>The St Lu case study (the clickable prototype opened from this website) keeps its demo data and your light or dark choice in your browser&rsquo;s local or session storage on this website&rsquo;s domain. It uses no analytics of its own and sends nothing to a server.</p>
           <p>Our hosting provider and your browser may still handle technical data, such as server logs, as described in the <Link to={ROUTES.privacy}>Privacy Policy</Link>.</p></> },
         { id: "types", h: "Types of cookies", body: <>
           <h3>Essential cookies</h3><p>These make a website work, for example by keeping a secure session. This website does not currently need or set them.</p>
           <h3>Preference cookies</h3><p>These remember choices such as language. This website does not currently set preference cookies.</p>
           <h3>Analytics cookies</h3><p>These count visits and show how a site is used. This website uses Microsoft Clarity for this. It may set cookies such as <code>_clck</code> and <code>_clsk</code>.</p>
-          <h3>Advertising cookies</h3><p>These are used to show or measure advertising. None are configured on this website at the time of writing.</p></> },
-        { id: "third", h: "Third-party content", body: <p>This website does not embed third-party widgets that set cookies, such as maps, video or social media buttons. If you follow a link to another website, that site may use cookies under its own policy.</p> },
-        { id: "future", h: "If this changes", body: <p>If we add analytics or other tools that use cookies or similar technologies, we will list them here, say what each is for and how long it lasts, and where the law requires it we will ask for your consent before they are used. <PH>Add a table of cookies if any are introduced</PH></p> },
-        { id: "control", h: "Managing cookies", body: <p>You can block or delete cookies in your browser settings. Doing so may affect how some websites work. Your browser&rsquo;s help pages explain how.</p> },
+          <h3>Advertising cookies</h3><p>These are used to show or measure advertising. None are used on this website.</p></> },
+        { id: "third", h: "Third-party content", body: <p>This website does not embed third-party widgets such as maps, video or social media buttons. The Clarity script loads from Microsoft&rsquo;s servers, and contact forms are sent to Formspree when you submit them. If you follow a link to another website, that site may use cookies under its own policy.</p> },
+        { id: "future", h: "If this changes", body: <p>If we add or change analytics or other tools that use cookies or similar technologies, we will update this page and say what each is for.</p> },
+        { id: "control", h: "Managing cookies", body: <p>You can block or delete cookies in your browser settings, or use a content blocker to stop analytics scripts. Doing so may affect how some websites work. Your browser&rsquo;s help pages explain how.</p> },
         { id: "contact", h: "Contact", body: <p>Questions about this policy: <Contact /></p> },
       ]}
     />

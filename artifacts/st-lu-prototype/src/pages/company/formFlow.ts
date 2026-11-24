@@ -17,7 +17,7 @@ export async function submitEnquiry(data: Enquiry): Promise<SubmitResult> {
   const body: Enquiry = { ...data };
   if (!body.message && body.notes) body.message = body.notes; // the quote dialog calls it "notes"
   delete body.notes;
-  body._subject = "New enquiry from TaxiAppDevelopment.org";
+  body._subject = body._subject || "New enquiry from TaxiAppDevelopment.org";
   try {
     const res = await fetch(FORMSPREE_ENDPOINT, {
       method: "POST",

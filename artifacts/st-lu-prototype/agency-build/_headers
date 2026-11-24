@@ -4,3 +4,5 @@
   X-Robots-Tag: noindex, follow
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+/st-lucia-taxi-app/*
+  X-Robots-Tag: noindex, nofollow

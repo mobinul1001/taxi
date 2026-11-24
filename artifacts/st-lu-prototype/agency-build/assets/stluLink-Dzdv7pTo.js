@@ -1,1 +1,0 @@
-import{j as o}from"./react-CMVXFKhj.js";const r="https://demo.stluciantaxiandtours.com",e=r.replace(/\/+$/,"");function a({to:t,...n}){return o.jsx("a",{href:`${e}${t==="/"?"/":t}`,rel:"noopener",...n})}export{a as S};

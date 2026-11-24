@@ -123,7 +123,7 @@ export function AdminDash({ w = 560, accent = BLUE, title = "Operations" }: { w?
   const rows = [["Pickup: Airport", "Assigned", "#d9f7ea", "#0a7a4f"], ["Pickup: Harbour", "Pending", "#fff1d6", "#9a5b00"], ["Pickup: Old Town", "On trip", accent.soft, accent.a]];
   return (
     <div className="browser" style={{ width: w }}>
-      <div className="tb"><i /><i /><i /><span style={{ marginLeft: 10, background: "#fff", borderRadius: 8, padding: "3px 12px", color: "#64708f", fontSize: 11 }}>admin.example.com</span></div>
+      <div className="tb"><i /><i /><i /><span style={{ marginLeft: 10, color: "#64708f", fontSize: 11, fontWeight: 600 }}>Admin dashboard</span></div>
       <div style={{ display: "flex", height: 292 }}>
         <div style={{ width: 118, background: "#0a1330", color: "#c7d2ef", padding: "14px 10px", display: "grid", gap: 4, alignContent: "start", fontSize: 11.5 }}>
           <b style={{ color: "#fff", marginBottom: 8 }}>Dispatch</b>

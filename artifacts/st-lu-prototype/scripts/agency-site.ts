@@ -52,14 +52,6 @@ const head = `
     </style>`;
 
 export function agencySite(): Plugin {
-  // Microsoft Clarity (agency site only; the St Lu prototype build is not touched).
-  const CLARITY = `<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "zinodu2ncy");
-  </script>`;
   let outDir = '';
   let root = '';
   return {
@@ -76,7 +68,7 @@ export function agencySite(): Plugin {
           .replace(/<meta (property="og:|name="twitter:)[^>]*>\s*/g, '')
           .replace(/<link rel="(canonical|icon)"[^>]*>\s*/g, '')
           .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
-        h = h.replace('</head>', `${head}\n${CLARITY}\n  </head>`);
+        h = h.replace('</head>', `${head}\n  </head>`);
         h = h.replace('<span class="name">St Lu</span><span class="sub">TAXI &amp; TOURS</span>', '<span class="name">TaxiApp<b style="color:#6c9bff">Development</b></span>');
         h = h.replace('St Lu needs JavaScript to run. Please turn JavaScript on and reload.', 'TaxiAppDevelopment.org needs JavaScript to run. Please turn JavaScript on and reload.');
         return h.replace('/src/main.tsx', '/src/main-agency.tsx');
@@ -90,7 +82,7 @@ export function agencySite(): Plugin {
         `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
         sitemapUrls().map((u) => `  <url><loc>${u}</loc></url>`).join('\n') + `\n</urlset>\n`);
       w('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${ORIGIN}/sitemap.xml\n`);
-      w('_headers', `/thank-you/\n  X-Robots-Tag: noindex, follow\n/404.html\n  X-Robots-Tag: noindex, follow\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n`);
+      w('_headers', `/thank-you/\n  X-Robots-Tag: noindex, follow\n/404.html\n  X-Robots-Tag: noindex, follow\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/st-lucia-taxi-app/*\n  X-Robots-Tag: noindex, nofollow\n`);
       w('_redirects', `/taxi-app-development-company  /  301\n/taxi-app-development-company/  /  301\n`);
     },
   };
