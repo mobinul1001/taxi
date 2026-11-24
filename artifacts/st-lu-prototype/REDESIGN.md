@@ -588,3 +588,10 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 - **/faq/ "Markets and compliance"**: five questions (more than one country, licences, payment providers, data protection such as GDPR, several cities). Answers avoid claiming compliance or certification and send the reader to their own legal adviser. FAQ now has 24 questions; structured data follows automatically.
 - Owner to confirm: the wording of each region card, and whether to keep the "We do not hold or arrange taxi licences" sentence.
 - Lighthouse on both pages: Accessibility 100, SEO 100.
+
+## v41 — Mobile sticky "Get a Quote" bar
+
+- One button, "Get a Quote", fixed to the bottom on screens up to 767px wide. It goes to the contact page like the other quote buttons.
+- Shows only after the first screen (scrolled about 520px). Hidden on /contact/ and /thank-you/ and while the footer is on screen. Not rendered on desktop or tablet. No pop-up, banner or consent UI.
+- Safe-area padding for phones with a home bar; the page keeps scroll padding so focused items are not hidden behind it.
+- Checked at 375px: hidden at top, appears mid-page, hidden at footer, click opens /contact/, no horizontal overflow, not visible at 1280px. Lighthouse accessibility, SEO and best practices 100 on home and FAQ.

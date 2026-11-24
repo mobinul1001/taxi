@@ -306,6 +306,23 @@ function Footer({ onContact }: { say: Say; onContact: () => void }) {
 }
 
 /* ---------------- shell ---------------- */
+/** Mobile-only bottom bar with one button. Shown after the first screen, hidden on the contact and thank-you pages and while the footer is on screen. */
+function StickyQuote({ onQuote }: { onQuote: () => void }) {
+  const { pathname } = useLocation();
+  const [past, setPast] = useState(false);
+  const [atFoot, setAtFoot] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setPast(window.scrollY > 520);
+    onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
+    const foot = document.querySelector(".ftr");
+    const io = foot && "IntersectionObserver" in window ? new IntersectionObserver(([e]) => setAtFoot(e.isIntersecting)) : null;
+    if (foot && io) io.observe(foot);
+    return () => { window.removeEventListener("scroll", onScroll); io?.disconnect(); };
+  }, [pathname]);
+  if (pathname === ROUTES.contact || pathname === ROUTES.thankYou || !past || atFoot) return null;
+  return <div className="sticky-q"><button type="button" className="btn btn-primary" onClick={onQuote}>Get a Quote</button></div>;
+}
+
 export function Shell({ children, testId }: { children: ReactNode; testId: string }) {
   const nav = useNavigate();
   const { pathname } = useLocation();
@@ -327,6 +344,7 @@ export function Shell({ children, testId }: { children: ReactNode; testId: strin
         <Header onQuote={() => ask("Get a quote")} say={say} />
         <main id="main" tabIndex={-1}>{children}</main>
         <Footer say={say} onContact={() => ask("Contact us")} />
+        <StickyQuote onQuote={() => ask("Get a quote")} />
         <ContactDialog dlg={dlg} onClose={close} />
         {msg && <div className="tad-live" role="status">{msg}</div>}
       </div>

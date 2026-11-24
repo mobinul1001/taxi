@@ -289,3 +289,12 @@
 @media (prefers-reduced-motion: reduce) {
   .tad *, .tad *::before, .tad *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }
+
+/* v41: mobile sticky quote bar */
+.tad .sticky-q { display: none; }
+@media (max-width: 767px) {
+  .tad .sticky-q { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.96); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px -12px rgba(10,19,48,.25); }
+  .tad .sticky-q .btn { width: 100%; min-height: 48px; }
+  .tad .ftr { padding-bottom: 8px; }
+  .tad { scroll-padding-bottom: 80px; }
+}
