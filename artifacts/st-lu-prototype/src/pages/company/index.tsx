@@ -308,7 +308,7 @@ function HomeBody() {
       <Tech />
       <Explore />
       <MarketsStrip />
-      <Faq items={FAQS} onAsk={() => ask("Ask us a question")} />
+      <Faq items={FAQS} onAsk={() => ask("Ask us a question")} moreTo={ROUTES.faq} />
       <Related page="home" />
       <FinalCta onConsult={consult} onStart={start} />
     </>

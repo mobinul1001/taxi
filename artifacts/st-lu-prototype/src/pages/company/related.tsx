@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BadgeDollarSign, CalendarCheck, Car, Compass, HelpCircle, Layers, LayoutGrid, MapPinned, MonitorPlay, Rocket, Tags, UserRound, Users, Wrench, Briefcase } from "lucide-react";
+import { ArrowRight, BadgeDollarSign, CalendarCheck, Car, Compass, HelpCircle, Layers, LayoutGrid, MapPinned, Rocket, Tags, UserRound, Users, Wrench, Briefcase } from "lucide-react";
 import type { ComponentType } from "react";
 import { ROUTES } from "./routes";
 
@@ -21,7 +21,6 @@ const T: Partial<Record<K, [string, string]>> = {
   pricing: ["Indicative packages and timelines", "MVP, Growth and Custom packages, add-ons and how we turn a scope into a quote."],
   portfolio: ["A case study: St Lu Taxi & Tours", "The problem, the platform we designed and what the prototype shows."],
   features: ["Every feature a taxi platform can include", "Passenger, driver, admin and backend features in one catalogue."],
-  demo: ["See a working prototype first", "Open the St Lu prototype and request a guided walkthrough."],
   about: ["About the team behind this site", "What we build and the principles we apply to every project."],
 };
 
@@ -40,10 +39,9 @@ const MAP: Partial<Record<K, K[]>> = {
   pricing: ["cost", "whiteLabel", "custom", "features"],
   portfolio: ["booking", "dispatch", "features", "pricing"],
   features: ["booking", "dispatch", "custom", "pricing"],
-  demo: ["portfolio", "features", "pricing", "solutions"],
 };
 
-const IC: Partial<Record<K, ComponentType<{ size?: number }>>> = { dev: Layers, booking: CalendarCheck, custom: Wrench, whiteLabel: Rocket, uber: Car, dispatch: MapPinned, services: Briefcase, cost: BadgeDollarSign, developers: Users, solutions: Compass, faq: HelpCircle, pricing: Tags, portfolio: LayoutGrid, features: Layers, demo: MonitorPlay, about: UserRound };
+const IC: Partial<Record<K, ComponentType<{ size?: number }>>> = { dev: Layers, booking: CalendarCheck, custom: Wrench, whiteLabel: Rocket, uber: Car, dispatch: MapPinned, services: Briefcase, cost: BadgeDollarSign, developers: Users, solutions: Compass, faq: HelpCircle, pricing: Tags, portfolio: LayoutGrid, features: Layers, about: UserRound };
 export function Related({ page }: { page: K }) {
   const keys = MAP[page] ?? [];
   if (!keys.length) return null;

@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Boxes, Check, MessageCircleQuestion, ChevronDown, Clock, Facebook, Instagram, LayoutDashboard, Linkedin, Menu, Navigation, Palette, Plus, Puzzle, Smartphone, Twitter, Users, X, Youtube, Zap } from "lucide-react";
+import { ArrowRight, Boxes, Check, MessageCircleQuestion, ChevronDown, Clock, Facebook, Instagram, LayoutDashboard, Linkedin, Menu, Navigation, Palette, Plus, Puzzle, Smartphone, Twitter, Users, X, Youtube, Zap } from "lucide-react";
 import "./company.css";
 import "./pages.css";
 import { ROUTES } from "./routes";
@@ -183,7 +183,6 @@ function Header({ onQuote, say }: { onQuote: () => void; say: Say }) {
             <Link to={ROUTES.portfolio} onClick={close}>Portfolio</Link>
             <Link to={ROUTES.pricing} onClick={close}>Pricing</Link>
             <Link to={ROUTES.about} onClick={close}>About</Link>
-            <Link to={ROUTES.demo} onClick={close}>Book a demo</Link>
             <Link to={ROUTES.contact} onClick={close}>Contact</Link>
             <button type="button" className="btn btn-primary" style={{ width: "100%", marginTop: 14, borderBottom: 0 }} onClick={() => { setMob(false); onQuote(); }}>Get a Quote</button>
           </nav>
@@ -197,8 +196,8 @@ function Header({ onQuote, say }: { onQuote: () => void; say: Say }) {
 export const Tick = ({ items }: { items: string[] }) => <ul className="tick">{items.map((x) => <li key={x}><CheckI />{x}</li>)}</ul>;
 const CheckI = () => <Check size={17} />;
 
-export function Faq({ items, onAsk, heading = "Questions taxi business owners ask us", lede = "Can’t find your answer? Tell us about your project and we will reply with a clear next step.", eyebrow = "FAQ", sid = "faq" }: {
-  items: [string, string][]; onAsk: () => void; heading?: string; lede?: string; eyebrow?: string; sid?: string;
+export function Faq({ items, onAsk, moreTo, heading = "Questions taxi business owners ask us", lede = "Can’t find your answer? Tell us about your project and we will reply with a clear next step.", eyebrow = "FAQ", sid = "faq" }: {
+  items: [string, string][]; onAsk: () => void; heading?: string; lede?: string; eyebrow?: string; sid?: string; moreTo?: string;
 }) {
   const [open, setOpen] = useState<number | null>(0);
   const base = useId();
@@ -223,6 +222,7 @@ export function Faq({ items, onAsk, heading = "Questions taxi business owners as
               <div id={`${base}-a${i}`} role="region" aria-labelledby={`${base}-q${i}`} hidden={open !== i}><p className="faq-a">{a}</p></div>
             </div>
           ))}
+          {moreTo && <Link className="faq-more" to={moreTo}>View all frequently asked questions <ArrowRight size={16} aria-hidden /></Link>}
         </div>
       </div>
     </section>
@@ -294,7 +294,7 @@ function Footer({ onContact }: { say: Say; onContact: () => void }) {
           </div>
           <div>
             <h3>Company</h3>
-            <ul>{page("About Us", ROUTES.about)}{page("Portfolio", ROUTES.portfolio)}{page("Pricing", ROUTES.pricing)}{page("Book a Demo", ROUTES.demo)}{page("Contact", ROUTES.contact)}</ul>
+            <ul>{page("About Us", ROUTES.about)}{page("Portfolio", ROUTES.portfolio)}{page("Pricing", ROUTES.pricing)}{page("Contact", ROUTES.contact)}</ul>
           </div>
           <div>
             <h3>Contact</h3>
@@ -305,7 +305,7 @@ function Footer({ onContact }: { say: Say; onContact: () => void }) {
         </div>
         <div className="ftr-bot">
           <span>&copy; {new Date().getFullYear()} Taxi App Development (TaxiAppDevelopment.org). All rights reserved.</span>
-          <nav className="ftr-legal" aria-label="Legal"><Link to={ROUTES.privacy}>Privacy Policy</Link><Link to={ROUTES.terms}>Terms and Conditions</Link><Link to={ROUTES.cookies}>Cookie Policy</Link><Link to={ROUTES.disclaimer}>Disclaimer</Link><Link to={ROUTES.sitemap}>Sitemap</Link></nav>
+          <nav className="ftr-legal" aria-label="Legal"><Link to={ROUTES.privacy}>Privacy Policy</Link><Link to={ROUTES.terms}>Terms and Conditions</Link><Link to={ROUTES.cookies}>Cookie Policy</Link><Link to={ROUTES.disclaimer}>Disclaimer</Link></nav>
         </div>
       </div>
     </footer>

@@ -181,6 +181,9 @@
 @media (max-width: 639px) { .tad .tech > div { grid-template-columns: minmax(0, 1fr); } }
 
 /* faq */
+.tad .faq-more { display: inline-flex; margin-left: 4px; align-items: center; gap: 8px; margin-top: 22px; font-weight: 600; font-size: 15.5px; color: var(--blue-t); text-decoration: none; }
+.tad .faq-more:hover { text-decoration: underline; }
+.tad .faq-more:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
 .tad .faq { margin-top: 36px; max-width: 860px; border-top: 1px solid var(--line); }
 .tad .faq h3 { font-size: inherit; letter-spacing: 0; }
 .tad .faq-q { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding: 14px 4px; background: none; border: 0; text-align: left; font-size: 17.5px; font-weight: 650; letter-spacing: -.01em; }

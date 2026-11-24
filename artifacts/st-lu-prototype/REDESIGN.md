@@ -642,3 +642,8 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 ## v49 – Titles and sitemap
 - Services title: "Taxi App Development Services: Scope, Process & Support". Solutions title: "Taxi App Solutions by Business Model & Fleet Size". Meta descriptions updated to match.
 - sitemap.xml now lists every indexable page (legal pages and the HTML sitemap included): 23 URLs. Only the noindex thank-you page and the noindex prototype are left out. lastmod 2026-11-25.
+
+## v50 – Book a demo and HTML sitemap pages switched off; FAQ link on the homepage
+- `/book-a-demo/` and `/sitemap/` are no longer routed, linked (header menu, footer, 404 page, Related blocks, portfolio note) or listed in sitemap.xml. Source files stay. `_redirects`: `/book-a-demo` goes to `/contact/`, `/sitemap` goes to `/` (301; Netlify behaviour not tested here). The portfolio note now links to Contact instead of the demo page.
+- Homepage FAQ section: a "View all frequently asked questions" link to `/faq/` under the question list (`moreTo` prop on `Faq`, used only on the homepage).
+- sitemap.xml now has 21 URLs.

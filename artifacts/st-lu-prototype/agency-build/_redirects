@@ -3,5 +3,9 @@
 /blog  /  301
 /blog/  /  301
 /blog/*  /  301
+/book-a-demo  /contact/  301
+/book-a-demo/  /contact/  301
+/sitemap  /  301
+/sitemap/  /  301
 /uber-clone-app-development  /uber-like-taxi-app-development/  301
 /uber-clone-app-development/  /uber-like-taxi-app-development/  301

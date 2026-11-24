@@ -2,6 +2,9 @@
 export const ORIGIN = "https://taxiappdevelopment.org";
 
 /** Every agency path. The homepage is "/" on the agency site itself; in the St Lu prototype build "/" is the St Lu hub. */
+/** Switched off (not routed, not linked, not in the sitemap); the page files stay so they can be switched back on. */
+export const DEMO_PATH = "/book-a-demo/";
+export const SITEMAP_PATH = "/sitemap/";
 export const PATHS = {
   /** The agency homepage. In production this is "/"; in this prototype "/" is the St Lu hub. */
   home: "/taxi-app-development-company/",
@@ -24,8 +27,6 @@ export const PATHS = {
   pricing: "/pricing/",
   portfolio: "/portfolio/",
   features: "/features/",
-  demo: "/book-a-demo/",
   faq: "/faq/",
-  sitemap: "/sitemap/",
   thankYou: "/thank-you/",
 } as const;

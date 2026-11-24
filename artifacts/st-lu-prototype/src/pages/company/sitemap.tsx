@@ -2,14 +2,15 @@ import { Link } from "react-router-dom";
 import { Crumbs, useSeo } from "./seo";
 import { Shell } from "./shell";
 import { ROUTES } from "./routes";
+import { SITEMAP_PATH } from "./routePaths";
 import { sitemapGroups } from "./pageIndex";
 
 const TITLE = "Sitemap | TaxiAppDevelopment.org";
 const DESC = "All public pages of TaxiAppDevelopment.org: services, solutions, resources, company information and legal pages.";
-const CRUMBS = [{ name: "Home", to: ROUTES.home }, { name: "Sitemap", to: ROUTES.sitemap }];
+const CRUMBS = [{ name: "Home", to: ROUTES.home }, { name: "Sitemap", to: SITEMAP_PATH }];
 
 function Body() {
-  useSeo({ title: TITLE, description: DESC, path: ROUTES.sitemap, ld: [] });
+  useSeo({ title: TITLE, description: DESC, path: SITEMAP_PATH, ld: [] });
   return (
     <>
       <section className="docs-hero" id="top">

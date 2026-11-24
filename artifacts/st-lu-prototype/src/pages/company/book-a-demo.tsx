@@ -6,11 +6,12 @@ import { Crumbs, crumbLd, faqLd, useSeo, webPageLd } from "./seo";
 import { Faq, FinalCta, Shell, Tick, useShell } from "./shell";
 import { Illus } from "./covers";
 import { ROUTES } from "./routes";
+import { DEMO_PATH } from "./routePaths";
 import { Related } from "./related";
 
 const TITLE = "Book a Taxi App Demo: See the Prototype in Action";
 const DESC = "Request a taxi app demo: try the St Lu prototype yourself, then ask for a guided walkthrough of the passenger app, driver app and dispatcher panel.";
-const CRUMBS = [{ name: "Home", to: ROUTES.home }, { name: "Book a Demo", to: ROUTES.demo }];
+const CRUMBS = [{ name: "Home", to: ROUTES.home }, { name: "Book a Demo", to: DEMO_PATH }];
 
 const EXPECT: [string, string][] = [
   ["You send a short request", "Say who you are and what you run. It takes about a minute."],
@@ -29,7 +30,7 @@ const FAQS: [string, string][] = [
 
 function Body() {
   const { ask } = useShell();
-  useSeo({ title: TITLE, description: DESC, path: ROUTES.demo, ld: [crumbLd(CRUMBS), webPageLd(TITLE, DESC, ROUTES.demo), faqLd(FAQS)] });
+  useSeo({ title: TITLE, description: DESC, path: DEMO_PATH, ld: [crumbLd(CRUMBS), webPageLd(TITLE, DESC, DEMO_PATH), faqLd(FAQS)] });
   return (
     <>
       <section className="hero hero-l hero-svc" id="top">
@@ -74,7 +75,6 @@ function Body() {
       </section>
 
       <Faq items={FAQS} onAsk={() => ask("Ask about a demo", { kind: "Request a demo" })} heading="Demo questions, answered" sid="demo-faq" />
-      <Related page="demo" />
       <FinalCta title="Ready to See the Prototype With the Team?" text="Send a short request and we reply with times that suit you." startLabel="Request a Demo" consultLabel="Get a Quote" onStart={() => ask("Request a demo", { kind: "Request a demo" })} onConsult={() => ask("Get a quote", { kind: "Not sure yet" })} />
     </>
   );

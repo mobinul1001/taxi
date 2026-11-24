@@ -79,7 +79,7 @@ function Body() {
           <p className="eyebrow">Outcome</p>
           <h2 className="h2 wide" id="h-oc">What this prototype gives the business</h2>
           <p className="lede">A product the owner and drivers can click through before anything is built for real, so the booking flow and dispatch rules can be agreed early and the budget set against a clear scope.</p>
-          <p className="note">More projects will be added here as they are published. Want to see how a project like this would be priced? Read our <Link to={ROUTES.pricing}>pricing packages</Link>, or <Link to={ROUTES.demo}>book a demo</Link> of the prototype.</p>
+          <p className="note">More projects will be added here as they are published. Want to see how a project like this would be priced? Read our <Link to={ROUTES.pricing}>pricing packages</Link>, or <Link to={ROUTES.contact}>contact us</Link> to talk it through.</p>
           <div className="more"><Link className="link" to={ROUTES.booking}>Taxi booking app development <ArrowRight size={16} aria-hidden /></Link><Link className="link" to={ROUTES.dispatch}>Taxi dispatch software <ArrowRight size={16} aria-hidden /></Link></div>
         </div>
       </section>
