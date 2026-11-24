@@ -30,6 +30,12 @@ export function useSeo({ title, description, path, ld, robots }: { title: string
     meta("property", "og:url", url);
     meta("name", "twitter:title", title);
     meta("name", "twitter:description", description);
+    // Each page has its own share image (public-agency/og/<slug>.jpg); the home page keeps og-agency.jpg.
+    const slug = path.replace(/^\/+|\/+$/g, "").replace(/\//g, "-");
+    if (slug && !(robots ?? "").includes("noindex")) {
+      const img = `${ORIGIN}/og/${slug}.jpg`;
+      meta("property", "og:image", img); meta("name", "twitter:image", img); meta("property", "og:image:alt", title);
+    }
 
     let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (link) { const prev = link.href; link.href = url; undo.push(() => { link!.href = prev; }); }
