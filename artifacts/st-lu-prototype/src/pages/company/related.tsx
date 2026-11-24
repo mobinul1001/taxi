@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BadgeDollarSign, CalendarCheck, Car, Compass, HelpCircle, Layers, LayoutGrid, MapPinned, MonitorPlay, Rocket, Tags, UserRound, Users, Wrench, Briefcase } from "lucide-react";
+import type { ComponentType } from "react";
 import { ROUTES } from "./routes";
 
 type K = keyof typeof ROUTES;
@@ -42,6 +43,7 @@ const MAP: Partial<Record<K, K[]>> = {
   demo: ["portfolio", "features", "pricing", "solutions"],
 };
 
+const IC: Partial<Record<K, ComponentType<{ size?: number }>>> = { dev: Layers, booking: CalendarCheck, custom: Wrench, whiteLabel: Rocket, uber: Car, dispatch: MapPinned, services: Briefcase, cost: BadgeDollarSign, developers: Users, solutions: Compass, faq: HelpCircle, pricing: Tags, portfolio: LayoutGrid, features: Layers, demo: MonitorPlay, about: UserRound };
 export function Related({ page }: { page: K }) {
   const keys = MAP[page] ?? [];
   if (!keys.length) return null;
@@ -51,7 +53,7 @@ export function Related({ page }: { page: K }) {
         <p className="eyebrow">Keep exploring</p>
         <h2 className="h2 wide" id="h-related">Related pages for your taxi app project</h2>
         <ul className="xplore">
-          {keys.map((k) => { const [h, p] = T[k]!; return <li key={k}><h3><Link to={ROUTES[k]}>{h}</Link></h3><p>{p}</p></li>; })}
+          {keys.map((k) => { const [h, p] = T[k]!; const I = IC[k] ?? Compass; return <li key={k}><span className="xic" aria-hidden><I size={22} /></span><h3><Link to={ROUTES[k]}>{h}</Link></h3><p>{p}</p></li>; })}
         </ul>
         <div className="more"><Link className="link" to={ROUTES.contact}>Discuss your project with our team <ArrowRight size={16} aria-hidden /></Link></div>
       </div>

@@ -6,6 +6,7 @@ import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
 import { Faq, FinalCta, Pic, Shell, Tick, go, useShell } from "./shell";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
+import { TechCards } from "./techcards";
 
 const TITLE = "Taxi App Development: Passenger, Driver & Admin Apps";
 const DESC = "What taxi app development involves: passenger, driver and admin apps, backend, costs and process. Plan your taxi or ride-hailing platform with our team.";
@@ -54,13 +55,6 @@ const STEPS: [string, string][] = [
   ["Backend & API Integration", "Dispatch, pricing, payments and maps connected to the apps and dashboard."],
   ["Testing & QA", "Checks across devices, roles and realistic trip scenarios, including failed payments and cancellations."],
   ["Launch & Support", "Store submission, go-live help and support while your first real trips run."],
-];
-
-const STACK: [string, string[]][] = [
-  ["Mobile apps", ["Flutter", "React Native", "Native iOS and Android"]],
-  ["Admin dashboard", ["React"]],
-  ["Backend", ["Node.js", "Laravel"]],
-  ["Integrations", ["Maps and routing", "Payment gateways", "SMS and push"]],
 ];
 
 function Anatomy() {
@@ -185,7 +179,7 @@ function Stack() {
         <p className="eyebrow">Technology</p>
         <h2 className="h2 wide" id="h-stack">Technology we use to build taxi apps</h2>
         <p className="lede">We pick the stack that fits your scale and your team, not the other way round.</p>
-        <div className="tech">{STACK.map(([g, l]) => <div key={g}><h3>{g}</h3><ul>{l.map((x) => <li key={x}>{x}</li>)}</ul></div>)}</div>
+        <TechCards />
       </div>
     </section>
   );

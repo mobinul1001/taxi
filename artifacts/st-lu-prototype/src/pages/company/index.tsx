@@ -1,6 +1,7 @@
+import type { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight, BarChart3, Bell, BellRing, Boxes, CalendarClock, CreditCard, Gauge, Headset, History, Layers, Map,
+  ArrowRight, BadgeDollarSign, BarChart3, Briefcase, Compass, PenTool, Plug, Rocket, Bell, BellRing, Boxes, CalendarClock, CreditCard, Gauge, Headset, History, Layers, Map,
   MapPin, Palette, Puzzle, ShieldCheck, Smartphone, Sparkles, Star, Tag, Timer, Users, Wallet, Server, Zap,
 } from "lucide-react";
 import { AdminDash, BLUE, BrandVis, BookingVis, DriverScreen, FlowVis, GpsVis, LiveWidget, MatchVis, PassengerScreen, Phone, RideCard, RouteMap, STLU, Scaled, WorkflowVis } from "./mockups";
@@ -8,6 +9,8 @@ import { Faq, FinalCta, Pic, Shell, Tick, go, useShell } from "./shell";
 import { ROUTES } from "./routes";
 import { StluLink } from "./stluLink";
 import { Related } from "./related";
+import { TechCards } from "./techcards";
+import { BarsVis, FareVis, HistVis, NotifVis, PayVis, PromoVis, SchedVis, StarVis } from "./featvis";
 import { faqLd, useSeo, webPageLd, orgRef, siteRef } from "./seo";
 
 /* ---------------- hero ---------------- */
@@ -104,15 +107,15 @@ function Ecosystem() {
         <p className="lede">A complete taxi business runs on a passenger app, a driver app, and an admin dashboard that keeps them in step.</p>
         <div className="eco">
           <article className="card p">
-            <div className="stage"><Scaled w={220} h={330} className="" ><div style={{ position: "absolute", top: 0 }}><Phone style={{ height: 520 }}><PassengerScreen /></Phone></div></Scaled></div>
+            <div className="stage"><Scaled w={220} h={450}><div style={{ position: "absolute", top: 0 }}><Phone><PassengerScreen /></Phone></div></Scaled></div>
             <div className="body"><h3>Passenger App</h3><Tick items={["Ride booking", "Fare estimates", "Live tracking", "Payments", "Trip history"]} /></div>
           </article>
           <article className="card d">
-            <div className="stage"><Scaled w={220} h={330}><div style={{ position: "absolute", top: 0 }}><Phone style={{ height: 520 }}><DriverScreen /></Phone></div></Scaled></div>
+            <div className="stage"><Scaled w={220} h={450}><div style={{ position: "absolute", top: 0 }}><Phone><DriverScreen /></Phone></div></Scaled></div>
             <div className="body"><h3>Driver App</h3><Tick items={["Ride requests", "Navigation", "Availability status", "Earnings dashboard", "Trip management"]} /></div>
           </article>
           <article className="card a">
-            <div className="stage" style={{ alignItems: "flex-start", paddingTop: 26 }}><Scaled w={560} h={334}><AdminDash /></Scaled></div>
+            <div className="stage" style={{ alignItems: "center" }}><Scaled w={560} h={334}><AdminDash /></Scaled></div>
             <div className="body"><h3>Admin Dashboard</h3><Tick items={["Driver management", "Ride monitoring", "Analytics", "Pricing management", "Fleet operations"]} /></div>
           </article>
         </div>
@@ -133,6 +136,7 @@ const FEATS = [
   ["Promo Codes", Tag, "Run launch offers and discounts you control."],
   ["Analytics & Reporting", BarChart3, "Bookings, revenue and driver performance at a glance."],
 ] as const;
+const FVIS: Record<string, () => ReactElement> = { "Ride Scheduling": SchedVis, "Multiple Payment Options": PayVis, "Fare Management": FareVis, "Push Notifications": NotifVis, "Ratings & Reviews": StarVis, "Ride History": HistVis, "Promo Codes": PromoVis, "Analytics & Reporting": BarsVis };
 function Features() {
   return (
     <section className="sec sec-gray" id="features" aria-labelledby="h-feat">
@@ -142,7 +146,7 @@ function Features() {
         <div className="feat">
           <article className="card l"><span className="ic"><MapPin size={21} /></span><h3>Real-Time GPS Tracking</h3><p>{FEATS[0][2]}</p><GpsVis /></article>
           <article className="card l"><span className="ic"><Users size={21} /></span><h3>Smart Driver Matching</h3><p>{FEATS[1][2]}</p><MatchVis /></article>
-          {FEATS.slice(2).map(([t, I, d]) => <article key={t} className="card hov s"><span className="ic"><I size={20} /></span><h3>{t}</h3><p>{d}</p></article>)}
+          {FEATS.slice(2).map(([t, I, d]) => { const V = FVIS[t]; return <article key={t} className="card hov s"><span className="ic"><I size={20} /></span><h3>{t}</h3><p>{d}</p>{V && <V />}</article>; })}
         </div>
       </div>
     </section>
@@ -150,21 +154,21 @@ function Features() {
 }
 
 const STEPS = [
-  ["Discovery & Strategy", "We learn your market, operations and goals."],
-  ["UI/UX Design", "Clear flows and interfaces for riders, drivers and admins."],
-  ["App Development", "Passenger and driver apps built for iOS and Android."],
-  ["Backend & API Integration", "Dispatch, pricing, payments and maps connected."],
-  ["Testing & QA", "Testing across devices, roles and real trip scenarios."],
-  ["Launch & Support", "Store release, go-live help and continued care."],
-];
+  ["Discovery & Strategy", "We learn your market, operations and goals.", Compass],
+  ["UI/UX Design", "Clear flows and interfaces for riders, drivers and admins.", PenTool],
+  ["App Development", "Passenger and driver apps built for iOS and Android.", Smartphone],
+  ["Backend & API Integration", "Dispatch, pricing, payments and maps connected.", Plug],
+  ["Testing & QA", "Testing across devices, roles and real trip scenarios.", ShieldCheck],
+  ["Launch & Support", "Store release, go-live help and continued care.", Rocket],
+] as const;
 function Process() {
   return (
     <section className="sec sec-white" id="process" aria-labelledby="h-proc">
       <div className="wrap">
         <p className="eyebrow">Process</p>
         <h2 className="h2 wide" id="h-proc">From first call to a live taxi platform</h2>
-        <ol className="proc" style={{ listStyle: "none", padding: 0 }}>
-          {STEPS.map(([t, d], i) => <li key={t}><span className="n" aria-hidden>{String(i + 1).padStart(2, "0")}</span><div><h3><span className="sr">Step {i + 1}: </span>{t}</h3><p>{d}</p></div></li>)}
+        <ol className="steps6" style={{ listStyle: "none", padding: 0 }}>
+          {STEPS.map(([t, d, I], i) => <li key={t}><span className="sn" aria-hidden>{String(i + 1).padStart(2, "0")}</span><span className="si" aria-hidden><I size={24} /></span><h3><span className="sr">Step {i + 1}: </span>{t}</h3><p>{d}</p></li>)}
         </ol>
       </div>
     </section>
@@ -179,10 +183,11 @@ function Project() {
         <h2 className="h2 wide" id="h-proj">A taxi booking platform for St Lu Taxi &amp; Tours</h2>
         <div className="proj">
           <div className="proj-vis" aria-hidden>
-            <Scaled w={560} h={470}>
-              <div style={{ position: "absolute", left: 0, top: 24 }}><AdminDash w={372} accent={STLU} title="Dispatch" /></div>
+            <Scaled w={560} h={700}>
+              <div style={{ position: "absolute", left: 0, top: 4 }}><AdminDash w={372} accent={STLU} title="Dispatch" /></div>
               <Phone style={{ position: "absolute", left: 372, top: 4, transform: "scale(.84)", transformOrigin: "0 0" }}><PassengerScreen accent={STLU} brand="Hewanorra Airport" /></Phone>
-              <Phone style={{ position: "absolute", left: 150, top: 290, transform: "scale(.84)", transformOrigin: "0 0" }}><DriverScreen accent={STLU} /></Phone>
+              <Phone style={{ position: "absolute", left: 40, top: 360, transform: "scale(.72)", transformOrigin: "0 0" }}><DriverScreen accent={STLU} /></Phone>
+              <div style={{ position: "absolute", left: 292, top: 440, width: 240, color: "#c7d6ff", fontSize: 14, lineHeight: 1.5 }}>One job, three views: the passenger books, the driver accepts and the dispatcher assigns.</div>
             </Scaled>
           </div>
           <div className="proj-txt">
@@ -229,7 +234,7 @@ function Compare({ onConsult }: { onConsult: () => void }) {
   );
 }
 
-const TECH: [string, string[]][] = [["Mobile", ["Flutter", "React Native"]], ["Web", ["React"]], ["Backend", ["Node.js", "Laravel"]], ["Infrastructure", ["Cloud infrastructure", "APIs"]]];
+const PIC = [Compass, Briefcase, BadgeDollarSign, Users];
 const PATHS: [string, string, string, string, string][] = [
   ["Find your fit", "Taxi app solutions", "Solutions by business model, operation and fleet size, with a finder.", ROUTES.solutions, "taxi app solutions"],
   ["See what you get", "Taxi app development services", "Every service and the deliverable that comes from it.", ROUTES.services, "taxi app development services"],
@@ -243,7 +248,7 @@ function Explore() {
         <p className="eyebrow">Where to start</p>
         <h2 className="h2 wide" id="h-explore">Explore our taxi app development work</h2>
         <p className="lede">Whether you are comparing solutions, working out a budget or choosing a team, each question has its own page.</p>
-        <ul className="xplore">{PATHS.map(([q, h, p, to, a]) => <li key={h}><span className="q">{q}</span><h3>{h}</h3><p>{p}</p><Link className="link" to={to}>Learn more <ArrowRight size={16} /><span className="sr"> about {a}</span></Link></li>)}</ul>
+        <ul className="xplore">{PATHS.map(([q, h, p, to, a], i) => { const I = PIC[i]; return <li key={h}><span className="xic" aria-hidden><I size={22} /></span><span className="q">{q}</span><h3>{h}</h3><p>{p}</p><Link className="link" to={to}>Learn more <ArrowRight size={16} /><span className="sr"> about {a}</span></Link></li>; })}</ul>
         <div className="more"><Link className="link" to={ROUTES.contact}>Contact our team <ArrowRight size={16} /></Link></div>
       </div>
     </section>
@@ -257,7 +262,7 @@ function Tech() {
         <p className="eyebrow">Technology</p>
         <h2 className="h2 wide" id="h-tech">Modern tools, chosen for your platform</h2>
         <p className="lede">We pick the stack that fits your scale and team, not the other way round.</p>
-        <div className="tech">{TECH.map(([g, l]) => <div key={g}><h3>{g}</h3><ul>{l.map((x) => <li key={x}>{x}</li>)}</ul></div>)}</div>
+        <TechCards />
       </div>
     </section>
   );

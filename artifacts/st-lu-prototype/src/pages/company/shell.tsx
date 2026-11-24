@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Boxes, Check, ChevronDown, Clock, Facebook, Instagram, LayoutDashboard, Linkedin, Menu, Navigation, Palette, Plus, Puzzle, Smartphone, Twitter, Users, X, Youtube, Zap } from "lucide-react";
+import { Boxes, Check, MessageCircleQuestion, ChevronDown, Clock, Facebook, Instagram, LayoutDashboard, Linkedin, Menu, Navigation, Palette, Plus, Puzzle, Smartphone, Twitter, Users, X, Youtube, Zap } from "lucide-react";
 import "./company.css";
 import "./pages.css";
 import { ROUTES } from "./routes";
@@ -210,7 +210,12 @@ export function Faq({ items, onAsk, heading = "Questions taxi business owners as
           <p className="eyebrow">{eyebrow}</p>
           <h2 className="h2 wide" id={`h-${sid}`}>{heading}</h2>
           <p className="lede">{lede}</p>
-          <button type="button" className="btn btn-outline" style={{ marginTop: 22 }} onClick={onAsk}>Ask us a question</button>
+          <div className="faq-card">
+            <span className="xic" aria-hidden><MessageCircleQuestion size={22} /></span>
+            <h3>Still have a question?</h3>
+            <p>Send us a short message about your project. We answer during working hours: Monday to Friday, 9:00 AM to 5:00 PM Eastern Time (ET).</p>
+            <button type="button" className="btn btn-primary" onClick={onAsk}>Ask us a question</button>
+          </div>
         </div>
         <div className="faq">
           {items.map(([q, a], i) => (

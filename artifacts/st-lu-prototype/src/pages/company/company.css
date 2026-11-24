@@ -252,3 +252,29 @@
 @media (max-width: 959px) { .tad .faq-grid { grid-template-columns: minmax(0, 1fr); } .tad .faq-grid > div:first-child { position: static; } .tad .faq-grid .faq { margin-top: 12px; } }
 .tad .news { flex-wrap: wrap; }
 .tad .news input { flex: 1 1 160px; }
+
+/* v35: eco stage, technology cards, feature visuals, process cards */
+.tad .eco .stage { height: 500px; align-items: center; padding: 22px; }
+.tad .techg { list-style: none; padding: 0; margin: 36px 0 0; display: grid; gap: 16px; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.tad .techg > li { grid-column: span 2; display: flex; flex-direction: column; gap: 8px; padding: 24px; border-radius: 18px; background: #fff; border: 1px solid var(--line); }
+.tad .techg > li:nth-child(n+4) { grid-column: span 3; }
+@media (max-width: 899px) { .tad .techg > li, .tad .techg > li:nth-child(n+4) { grid-column: span 3; } }
+@media (max-width: 599px) { .tad .techg > li, .tad .techg > li:nth-child(n+4) { grid-column: span 6; } }
+.tad .techg .ic { width: 44px; height: 44px; border-radius: 12px; background: #eaf0ff; color: var(--blue); display: grid; place-items: center; }
+.tad .techg h3 { font-size: 19px; } .tad .techg p { color: var(--mute); font-size: 15px; }
+.tad .techg .chips-t { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
+.tad .techg .chips-t li { padding: 6px 12px; border-radius: 999px; background: #f1f5ff; border: 1px solid #dbe3f5; font-size: 14px; font-weight: 650; color: #1b3fb8; }
+.tad .feat .s { display: flex; flex-direction: column; }
+.tad .steps6 { margin-top: 40px; display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); counter-reset: s; }
+@media (max-width: 899px) { .tad .steps6 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 599px) { .tad .steps6 { grid-template-columns: minmax(0, 1fr); position: relative; } .tad .steps6 li::after { content: ""; position: absolute; left: 50%; bottom: -16px; height: 16px; width: 2px; background: #c7d6ff; } .tad .steps6 li:last-child::after { display: none; } }
+.tad .steps6 li { position: relative; padding: 24px; border-radius: 18px; background: #f5f8ff; border: 1px solid #e3eafb; display: flex; flex-direction: column; gap: 8px; }
+.tad .steps6 .sn { position: absolute; top: 18px; right: 20px; font-size: 30px; font-weight: 800; color: #d3def9; }
+.tad .steps6 .si { width: 48px; height: 48px; border-radius: 14px; background: var(--blue); color: #fff; display: grid; place-items: center; }
+.tad .steps6 h3 { font-size: 18px; margin-top: 6px; } .tad .steps6 p { color: var(--mute); font-size: 15px; }
+@media (min-width: 900px) { .tad .steps6 li:not(:nth-child(3n))::after { content: ""; position: absolute; top: 48px; right: -17px; width: 18px; height: 2px; background: #9db7ff; } }
+
+/* v35: explore icons, FAQ contact card */
+.tad .xic { width: 44px; height: 44px; border-radius: 12px; background: #eaf0ff; color: var(--blue); display: grid; place-items: center; margin-bottom: 4px; }
+.tad .faq-card { margin-top: 26px; padding: 24px; border-radius: 18px; background: #f5f8ff; border: 1px solid #e3eafb; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; max-width: 460px; }
+.tad .faq-card h3 { font-size: 19px; } .tad .faq-card p { color: var(--mute); font-size: 15px; }

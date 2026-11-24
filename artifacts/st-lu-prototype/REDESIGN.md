@@ -527,18 +527,12 @@ Fixed: hooks in `ContactDialog` were declared after the early return, which stop
 - A CTA that carries a project type or notes pre-fills the contact form (`kind`, message) via router state. On the contact page itself the button scrolls to and focuses the form.
 - Other St Lu mentions (home "Featured project", About client-project section) untouched.
 
-## v32
-- Case study hosting: the St Lu prototype is built (hash router) into `agency-build/st-lucia-taxi-app/`. "Open the St Lu prototype" = `/st-lucia-taxi-app/`, "View the St Lu website" = `/st-lucia-taxi-app/#/landing`. Marked noindex via `_headers`. `npm run build:agency` builds both.
-- Legal pages: no placeholders or draft banner. Legal entity "Taxi App Development", no postal address, no email, no governing-law section. Services disclosed: Netlify, Formspree, Microsoft Clarity. No cookie banner.
-- Footer rebuilt: brand, social icons (unlinked until official URLs exist), Services, Company, Contact (form link and working hours Mon to Fri 9 to 5 ET), newsletter wired to Formspree, legal links in the bottom bar.
-- Blog button removed until a real blog exists. Fake admin.example.com URL bar removed from the mockup.
+## v35 — Home and shared sections
 
-## v33
-- New pages: /pricing/ (MVP, Growth, Custom indicative USD ranges), /portfolio/ (St Lu case study), /features/ (28 features, filter by passenger, driver, admin, backend), /book-a-demo/ (request form via the contact page, kind "Request a demo"). Branded 404 now lists popular pages.
-- Header: Services, Solutions, Features, Portfolio, Pricing, About, Contact. Burger menu now below 1140px so the nav never overflows. Footer links the new pages. All four are in sitemap.xml and the HTML sitemap.
-- Pricing ranges are indicative, derived from published market ranges (see the pricing research note in the project). Owner must confirm before relying on them.
-
-## v34
-- Blog: /blog/ (featured post, category filter, 6 posts) and /blog/<slug>/ (TOC, key takeaways, related posts, CTA, Article + Breadcrumb JSON-LD). Posts live in `src/pages/company/blogData.ts`; the build plugin and prerender read the slugs from there, so a new post needs only a data entry. Author: "TaxiAppDevelopment.org Team". All six posts are dated 24 Nov 2026.
-- Blog is in the header (after Pricing), footer Company column, sitemap.xml and the HTML sitemap. Burger menu now below 1220px.
-- JSON-LD no longer doubles: the runtime copy replaces the static one.
+- **Technology**: one shared `techcards.tsx` (Mobile, Web and admin, Backend, Infrastructure, Integrations; each with a one-line "why" and tech chips), used on the home page and /taxi-app-development/, so the two pages no longer disagree. Names are only technologies the agency already listed, plus Swift/Kotlin (native), TypeScript and REST APIs; no logos were invented.
+- **Home Features**: bento grid kept (all 10 features); the eight small cards now carry small decorative visuals (`featvis.tsx`, aria-hidden, no real data).
+- **Home Process**: six step cards with icons, numbers and connector lines (vertical on mobile).
+- **Featured project**: taller stage so the phone no longer covers dashboard rows; short caption added.
+- **Platform**: phones shown in full (stage height 500px).
+- **Explore / Related**: each card has an icon; FAQ left column has a contact card (form-only, ET working hours).
+- Not done in v35: Fleet operations was already in the Admin list; featured project is not yet a link card to /portfolio/ (buttons unchanged).
