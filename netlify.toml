@@ -1,0 +1,4 @@
+# TaxiAppDevelopment.org agency site: ships the ready-made build in artifacts/st-lu-prototype/agency-build.
+# No build command, because the page-by-page <head> step needs Chromium (see README). Rebuild locally, commit, push.
+[build]
+  publish = "artifacts/st-lu-prototype/agency-build"
