@@ -36,6 +36,13 @@ const CATS: Cat[] = [
     { q: "Which services can the platform connect to?", t: "", a: <>Common ones are maps and routing, payment gateways and SMS or WhatsApp messaging. Your own systems can be connected where they offer a way to integrate.</> },
     { q: "Who pays for maps, SMS and payment fees?", t: "", a: <>Those are charged by their providers based on usage, and are separate from development. Plan for them in your running costs.</> },
   ] },
+  { id: "markets", h: "Markets and compliance", items: [
+    { q: "Can the platform be used in more than one country?", t: "", a: <>Yes. Languages and currency can be configured, and each extra market adds work such as translation, a local payment provider and testing. That work is one of the factors in the <Link to={ROUTES.cost}>cost guide</Link>.</> },
+    { q: "Do you arrange taxi licences or permits for us?", t: "", a: <>No. Licensing is the operator&rsquo;s responsibility and depends on where you operate. The platform can store driver and vehicle documents and send expiry reminders, which helps you keep your own records current.</> },
+    { q: "Which payment providers work in my country?", t: "", a: <>That depends on which providers serve your country and your type of business. We agree the choice with you during the backend phase, and fees are charged by the provider.</> },
+    { q: "Does the platform meet data protection rules such as GDPR?", t: "", a: <>Which rules apply depends on where your passengers and drivers are. We build with roles and controlled access, and we discuss what your market needs with you. We are not a law firm, so please confirm the legal requirements with your own adviser.</> },
+    { q: "Can one platform cover several cities or areas?", t: "", a: <>Yes. Pricing, drivers and rules can be set per area and managed from one admin dashboard. The <Link to={ROUTES.solutions}>solutions page</Link> shows how this fits different markets.</> },
+  ] },
   { id: "support", h: "Maintenance and support", items: [
     { q: "What does maintenance cover?", t: "", a: <>Typically fixes, operating system and app store updates, monitoring and a plan for new features. What is included is agreed in writing, separately from the build.</> },
     { q: "Can you take over or improve an existing taxi app?", t: "", a: <>Often. We start with a review of the code and the problems, then recommend fixing, extending or rebuilding parts of it. Our <Link to={ROUTES.services}>services page</Link> lists how we work on each part.</> },

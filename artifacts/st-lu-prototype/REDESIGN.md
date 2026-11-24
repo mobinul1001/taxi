@@ -581,3 +581,10 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 - **Skip link**: "Skip to main content" is the first Tab stop on every page, moves focus to `<main id="main">`.
 - **Reduced motion**: a `prefers-reduced-motion` rule stops transitions and animations; the legal table of contents and the contact scroll now respect it too (the shared `go()` already did). Checked with Chromium's reduced-motion emulation.
 - Lighthouse accessibility still 100 on the four pages re-run (home, solutions, privacy, FAQ). Hand testing with a real screen reader was not done.
+
+## v40 — Markets section and FAQ category
+
+- **/taxi-app-solutions/ "Markets"** (`markets.tsx`): six cards (USA, United Kingdom, Canada, Australia, Europe, Caribbean) that say only what usually differs by market, a "What we set up for your market" list, and a note that this is general information, not legal advice, and that we do not hold or arrange taxi licences. No licence names, law numbers, providers, clients or statistics are claimed. There are no separate pages per location.
+- **/faq/ "Markets and compliance"**: five questions (more than one country, licences, payment providers, data protection such as GDPR, several cities). Answers avoid claiming compliance or certification and send the reader to their own legal adviser. FAQ now has 24 questions; structured data follows automatically.
+- Owner to confirm: the wording of each region card, and whether to keep the "We do not hold or arrange taxi licences" sentence.
+- Lighthouse on both pages: Accessibility 100, SEO 100.

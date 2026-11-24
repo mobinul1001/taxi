@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Markets } from "./markets";
 import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase, Car, Compass, Plane, Users, Zap } from "lucide-react";
 import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
@@ -173,6 +174,8 @@ function Body() {
           <div className="more"><Link className="link" to={ROUTES.dispatch}>See taxi dispatch software <ArrowRight size={16} /></Link><Link className="link" to={ROUTES.custom}>Plan a custom solution <ArrowRight size={16} /></Link></div>
         </div>
       </section>
+
+      <Markets />
 
       <section className="sec sec-gray" id="deeper" aria-labelledby="h-dp">
         <div className="wrap">
