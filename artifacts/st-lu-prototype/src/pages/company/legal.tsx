@@ -68,7 +68,7 @@ function PrivacyBody() {
           <p>When you submit the contact form or the quote request, the details you enter are used to respond to you. Fields marked as required are needed for us to reply; the others are optional.</p>
           <p>Form submissions are sent to Formspree, a third-party form service, which passes them to us. Formspree handles that data under its own terms and privacy policy. <PH>Add where submissions are then stored (for example email or a CRM) and who can access them</PH></p></> },
         { id: "analytics", h: "Analytics and cookies", body: <>
-          <p>At the time of writing, we have not configured analytics or advertising tools on the pages of this website. If we add them, we will update this policy and, where the law requires it, ask for your consent first.</p>
+          <p>We use Microsoft Clarity, a website analytics tool, to see how visitors use this website, for example which pages they open and where they click. Clarity may set cookies and record anonymised usage data such as clicks, scrolling and page views, and Microsoft processes that data for us. We have not configured advertising tools on this website. Where the law requires it, we will ask for your consent first.</p>
           <p>For details on cookies and similar technologies, see our <Link to={ROUTES.cookies}>Cookie Policy</Link>.</p></> },
         { id: "sharing", h: "How we share information", body: <>
           <p>We may share personal information with:</p>
@@ -135,12 +135,12 @@ function CookieBody() {
       sections={[
         { id: "what", h: "What cookies are", body: <p>Cookies are small text files that a website can place on your device. Similar technologies, such as local storage, can also keep information in your browser. They are used to make websites work, remember choices, and understand how a site is used.</p> },
         { id: "use", h: "How this website uses them", body: <>
-          <p>When this policy was written, we reviewed the pages of this website and found that they do not set cookies of their own, do not write to your browser&rsquo;s local or session storage, and do not load analytics, advertising or social media tracking tools. <PH>Re-check this statement against the live deployment before publication</PH></p>
+          <p>When this policy was written, we reviewed the pages of this website and found that they do not set cookies of their own for essential functions and do not load advertising or social media tracking tools. The pages do load Microsoft Clarity for analytics, which may set cookies and use your browser&rsquo;s storage (see below). <PH>Re-check this statement against the live deployment before publication</PH></p>
           <p>Our hosting provider and your browser may still handle technical data, such as server logs, as described in the <Link to={ROUTES.privacy}>Privacy Policy</Link>.</p></> },
         { id: "types", h: "Types of cookies", body: <>
           <h3>Essential cookies</h3><p>These make a website work, for example by keeping a secure session. This website does not currently need or set them.</p>
           <h3>Preference cookies</h3><p>These remember choices such as language. This website does not currently set preference cookies.</p>
-          <h3>Analytics cookies</h3><p>These count visits and show how a site is used. None are configured on this website at the time of writing.</p>
+          <h3>Analytics cookies</h3><p>These count visits and show how a site is used. This website uses Microsoft Clarity for this. It may set cookies such as <code>_clck</code> and <code>_clsk</code>.</p>
           <h3>Advertising cookies</h3><p>These are used to show or measure advertising. None are configured on this website at the time of writing.</p></> },
         { id: "third", h: "Third-party content", body: <p>This website does not embed third-party widgets that set cookies, such as maps, video or social media buttons. If you follow a link to another website, that site may use cookies under its own policy.</p> },
         { id: "future", h: "If this changes", body: <p>If we add analytics or other tools that use cookies or similar technologies, we will list them here, say what each is for and how long it lasts, and where the law requires it we will ask for your consent before they are used. <PH>Add a table of cookies if any are introduced</PH></p> },
