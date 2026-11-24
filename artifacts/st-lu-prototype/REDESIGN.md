@@ -626,3 +626,8 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 - **Footer**: top band with brand, one-paragraph description, social icons and the newsletter; below it four columns (Services 7 links, Learn 6, Company 5, Contact block) with tighter link rows (34px high, still above the 24px WCAG minimum). One column on phones.
 - **Integrations (booking page)**: provider chips stay on one line on screens 1100px and wider, "Examples" labels line up across the four cards, the Operations example is just "Built in".
 - Checked: no horizontal overflow on 31 pages at 375, 768, 1440; no console errors.
+
+## v46 — Pricing figures from the owner, footer bottom line
+
+- **Pricing** (figures given by the owner): MVP $5,000 to $15,000; Growth $16,000 to $30,000; Custom has no listed price ("Contact us for a quote"). Updated on the package cards, the summary box, its screen-reader label, the intro sentences and the "Ask about Custom" enquiry note. The timelines and package contents were not changed. The ranges are still labelled indicative, not a quote or an offer. Check: the cost guide and blog posts contain no dollar figures, so nothing else needed updating.
+- **Footer bottom line**: copyright text on the left and the legal links on the right now sit on the same line (both 44px high, centred).

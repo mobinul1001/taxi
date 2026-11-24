@@ -13,11 +13,11 @@ const CRUMBS = [{ name: "Home", to: ROUTES.home }, { name: "Pricing", to: ROUTES
 
 type Pkg = { name: string; kind: string; icon: typeof Rocket; range: string; time: string; fit: string; items: string[] };
 const PKGS: Pkg[] = [
-  { name: "MVP", kind: "Custom taxi app", icon: Rocket, range: "$15,000 to $35,000", time: "About 3 to 4 months", fit: "One city, one fleet, a first release to test real demand.",
+  { name: "MVP", kind: "Custom taxi app", icon: Rocket, range: "$5,000 to $15,000", time: "About 3 to 4 months", fit: "One city, one fleet, a first release to test real demand.",
     items: ["Passenger app and driver app", "Core booking, fare estimate and live trip status", "One payment method and basic notifications", "Admin dashboard with manual dispatch", "Staging build, store submission help and handover"] },
-  { name: "Growth", kind: "Custom taxi app", icon: Layers, range: "$35,000 to $80,000", time: "About 4 to 6 months", fit: "A working operation that needs automation, more payment options and reporting.",
+  { name: "Growth", kind: "Custom taxi app", icon: Layers, range: "$16,000 to $30,000", time: "About 4 to 6 months", fit: "A working operation that needs automation, more payment options and reporting.",
     items: ["Everything in MVP", "Automatic and zone-based dispatch rules", "Scheduled rides, promo codes, ratings and driver payouts", "Several payment methods and richer reports", "Corporate accounts or a second service area"] },
-  { name: "Custom", kind: "Uber-like app", icon: Wallet, range: "From $80,000", time: "About 6 to 12 months", fit: "Multi-city platforms, marketplaces and unusual pricing or integration needs.",
+  { name: "Custom", kind: "Uber-like app", icon: Wallet, range: "Contact us for a quote", time: "About 6 to 12 months", fit: "Multi-city platforms, marketplaces and unusual pricing or integration needs.",
     items: ["Everything in Growth", "Marketplace rules, surge or dynamic pricing", "Integrations with your own systems", "Multi-city, multi-language and multi-currency setup", "Phased roadmap with a named team"] },
 ];
 
@@ -65,13 +65,13 @@ function Body() {
             <div>
               <p className="eyebrow">Pricing</p>
               <h1>Taxi App Pricing: <em>Packages for Every Stage</em></h1>
-              <p className="sub">Three packages with indicative price ranges, timelines and what each includes. Every project is then quoted in writing against the scope we agree with you.</p>
+              <p className="sub">Three packages: two with indicative price ranges and Custom priced on request, with timelines and what each includes. Every project is then quoted in writing against the scope we agree with you.</p>
               <div className="hero-btns">
                 <button type="button" className="btn btn-primary" onClick={() => ask("Get a quote", { kind: "Not sure yet" })}>Get a Quote</button>
                 <Link className="btn btn-outline" to={ROUTES.cost}>Read the Cost Guide</Link>
               </div>
             </div>
-            <div className="pkg-sum" role="img" aria-label="Indicative price ranges: MVP 15 to 35 thousand dollars, Growth 35 to 80 thousand, Custom from 80 thousand">
+            <div className="pkg-sum" role="img" aria-label="Indicative price ranges: MVP 5 to 15 thousand dollars, Growth 16 to 30 thousand, Custom priced on request">
               {PKGS.map((p) => <div key={p.name}><p.icon size={20} aria-hidden /><b>{p.name}</b><span>{p.range}</span></div>)}
             </div>
           </div>
@@ -82,7 +82,7 @@ function Body() {
         <div className="wrap">
           <p className="eyebrow">Packages</p>
           <h2 className="h2 wide" id="h-pk">Choose the package that matches your stage</h2>
-          <p className="lede">All prices are in US dollars and indicative. They are not a quote and not an offer.</p>
+          <p className="lede">Prices are in US dollars and indicative. Custom has no listed price: contact us and we quote it after we understand your scope. None of this is a quote or an offer.</p>
           <ul className="pkgs">
             {PKGS.map((p) => (
               <li key={p.name} className={p.name === "Growth" ? "pkg pop" : "pkg"}>
@@ -93,7 +93,7 @@ function Body() {
                 <p className="tm"><CalendarClock size={15} aria-hidden /> {p.time}</p>
                 <p className="fit">{p.fit}</p>
                 <Tick items={p.items} />
-                <button type="button" className="btn btn-outline" onClick={() => ask(`Quote for the ${p.name} package`, { kind: p.kind, notes: `Interested in the ${p.name} package (${p.range}).` })}>Ask about {p.name}</button>
+                <button type="button" className="btn btn-outline" onClick={() => ask(`Quote for the ${p.name} package`, { kind: p.kind, notes: p.name === "Custom" ? "Interested in the Custom package." : `Interested in the ${p.name} package (${p.range}).` })}>Ask about {p.name}</button>
               </li>
             ))}
           </ul>

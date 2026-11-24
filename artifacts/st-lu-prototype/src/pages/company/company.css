@@ -332,3 +332,7 @@
 @media (max-width: 899px) { .tad .ftr-top { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 599px) { .tad .ftr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tad .ftr-grid > div:last-child { grid-column: 1 / -1; } }
 @media (max-width: 479px) { .tad .ftr-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+
+.tad .ftr-bot { align-items: center; }
+.tad .ftr-bot > span { line-height: 44px; }
+.tad .ftr-legal { align-items: center; }
