@@ -635,3 +635,6 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 ## v47 – Blog switched off
 - The blog index and every post are no longer routed, linked (header, mobile menu, footer, HTML sitemap) or listed in sitemap.xml or the prerender. Source files and covers stay (`blog.tsx`, `blog-post.tsx`, `blogData.ts`, `img/blog-*`) so it can be switched back on.
 - `_redirects`: `/blog`, `/blog/` and `/blog/*` go to the homepage with a 301 (Netlify behaviour not tested here).
+
+## v48 – Uber page URL
+- `/uber-clone-app-development/` is now `/uber-like-taxi-app-development/` (route, sitemap, prerender, share image). Old address 301s to the new one through `_redirects` (Netlify behaviour not tested here). Source file name unchanged.

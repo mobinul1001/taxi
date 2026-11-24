@@ -97,7 +97,7 @@ export function agencySite(): Plugin {
       w('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${ORIGIN}/sitemap.xml\n`);
       w('_headers', `/thank-you/\n  X-Robots-Tag: noindex, follow\n/404.html\n  X-Robots-Tag: noindex, follow\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/st-lucia-taxi-app/*\n  X-Robots-Tag: noindex, nofollow\n`);
       // The blog is switched off: its old addresses go to the homepage instead of showing a missing page.
-      w('_redirects', `/taxi-app-development-company  /  301\n/taxi-app-development-company/  /  301\n/blog  /  301\n/blog/  /  301\n/blog/*  /  301\n`);
+      w('_redirects', `/taxi-app-development-company  /  301\n/taxi-app-development-company/  /  301\n/blog  /  301\n/blog/  /  301\n/blog/*  /  301\n/uber-clone-app-development  /uber-like-taxi-app-development/  301\n/uber-clone-app-development/  /uber-like-taxi-app-development/  301\n`);
     },
   };
 }

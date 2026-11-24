@@ -9,7 +9,7 @@ export const PATHS = {
   booking: "/taxi-booking-app-development/",
   custom: "/custom-taxi-app-development/",
   whiteLabel: "/white-label-taxi-app/",
-  uber: "/uber-clone-app-development/",
+  uber: "/uber-like-taxi-app-development/",
   dispatch: "/taxi-dispatch-software/",
   services: "/taxi-app-development-services/",
   cost: "/taxi-app-development-cost/",
