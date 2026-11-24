@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Ic } from "./sectionicons";
 import { CalendarCheck, Clock, MousePointerClick, Presentation } from "lucide-react";
 import { StluLink } from "./stluLink";
 import { Crumbs, crumbLd, faqLd, useSeo, webPageLd } from "./seo";
@@ -56,7 +57,7 @@ function Body() {
         <div className="wrap">
           <p className="eyebrow">What to expect</p>
           <h2 className="h2 wide" id="h-ex">How a demo works</h2>
-          <ol className="askl" style={{ listStyle: "none", padding: 0 }}>{EXPECT.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ol>
+          <ol className="askl ic" style={{ listStyle: "none", padding: 0 }}>{EXPECT.map(([h, p], i) => <li key={h}><Ic set="expect" i={i} size={20} /><h3>{h}</h3><p>{p}</p></li>)}</ol>
         </div>
       </section>
 

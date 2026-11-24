@@ -584,3 +584,12 @@
 .tad .techg.intg > li, .tad .techg.intg > li:nth-child(n+4) { grid-column: span 1; }
 @media (max-width: 1099px) { .tad .techg.intg { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 599px) { .tad .techg.intg { grid-template-columns: minmax(0, 1fr); } }
+
+/* v36b: section icons */
+.tad .askl.ic li::before { display: none; }
+.tad .askl.ic li { padding-left: 74px; }
+.tad .askl.ic .xic { position: absolute; left: 18px; top: 16px; width: 40px; height: 40px; margin: 0; }
+.tad .ph6 .xic { background: var(--blue); color: #fff; width: 48px; height: 48px; border-radius: 14px; margin-bottom: 0; }
+.tad .drv > li > .xic { margin-bottom: 10px; }
+.tad .exc > li .xic { width: 36px; height: 36px; background: #fff1e6; color: #c2540a; margin-bottom: 8px; }
+.tad .bud > li .xic { width: 38px; height: 38px; margin-bottom: 8px; }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Ic } from "./sectionicons";
 import { Link } from "react-router-dom";
 import { ArrowRight, Bell, CreditCard, LayoutDashboard, Map, Server, Navigation, Users, Wallet } from "lucide-react";
 import { AdminDash, DriverScreen, PassengerScreen, Phone, Scaled } from "./mockups";
@@ -165,7 +166,7 @@ function Phases() {
         <p className="eyebrow">Development process</p>
         <h2 className="h2 wide" id="h-ph">How we build a taxi app, step by step</h2>
         <ol className="ph6" style={{ listStyle: "none", padding: 0 }}>
-          {STEPS.map(([t, d], i) => <li key={t}><span className="n" aria-hidden>{String(i + 1).padStart(2, "0")}</span><h3><span className="sr">Step {i + 1}: </span>{t}</h3><p>{d}</p></li>)}
+          {STEPS.map(([t, d], i) => <li key={t}><Ic set="devSteps" i={i} /><h3><span className="sr">Step {i + 1}: </span>{t}</h3><p>{d}</p></li>)}
         </ol>
       </div>
     </section>

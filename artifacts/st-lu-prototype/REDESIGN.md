@@ -543,3 +543,13 @@ Fixed: hooks in `ContactDialog` were declared after the early return, which stop
 - **/faq/**: sticky topic sidebar with counts (chips on mobile), live search with result count and empty state; answers open while searching. FAQ structured data still lists all questions.
 - **Legal pages**: gap under the hero reduced; "In plain English" card on each page, written only from what the full text already says.
 - **/custom-taxi-app-development/**: icons on the six situations, connector line between phases, tablet hero width, duplicate inline "Related:" removed (Related cards remain). The scope result card was already sticky.
+
+## v36b — Visuals for text-only sections
+
+Audited 16 pages at 1280px for sections with no icon, mockup or diagram. Icons (lucide, decorative, `sectionicons.tsx`) were added to: taxi-app-development build steps, dispatch exceptions, cost factors and cost stages, about principles, book-a-demo steps, portfolio story, pricing add-ons. Tables (business models, stages, skills, checklists, dispatch modes) were left as tables because they are comparison data.
+
+### Image slots still needing real material (not filled; no stock people photos, no invented clients)
+- About: team or office photo (none supplied).
+- Portfolio: real client photos or screenshots if St Lu approves them; today only the on-brand prototype mockups are used.
+- Blog: one cover image per post, and a per-post OG image (currently one shared OG image).
+- Home hero and service pages: real product screenshots once a live client product exists.

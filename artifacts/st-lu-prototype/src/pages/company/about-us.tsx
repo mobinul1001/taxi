@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Ic } from "./sectionicons";
 import { StluLink } from "./stluLink";
 import { ArrowRight, Boxes, Code2, Smartphone } from "lucide-react";
 import { AdminDash, Phone, PassengerScreen, DriverScreen, STLU, Scaled } from "./mockups";
@@ -70,7 +71,7 @@ function Body() {
         <div className="wrap">
           <p className="eyebrow">How we work</p>
           <h2 className="h2 wide" id="h-way">Principles we apply to every taxi app project</h2>
-          <ol className="askl" style={{ listStyle: "none", padding: 0 }}>{WAY.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ol>
+          <ol className="askl ic" style={{ listStyle: "none", padding: 0 }}>{WAY.map(([h, p], i) => <li key={h}><Ic set="way" i={i} size={20} /><h3>{h}</h3><p>{p}</p></li>)}</ol>
         </div>
       </section>
 

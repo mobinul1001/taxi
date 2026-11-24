@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Ic } from "./sectionicons";
 import { Link } from "react-router-dom";
 import { ArrowRight, Bell, FileText, Headset, Smartphone, Users } from "lucide-react";
 import { AdminDash, DriverScreen, Phone, RouteMap, Scaled } from "./mockups";
@@ -180,7 +181,7 @@ function Body() {
           <h2 className="h2 wide" id="h-life">Every job moves through clear states</h2>
           <p className="lede">Clear states let dispatchers see where each job is, and let the system react when something goes wrong.</p>
           <ol className="lc" style={{ listStyle: "none", padding: 0 }} aria-label="Job states">{LIFE.map((s) => <li key={s}><span>{s}</span></li>)}</ol>
-          <ul className="exc" style={{ listStyle: "none", padding: 0 }}>{EXC.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ul>
+          <ul className="exc" style={{ listStyle: "none", padding: 0 }}>{EXC.map(([h, p], i) => <li key={h}><Ic set="exc" i={i} size={20} /><h3>{h}</h3><p>{p}</p></li>)}</ul>
         </div>
       </section>
 

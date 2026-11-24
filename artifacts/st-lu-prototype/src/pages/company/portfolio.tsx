@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Ic } from "./sectionicons";
 import { ArrowRight, Boxes, Code2, Smartphone } from "lucide-react";
 import { StluLink } from "./stluLink";
 import { AdminDash, DriverScreen, PassengerScreen, Phone, STLU, Scaled } from "./mockups";
@@ -57,7 +58,7 @@ function Body() {
         <div className="wrap">
           <p className="eyebrow">The project</p>
           <h2 className="h2 wide" id="h-st">From a daily operation to a connected product</h2>
-          <ol className="askl" style={{ listStyle: "none", padding: 0 }}>{STEPS.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ol>
+          <ol className="askl ic" style={{ listStyle: "none", padding: 0 }}>{STEPS.map(([h, p], i) => <li key={h}><Ic set="story" i={i} size={20} /><h3>{h}</h3><p>{p}</p></li>)}</ol>
         </div>
       </section>
 

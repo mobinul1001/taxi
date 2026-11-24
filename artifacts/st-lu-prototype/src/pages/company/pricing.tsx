@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Ic } from "./sectionicons";
 import { ArrowRight, CalendarClock, Layers, Rocket, Wallet } from "lucide-react";
 import { Crumbs, crumbLd, faqLd, useSeo, webPageLd } from "./seo";
 import { Faq, FinalCta, Shell, Tick, useShell } from "./shell";
@@ -115,7 +116,7 @@ function Body() {
         <div className="wrap">
           <p className="eyebrow">Add-ons</p>
           <h2 className="h2 wide" id="h-ad">Extras you can add to any package</h2>
-          <ul className="need4 c3">{ADDONS.map(([h, p]) => <li key={h}><h3>{h}</h3><p>{p}</p></li>)}</ul>
+          <ul className="need4 c3">{ADDONS.map(([h, p], i) => <li key={h}><Ic set="addons" i={i} /><h3>{h}</h3><p>{p}</p></li>)}</ul>
         </div>
       </section>
 

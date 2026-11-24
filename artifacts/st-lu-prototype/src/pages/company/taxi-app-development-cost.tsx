@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Ic } from "./sectionicons";
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
@@ -189,7 +190,7 @@ function Body() {
           <p className="eyebrow">Cost drivers</p>
           <h2 className="h2 wide" id="h-dr">Eight factors that change taxi app development cost</h2>
           <p className="lede">The tag shows how strongly each factor usually moves the budget. It is general guidance, not a measurement of your project.</p>
-          <ul className="drv">{DRIVERS.map(([h, p, i]) => <li key={h}><div className="top"><h3>{h}</h3><span className={`imp ${i}`}>{i === "h" ? "High impact" : i === "m" ? "Medium impact" : "Lower impact"}</span></div><p>{p}</p></li>)}</ul>
+          <ul className="drv">{DRIVERS.map(([h, p, i], k) => <li key={h}><Ic set="drivers" i={k} /><div className="top"><h3>{h}</h3><span className={`imp ${i}`}>{i === "h" ? "High impact" : i === "m" ? "Medium impact" : "Lower impact"}</span></div><p>{p}</p></li>)}</ul>
         </div>
       </section>
 
@@ -197,7 +198,7 @@ function Body() {
         <div className="wrap">
           <p className="eyebrow">Where the budget goes</p>
           <h2 className="h2 wide" id="h-stg">What each stage of development pays for</h2>
-          <ol className="bud" style={{ listStyle: "none", padding: 0 }}>{STAGE_COST.map(([h, p], n) => <li key={h}><span className="n">STAGE {n + 1}</span><h3>{h}</h3><p>{p}</p></li>)}</ol>
+          <ol className="bud" style={{ listStyle: "none", padding: 0 }}>{STAGE_COST.map(([h, p], n) => <li key={h}><Ic set="stages" i={n} size={20} /><span className="n">STAGE {n + 1}</span><h3>{h}</h3><p>{p}</p></li>)}</ol>
           <p className="note">The services behind each stage are described on our <Link className="ref" to={ROUTES.services}>taxi app development services</Link> page.</p>
         </div>
       </section>
