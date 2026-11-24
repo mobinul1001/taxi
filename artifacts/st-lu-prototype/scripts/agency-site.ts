@@ -28,7 +28,6 @@ const lastmodOf = (u: string) => { const m = u.match(/\/blog\/([^/]+)\/$/); retu
 
 export const sitemapUrls = () => [
   ...(Object.keys(PATHS) as (keyof typeof PATHS)[]).filter((k) => !SKIP.has(k)).map((k) => (k === 'home' ? `${ORIGIN}/` : `${ORIGIN}${PATHS[k]}`)),
-  ...postSlugs().map((s) => `${ORIGIN}/blog/${s}/`),
 ];
 
 const TITLE = 'Taxi App Development Company | TaxiAppDevelopment.org';
@@ -97,7 +96,8 @@ export function agencySite(): Plugin {
         sitemapUrls().map((u) => `  <url><loc>${u}</loc><lastmod>${lastmodOf(u)}</lastmod></url>`).join('\n') + `\n</urlset>\n`);
       w('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${ORIGIN}/sitemap.xml\n`);
       w('_headers', `/thank-you/\n  X-Robots-Tag: noindex, follow\n/404.html\n  X-Robots-Tag: noindex, follow\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/st-lucia-taxi-app/*\n  X-Robots-Tag: noindex, nofollow\n`);
-      w('_redirects', `/taxi-app-development-company  /  301\n/taxi-app-development-company/  /  301\n`);
+      // The blog is switched off: its old addresses go to the homepage instead of showing a missing page.
+      w('_redirects', `/taxi-app-development-company  /  301\n/taxi-app-development-company/  /  301\n/blog  /  301\n/blog/  /  301\n/blog/*  /  301\n`);
     },
   };
 }

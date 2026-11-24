@@ -17,8 +17,6 @@ dist = Path(sys.argv[1]).resolve()
 src = Path(__file__).resolve().parent.parent / "src/pages/company/routePaths.ts"
 paths = re.findall(r':\s*"(/[^"]*)"', src.read_text())
 routes = ["/"] + [p for p in paths if p != "/taxi-app-development-company/"]
-slugs = re.findall(r'slug:\s*"([^"]+)"', (src.parent / "blogData.ts").read_text())
-routes += [f"/blog/{x}/" for x in slugs]
 template = (dist / "index.html").read_text()
 
 class H(http.server.SimpleHTTPRequestHandler):

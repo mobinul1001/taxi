@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { Clock, ListChecks } from "lucide-react";
-import { BLOG_AUTHOR, POSTS, postPath, readMins } from "./blogData";
+import { BLOG_PATH, BLOG_AUTHOR, POSTS, postPath, readMins } from "./blogData";
 import { fmtDate } from "./blog";
 import { Crumbs, crumbLd, orgRef, useSeo } from "./seo";
 import { FinalCta, Shell, useShell } from "./shell";
@@ -8,12 +8,12 @@ import { ROUTES, ORIGIN, canonicalOf } from "./routes";
 import { Cover } from "./covers";
 
 function Missing() {
-  useSeo({ title: "Post not found | TaxiAppDevelopment.org", description: "This blog post does not exist.", path: ROUTES.blog, ld: [], robots: "noindex, follow" });
+  useSeo({ title: "Post not found | TaxiAppDevelopment.org", description: "This blog post does not exist.", path: BLOG_PATH, ld: [], robots: "noindex, follow" });
   return (
     <section className="docs-hero thanks" id="top"><div className="wrap">
       <h1>Post not found</h1>
       <p className="sub">That blog post does not exist. The blog lists every guide we have published.</p>
-      <div className="hero-btns"><Link className="btn btn-primary" to={ROUTES.blog}>Go to the blog</Link></div>
+      <div className="hero-btns"><Link className="btn btn-primary" to={BLOG_PATH}>Go to the blog</Link></div>
     </div></section>
   );
 }
@@ -22,7 +22,7 @@ function Post({ slug }: { slug: string }) {
   const { ask } = useShell();
   const post = POSTS.find((p) => p.slug === slug)!;
   const path = postPath(post.slug);
-  const crumbs = [{ name: "Home", to: ROUTES.home }, { name: "Blog", to: ROUTES.blog }, { name: post.title, to: path }];
+  const crumbs = [{ name: "Home", to: ROUTES.home }, { name: "Blog", to: BLOG_PATH }, { name: post.title, to: path }];
   useSeo({
     title: post.title, description: post.desc, path,
     ld: [crumbLd(crumbs), {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock } from "lucide-react";
-import { BLOG_AUTHOR, BLOG_CATS, POSTS, postPath, readMins, type BlogCat } from "./blogData";
+import { BLOG_PATH, BLOG_AUTHOR, BLOG_CATS, POSTS, postPath, readMins, type BlogCat } from "./blogData";
 import { Crumbs, crumbLd, useSeo, webPageLd } from "./seo";
 import { FinalCta, Shell, useShell } from "./shell";
 import { ROUTES } from "./routes";
@@ -9,13 +9,13 @@ import { Cover } from "./covers";
 
 const TITLE = "Taxi App Blog: Guides on Dispatch, Payments, Launch";
 const DESC = "Practical guides for taxi and ride-hailing businesses: how dispatch works, what to build first, driver onboarding, payments and launching in a new market.";
-const CRUMBS = [{ name: "Home", to: ROUTES.home }, { name: "Blog", to: ROUTES.blog }];
+const CRUMBS = [{ name: "Home", to: ROUTES.home }, { name: "Blog", to: BLOG_PATH }];
 export const fmtDate = (d: string) => new Date(d + "T00:00:00Z").toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 
 function Body() {
   const { ask } = useShell();
   const [cat, setCat] = useState<BlogCat | "All">("All");
-  useSeo({ title: TITLE, description: DESC, path: ROUTES.blog, ld: [crumbLd(CRUMBS), webPageLd(TITLE, DESC, ROUTES.blog)] });
+  useSeo({ title: TITLE, description: DESC, path: BLOG_PATH, ld: [crumbLd(CRUMBS), webPageLd(TITLE, DESC, BLOG_PATH)] });
   const [feat, ...rest] = POSTS;
   const list = (cat === "All" ? rest : POSTS.filter((p) => p.cat === cat));
   return (

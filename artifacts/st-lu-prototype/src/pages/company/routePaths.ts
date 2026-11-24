@@ -22,7 +22,6 @@ export const PATHS = {
   disclaimer: "/disclaimer/",
   about: "/about-us/",
   pricing: "/pricing/",
-  blog: "/blog/",
   portfolio: "/portfolio/",
   features: "/features/",
   demo: "/book-a-demo/",

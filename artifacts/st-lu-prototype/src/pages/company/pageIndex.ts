@@ -1,5 +1,4 @@
 import { ROUTES } from "./routes";
-import { POSTS, postPath } from "./blogData";
 
 export type Group = "Main pages" | "Services" | "Solutions" | "Resources" | "Legal" | "hidden";
 
@@ -21,7 +20,6 @@ export const PAGE_INFO: Record<keyof typeof ROUTES, { label: string; group: Grou
   solutions: { label: "Taxi App Solutions", group: "Solutions", desc: "By business model, operation and fleet size." },
   uber: { label: "Uber-Like App Development", group: "Solutions", desc: "Your own ride-hailing marketplace." },
   dispatch: { label: "Taxi Dispatch Software", group: "Solutions", desc: "Assign jobs and run the fleet." },
-  blog: { label: "Blog", group: "Resources", desc: "Guides on taxi dispatch, features, payments and launching." },
   pricing: { label: "Taxi App Pricing", group: "Resources", desc: "Indicative packages, timelines and add-ons." },
   portfolio: { label: "Portfolio: St Lu Taxi & Tours", group: "Main pages", desc: "A case study: a taxi and tours platform prototype." },
   features: { label: "Taxi App Features", group: "Solutions", desc: "Passenger, driver, admin and backend features." },
@@ -43,7 +41,6 @@ export function sitemapGroups() {
     group: g,
     pages: [
       ...(Object.keys(ROUTES) as (keyof typeof ROUTES)[]).filter((k) => PAGE_INFO[k].group === g).map((k) => ({ ...PAGE_INFO[k], to: ROUTES[k] })),
-      ...(g === "Resources" ? POSTS.map((p) => ({ label: p.title, group: g, desc: p.summary, to: postPath(p.slug) })) : []),
     ],
   }));
 }

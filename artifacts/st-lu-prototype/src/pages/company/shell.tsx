@@ -166,7 +166,7 @@ function Header({ onQuote, say }: { onQuote: () => void; say: Say }) {
           <nav className="nav" aria-label="Main">
             <Drop k="s" label="Services" items={SERVICES} />
             <Drop k="o" label="Solutions" items={SOLUTIONS} />
-            {([["Features", ROUTES.features], ["Portfolio", ROUTES.portfolio], ["Pricing", ROUTES.pricing], ["Blog", ROUTES.blog], ["About", ROUTES.about], ["Contact", ROUTES.contact]] as const).map(([t, to]) => <div className="nav-i" key={t}><Link className="nav-b" to={to} onClick={close}>{t}</Link></div>)}
+            {([["Features", ROUTES.features], ["Portfolio", ROUTES.portfolio], ["Pricing", ROUTES.pricing], ["About", ROUTES.about], ["Contact", ROUTES.contact]] as const).map(([t, to]) => <div className="nav-i" key={t}><Link className="nav-b" to={to} onClick={close}>{t}</Link></div>)}
           </nav>
           <div className="hdr-cta">
             <button type="button" className="btn btn-primary btn-sm" onClick={onQuote}>Get a Quote</button>
@@ -182,7 +182,6 @@ function Header({ onQuote, say }: { onQuote: () => void; say: Say }) {
             <Link to={ROUTES.features} onClick={close}>Features</Link>
             <Link to={ROUTES.portfolio} onClick={close}>Portfolio</Link>
             <Link to={ROUTES.pricing} onClick={close}>Pricing</Link>
-            <Link to={ROUTES.blog} onClick={close}>Blog</Link>
             <Link to={ROUTES.about} onClick={close}>About</Link>
             <Link to={ROUTES.demo} onClick={close}>Book a demo</Link>
             <Link to={ROUTES.contact} onClick={close}>Contact</Link>
@@ -291,7 +290,7 @@ function Footer({ onContact }: { say: Say; onContact: () => void }) {
           </div>
           <div>
             <h3>Learn</h3>
-            <ul>{page("Taxi App Solutions", ROUTES.solutions)}{page("Taxi App Features", ROUTES.features)}{page("Taxi App Development Cost", ROUTES.cost)}{page("Taxi App Developers", ROUTES.developers)}{page("Blog", ROUTES.blog)}{page("FAQ", ROUTES.faq)}</ul>
+            <ul>{page("Taxi App Solutions", ROUTES.solutions)}{page("Taxi App Features", ROUTES.features)}{page("Taxi App Development Cost", ROUTES.cost)}{page("Taxi App Developers", ROUTES.developers)}{page("FAQ", ROUTES.faq)}</ul>
           </div>
           <div>
             <h3>Company</h3>

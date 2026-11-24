@@ -213,6 +213,8 @@ export const POSTS: BlogPost[] = [
   },
 ];
 
+/** The blog is switched off (not routed, not linked, not in the sitemap). The files stay so it can be switched back on. */
+export const BLOG_PATH = "/blog/";
 export const postPath = (slug: string) => `/blog/${slug}/`;
 export const wordCount = (p: BlogPost) => p.sections.reduce((n, s) => n + s.p.join(" ").split(/\s+/).length + (s.list ?? []).join(" ").split(/\s+/).length, 0) + p.takeaways.join(" ").split(/\s+/).length;
 export const readMins = (p: BlogPost) => Math.max(3, Math.round(wordCount(p) / 200));
