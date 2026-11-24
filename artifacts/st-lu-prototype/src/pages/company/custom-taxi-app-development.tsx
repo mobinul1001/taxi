@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, Check, CreditCard, FileText, LayoutDashboard, Map, Navigation, Puzzle, Smartphone, Tag, Users } from "lucide-react";
+import { ArrowRight, Building2, Check, CreditCard, FileText, Globe2, Plug, Route, Accessibility, Headset, LayoutDashboard, Map, Navigation, Puzzle, Smartphone, Tag, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Crumbs, crumbLd, faqLd, serviceLd, useSeo } from "./seo";
 import { Faq, FinalCta, Pic, Shell, go, useShell } from "./shell";
@@ -76,6 +76,7 @@ function Decide() {
   );
 }
 
+const UIC = [Route, Building2, Headset, Globe2, Accessibility, Plug];
 const USES: [string, string][] = [
   ["Fixed pricing for airports and tours", "Zone-to-zone and route-based prices, return trips and waiting time, shown to the customer before they confirm."],
   ["Corporate accounts and invoicing", "Company profiles, ride approvals, cost centres and monthly invoicing for business customers."],
@@ -93,7 +94,7 @@ function Uses() {
         <h2 className="h2 wide" id="h-use">Situations that call for a custom taxi app</h2>
         <p className="lede">Custom development earns its extra effort where your business differs from the standard taxi playbook.</p>
         <ol className="uses" style={{ listStyle: "none", padding: 0 }}>
-          {USES.map(([h, p], i) => <li className="use" key={h}><span className="n" aria-hidden>{String(i + 1).padStart(2, "0")}</span><h3>{h}</h3><p>{p}</p></li>)}
+          {USES.map(([h, p], i) => <li className="use" key={h}>{(() => { const I = UIC[i]; return <span className="n" aria-hidden><I size={26} /></span>; })()}<h3>{h}</h3><p>{p}</p></li>)}
         </ol>
       </div>
     </section>
@@ -239,9 +240,6 @@ function Body() {
       <Scope />
       <Phases />
       <Arch />
-      <section className="sec sec-white" aria-label="Related pages" style={{ paddingBlock: 32 }}>
-        <div className="wrap"><p style={{ color: "#4b5878" }}>Related: <Link className="ref" to={ROUTES.dev}>taxi app development overview</Link> &middot; <Link className="ref" to={ROUTES.booking}>taxi booking app development</Link></p></div>
-      </section>
       <Faq items={FAQS} onAsk={() => ask("Ask us a question")} heading="Custom taxi app development questions, answered" />
       <Related page="custom" />
       <FinalCta title="Ready to Scope Your Custom Taxi App?" text="Bring your scope list, your pricing rules and the systems you use. We will turn them into a phased plan and a quote." startLabel="Request a Custom Quote" consultLabel="Book a Discovery Call" onStart={() => ask("Request a custom taxi app quote", { kind: "Custom taxi app" })} onConsult={() => ask("Book a discovery call", { kind: "Custom taxi app" })} />

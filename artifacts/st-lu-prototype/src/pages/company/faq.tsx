@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { Crumbs, crumbLd, faqLd, useSeo } from "./seo";
 import { FinalCta, Shell, go, useShell } from "./shell";
 import { ROUTES } from "./routes";
@@ -52,6 +52,11 @@ function Body() {
   // FAQ structured data uses plain-text versions of the answers.
   const plain: [string, string][] = CATS.flatMap((c) => c.items.map((i) => [i.q, i.t || textOf(i.a)] as [string, string]));
   useSeo({ title: TITLE, description: DESC, path: ROUTES.faq, ld: [crumbLd(CRUMBS), faqLd(plain)] });
+  const [term, setTerm] = useState("");
+  const texts = useMemo(() => new Map(plain.map(([q, a]) => [q, `${q} ${a}`.toLowerCase()])), []);
+  const t = term.trim().toLowerCase();
+  const shown = CATS.map((c) => ({ ...c, items: t ? c.items.filter((i) => texts.get(i.q)!.includes(t)) : c.items })).filter((c) => c.items.length);
+  const count = shown.reduce((n, c) => n + c.items.length, 0);
   return (
     <>
       <section className="docs-hero" id="top">
@@ -59,17 +64,28 @@ function Body() {
           <Crumbs items={CRUMBS} />
           <h1>Taxi App Development FAQ</h1>
           <p className="sub">Quick answers on passenger and driver apps, dispatch, custom and white label builds, integrations, support and cost. For depth, follow the links to the dedicated pages.</p>
-          <div className="anat-tabs" role="navigation" aria-label="FAQ topics">{CATS.map((c) => <button key={c.id} type="button" className="tab" onClick={() => go(c.id)}>{c.h}</button>)}</div>
+          <div className="faq-search">
+            <label htmlFor="faq-q" className="sr">Search the FAQ</label>
+            <input id="faq-q" type="search" value={term} onChange={(e) => setTerm(e.target.value)} placeholder="Search questions, e.g. payment, driver, cost" autoComplete="off" />
+            <p role="status" aria-live="polite" className="faq-count">{t ? `${count} ${count === 1 ? "answer" : "answers"} found` : `${plain.length} questions`}</p>
+          </div>
         </div>
       </section>
       <section className="sec sec-white">
-        <div className="wrap faqs">
-          {CATS.map((c) => (
-            <section key={c.id} id={c.id} aria-labelledby={`${c.id}-h`}>
-              <h2 id={`${c.id}-h`}>{c.h}</h2>
-              {c.items.map((i) => <details key={i.q} className="qa"><summary>{i.q}</summary><div>{i.a}</div></details>)}
-            </section>
-          ))}
+        <div className="wrap faq-layout">
+          <nav className="faq-side" aria-label="FAQ topics">
+            <p>Topics</p>
+            <ul>{CATS.map((c) => <li key={c.id}><a href={`#${c.id}`} onClick={(e) => { e.preventDefault(); go(c.id); }}>{c.h}<span>{c.items.length}</span></a></li>)}</ul>
+          </nav>
+          <div className="faqs">
+            {shown.map((c) => (
+              <section key={c.id} id={c.id} aria-labelledby={`${c.id}-h`}>
+                <h2 id={`${c.id}-h`}>{c.h}</h2>
+                {c.items.map((i) => <details key={i.q} className="qa" open={t ? true : undefined}><summary>{i.q}</summary><div>{i.a}</div></details>)}
+              </section>
+            ))}
+            {!count && <p className="faq-empty">No answers match “{term}”. Try a shorter word, or <button type="button" className="link" onClick={() => ask("Ask us a question", { kind: "Not sure yet" })}>ask us directly</button>.</p>}
+          </div>
         </div>
       </section>
       <FinalCta title="Still Have a Question?" text="Ask us about your project. We reply with a clear next step." startLabel="Ask a Question" consultLabel="Request a Consultation" onStart={() => ask("Ask us a question", { kind: "Not sure yet" })} onConsult={() => ask("Request a consultation", { kind: "Not sure yet" })} />

@@ -9,7 +9,7 @@ const UPDATED = "24 November 2026";
 
 type Sec = { id: string; h: string; body: ReactNode };
 
-function DocPage({ title, description, path, name, intro, sections }: { title: string; description: string; path: string; name: string; intro: string; sections: Sec[] }) {
+function DocPage({ title, description, path, name, intro, sections, summary }: { title: string; description: string; path: string; name: string; intro: string; sections: Sec[]; summary: string[] }) {
   // Legal pages deliberately carry no structured data.
   useSeo({ title, description, path, ld: [] });
   const crumbs = [{ name: "Home", to: ROUTES.home }, { name, to: path }];
@@ -30,6 +30,7 @@ function DocPage({ title, description, path, name, intro, sections }: { title: s
             <ol>{sections.map((s) => <li key={s.id}><a href={`#${s.id}`} onClick={(e) => { e.preventDefault(); document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}>{s.h}</a></li>)}</ol>
           </nav>
           <article className="doc">
+            <aside className="plain" aria-labelledby="plain-h"><h2 id="plain-h">In plain English</h2><ul>{summary.map((x) => <li key={x}>{x}</li>)}</ul><p>This summary is a shortcut, not part of the policy. The full text below applies.</p></aside>
             {sections.map((s) => <section key={s.id} id={s.id} aria-labelledby={`${s.id}-h`}><h2 id={`${s.id}-h`}>{s.h}</h2>{s.body}</section>)}
           </article>
         </div>
@@ -46,6 +47,7 @@ function PrivacyBody() {
     <DocPage
       title="Privacy Policy | TaxiAppDevelopment.org"
       description="How TaxiAppDevelopment.org may collect, use, store and share personal information submitted through this website, and the choices you have."
+      summary={["We collect what you type into our forms, plus basic usage data from our analytics tool.", "Forms go through Formspree, the site is hosted on Netlify and analytics come from Microsoft Clarity.", "We use your details to reply to you and to run and secure the website. There is no advertising tracking.", "You can ask to see, correct or delete your information through the contact page."]}
       path={ROUTES.privacy} name="Privacy Policy"
       intro="This policy explains what personal information we may collect through this website, why, how it is handled and what choices you have."
       sections={[
@@ -95,6 +97,7 @@ function TermsBody() {
     <DocPage
       title="Terms and Conditions | TaxiAppDevelopment.org"
       description="Terms for using the TaxiAppDevelopment.org website: permitted use, intellectual property, external links, limits on liability and general terms."
+      summary={["These terms cover using this website only, not a software project.", "A project is governed only by a separate written agreement.", "Sending an enquiry does not create a contract.", "Please use the site lawfully and do not copy its content at scale without permission."]}
       path={ROUTES.terms} name="Terms and Conditions"
       intro="These terms apply to your use of this website. They do not set the terms of any software development project, which are agreed separately in writing."
       sections={[
@@ -127,6 +130,7 @@ function CookieBody() {
     <DocPage
       title="Cookie Policy | TaxiAppDevelopment.org"
       description="What cookies and similar technologies are, and how they are used or not used on the TaxiAppDevelopment.org website."
+      summary={["The pages set no cookies of their own and show no advertising or social tracking.", "Microsoft Clarity analytics may set cookies such as _clck and _clsk.", "There is no cookie banner. You can block cookies or scripts in your browser or with a content blocker."]}
       path={ROUTES.cookies} name="Cookie Policy"
       intro="This policy explains what cookies are and what this website does and does not use them for."
       sections={[
@@ -155,6 +159,7 @@ function DisclaimerBody() {
     <DocPage
       title="Disclaimer | TaxiAppDevelopment.org"
       description="Website information is general. Project timelines, features, costs and results depend on your requirements and a written agreement."
+      summary={["The site gives general information, not an offer or a promise.", "Timelines, features, costs and results depend on your scope and a written agreement.", "Sample screens and tools are illustrations, not real client results.", "Nothing here is legal advice."]}
       path={ROUTES.disclaimer} name="Disclaimer"
       intro="The information on this website is general. Please read it as a starting point for a conversation, not as an offer or a promise."
       sections={[

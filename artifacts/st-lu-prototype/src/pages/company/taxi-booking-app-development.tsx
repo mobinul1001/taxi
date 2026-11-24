@@ -170,11 +170,11 @@ const DISPATCH: [string, string][] = [
   ["Track", "Both sides see live status until drop-off, then payment and rating."],
 ];
 
-const INTEG: [string, string[]][] = [
-  ["Maps and routing", ["Route and distance for fares", "Address search", "Live driver position"]],
-  ["Payments", ["Card and wallet gateway", "Cash option", "Receipts"]],
-  ["Messaging", ["Push notifications", "SMS", "WhatsApp job links"]],
-  ["Operations", ["Admin booking panel", "Driver and vehicle records", "Document expiry alerts"]],
+const INTEG: { t: string; what: string; eg: string[] }[] = [
+  { t: "Maps and routing", what: "Route and distance for fares, address search and live driver position.", eg: ["Google Maps Platform", "Mapbox"] },
+  { t: "Payments", what: "Card and wallet gateway, a cash option and receipts. Availability depends on your country.", eg: ["Stripe", "PayPal", "Square"] },
+  { t: "Messaging", what: "Push notifications, SMS and WhatsApp job links for passengers and drivers.", eg: ["Twilio", "WhatsApp Business Platform", "Firebase Cloud Messaging"] },
+  { t: "Operations", what: "The admin booking panel, driver and vehicle records and document expiry alerts, built into the platform itself.", eg: ["Built in, no third party needed"] },
 ];
 
 function Body() {
@@ -240,7 +240,8 @@ function Body() {
           <p className="eyebrow">Integrations</p>
           <h2 className="h2 wide" id="h-int">Connect the booking app to the services you already use</h2>
           <p className="lede">Bookings can come from the app or be entered by your dispatcher, and both end up in the same place. Providers are chosen with you during the backend phase.</p>
-          <div className="tech">{INTEG.map(([g, l]) => <div key={g}><h3>{g}</h3><ul>{l.map((x) => <li key={x}>{x}</li>)}</ul></div>)}</div>
+          <ul className="techg intg">{INTEG.map(({ t, what, eg }) => <li key={t}><h3>{t}</h3><p>{what}</p><p className="eg">Examples</p><ul className="chips-t">{eg.map((x) => <li key={x}>{x}</li>)}</ul></li>)}</ul>
+          <p className="note">These are examples of well-known providers, not partnerships or endorsements. The right choice depends on your country and volume, and we agree it with you.</p>
         </div>
       </section>
 

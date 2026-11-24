@@ -550,3 +550,37 @@
 .tad .post-cta { margin-top: 44px; padding: 24px; border-radius: 16px; background: #0b1b4d; color: #fff; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
 .tad .post-cta p { color: #e7edff; font-size: 17px; margin: 0; flex: 1 1 320px; } .tad .post-cta a { color: #9cc0ff; text-decoration: underline; }
 .tad .post-body ul, .tad .takeaways ul { list-style: disc; padding-left: 4px; } .tad .post-body ul li, .tad .takeaways ul li { padding-left: 4px; }
+
+/* v36: FAQ layout, search; integrations */
+.tad .faq-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; align-items: start; }
+.tad .faq-side { position: sticky; top: 96px; }
+.tad .faq-side p { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); font-weight: 700; margin-bottom: 10px; }
+.tad .faq-side ul { display: grid; gap: 4px; }
+.tad .faq-side a { display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px; border-radius: 10px; font-weight: 600; font-size: 15px; color: var(--ink); }
+.tad .faq-side a:hover { background: #eaf0ff; color: var(--blue); }
+.tad .faq-side a span { color: var(--mute); font-weight: 500; }
+.tad .faq-layout .faqs section:first-child { margin-top: 0; }
+@media (max-width: 899px) { .tad .faq-layout { grid-template-columns: minmax(0, 1fr); gap: 8px; } .tad .faq-side { position: static; } .tad .faq-side ul { display: flex; flex-wrap: wrap; gap: 8px; } .tad .faq-side a { border: 1px solid var(--line); } }
+.tad .faq-search { margin-top: 22px; max-width: 560px; }
+.tad .faq-search input { width: 100%; min-height: 48px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); font: inherit; font-size: 16px; background: #fff; }
+.tad .faq-search input:focus-visible { outline: 3px solid #b9ccff; border-color: var(--blue); }
+.tad .faq-count { margin-top: 8px; font-size: 14px; color: var(--mute); }
+.tad .faq-empty { padding: 28px 0; color: var(--mute); }
+.tad .intg .eg { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin-top: auto; padding-top: 6px; }
+.tad .intg .chips-t { margin-top: 0; padding-top: 0; }
+
+/* v36: legal plain-English card */
+.tad .plain { padding: 22px 24px; border-radius: 16px; background: #f5f8ff; border: 1px solid #e3eafb; border-left: 4px solid var(--blue); }
+.tad .doc .plain h2 { font-size: 19px; } .tad .doc .plain ul { margin-top: 8px; }
+.tad .doc .plain li { font-size: 16px; } .tad .doc .plain p { font-size: 14.5px; color: var(--mute); }
+.tad .docs-hero + .sec { padding-top: clamp(28px, 4vw, 48px); }
+
+/* v36: custom page */
+.tad .use .n { width: 52px; height: 52px; border-radius: 14px; background: #eaf0ff; color: var(--blue); display: grid; place-items: center; font-size: 0; }
+.tad .phs { position: relative; }
+@media (min-width: 760px) { .tad .ph { position: relative; } .tad .ph:not(:last-child) .n::after { content: ""; position: absolute; left: 21px; top: 66px; bottom: -22px; width: 2px; background: #c7d6ff; } .tad .ph .n { position: relative; z-index: 1; } }
+@media (min-width: 600px) and (max-width: 899px) { .tad .hero-b .grid2 .pic, .tad .hero-b .grid2 > :last-child { max-width: 520px; margin-inline: auto; width: 100%; } }
+.tad .techg.intg { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tad .techg.intg > li, .tad .techg.intg > li:nth-child(n+4) { grid-column: span 1; }
+@media (max-width: 1099px) { .tad .techg.intg { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 599px) { .tad .techg.intg { grid-template-columns: minmax(0, 1fr); } }

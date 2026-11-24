@@ -536,3 +536,10 @@ Fixed: hooks in `ContactDialog` were declared after the early return, which stop
 - **Platform**: phones shown in full (stage height 500px).
 - **Explore / Related**: each card has an icon; FAQ left column has a contact card (form-only, ET working hours).
 - Not done in v35: Fleet operations was already in the Admin list; featured project is not yet a link card to /portfolio/ (buttons unchanged).
+
+## v36 — Pages
+
+- **/taxi-booking-app-development/ integrations**: four cards with example providers (Google Maps Platform, Mapbox; Stripe, PayPal, Square; Twilio, WhatsApp Business Platform, Firebase Cloud Messaging). A note says they are examples, not partnerships. Owner should confirm the list.
+- **/faq/**: sticky topic sidebar with counts (chips on mobile), live search with result count and empty state; answers open while searching. FAQ structured data still lists all questions.
+- **Legal pages**: gap under the hero reduced; "In plain English" card on each page, written only from what the full text already says.
+- **/custom-taxi-app-development/**: icons on the six situations, connector line between phases, tablet hero width, duplicate inline "Related:" removed (Related cards remain). The scope result card was already sticky.
