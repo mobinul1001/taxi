@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "St Lu Taxi And Tours"
+description = "Frontend-only client-demo foundation: prototype hub, passenger and driver phone shells, desktop shells, reusable UI component gallery and centralized realistic mock data. No real services or booking screens."
+version = "1.0.0"
+id = "artifacts/st-lu-prototype"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25632
+
+[services.development]
+run = "pnpm --filter @workspace/st-lu-prototype run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/st-lu-prototype", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/st-lu-prototype/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25632"
+BASE_PATH = "/"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Superseded: the agency build (pnpm run build:agency) now generates the real sitemap.xml from src/pages/company/routePaths.ts.
+     This older file stays only so nothing that linked to it breaks; it is not used by the agency build. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://taxiappdevelopment.org/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/taxi-app-development/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/taxi-booking-app-development/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/custom-taxi-app-development/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/white-label-taxi-app/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/uber-clone-app-development/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/taxi-dispatch-software/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/taxi-app-development-services/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/taxi-app-development-cost/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/taxi-app-developers/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/taxi-app-solutions/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/contact/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/about-us/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/faq/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/sitemap/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/privacy-policy/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/terms-and-conditions/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/cookie-policy/</loc></url>
+  <url><loc>https://taxiappdevelopment.org/disclaimer/</loc></url>
+</urlset>
