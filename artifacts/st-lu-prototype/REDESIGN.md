@@ -571,3 +571,13 @@ Audited 16 pages at 1280px for sections with no icon, mockup or diagram. Icons (
 - Footer column titles changed from h4 to h3, fixing the skipped heading level on every page.
 - Result: Lighthouse accessibility 100 on all 29 pages checked (28 indexable plus thank-you), mobile run on a local server. Lighthouse covers automated checks only; keyboard, screen reader and focus order were not tested by hand.
 - Still to do in later steps: text under 12px at 375px, tap targets, focus states, skip link, reduced motion.
+
+## v39 — Accessibility step 2: small text, tap targets, focus, skip link, motion
+
+Measured first at 375px across 21 pages (text outside decorative mockups; links and buttons outside running text).
+- **Small text**: only table header and table-label text at 11.5px; now 12px.
+- **Tap targets**: footer links, footer legal links, "Send us a message", the logo and the legal-page table of contents raised to 44px high. Not changed: links inside running paragraphs (exempt under WCAG 2.5.8), breadcrumbs (28px high, above the 24px minimum), and a few very short words such as "Blog" or "FAQ" in the footer (44px high but under 44px wide).
+- **Focus**: one `--focus` colour variable. Dark blue (`#2255e8`) on light areas, cyan on dark areas (header, footer, navy sections, hero, result panels). The old cyan ring on white was too faint. Checked on the FAQ search (blue) and a footer link (cyan).
+- **Skip link**: "Skip to main content" is the first Tab stop on every page, moves focus to `<main id="main">`.
+- **Reduced motion**: a `prefers-reduced-motion` rule stops transitions and animations; the legal table of contents and the contact scroll now respect it too (the shared `go()` already did). Checked with Chromium's reduced-motion emulation.
+- Lighthouse accessibility still 100 on the four pages re-run (home, solutions, privacy, FAQ). Hand testing with a real screen reader was not done.

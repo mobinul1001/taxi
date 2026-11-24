@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Crumbs, useSeo } from "./seo";
-import { Shell } from "./shell";
+import { Shell, go } from "./shell";
 import { ROUTES } from "./routes";
 
 /** The date these pages were last reviewed and published. */
@@ -27,7 +27,7 @@ function DocPage({ title, description, path, name, intro, sections, summary }: {
         <div className="wrap docs-grid">
           <nav className="toc" aria-label="On this page">
             <p>On this page</p>
-            <ol>{sections.map((s) => <li key={s.id}><a href={`#${s.id}`} onClick={(e) => { e.preventDefault(); document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}>{s.h}</a></li>)}</ol>
+            <ol>{sections.map((s) => <li key={s.id}><a href={`#${s.id}`} onClick={(e) => { e.preventDefault(); go(s.id); }}>{s.h}</a></li>)}</ol>
           </nav>
           <article className="doc">
             <aside className="plain" aria-labelledby="plain-h"><h2 id="plain-h">In plain English</h2><ul>{summary.map((x) => <li key={x}>{x}</li>)}</ul><p>This summary is a shortcut, not part of the policy. The full text below applies.</p></aside>

@@ -282,7 +282,7 @@ function Footer({ onContact }: { say: Say; onContact: () => void }) {
           </div>
           <div>
             <h3>Contact</h3>
-            <p style={{ fontSize: 15 }}><button type="button" onClick={onContact} style={{ background: "none", border: 0, color: "#6c9bff", fontWeight: 650, padding: 0, minHeight: 36, textDecoration: "underline" }}>Send us a message</button> through the contact form.</p>
+            <p style={{ fontSize: 15 }}><button type="button" onClick={onContact} style={{ background: "none", border: 0, color: "#6c9bff", fontWeight: 650, padding: 0, minHeight: 44, textDecoration: "underline" }}>Send us a message</button> through the contact form.</p>
             <p style={{ fontSize: 15, display: "flex", gap: 8, alignItems: "flex-start" }}><Clock size={16} aria-hidden style={{ marginTop: 4, flex: "none" }} /><span>Monday to Friday, 9:00 AM to 5:00 PM<br />Eastern Time (ET), USA</span></p>
             <h3 style={{ marginTop: 20 }}>Stay in the loop</h3>
             <form className="news" onSubmit={subscribe}>
@@ -315,7 +315,7 @@ export function Shell({ children, testId }: { children: ReactNode; testId: strin
   const say: Say = useCallback((m) => { setMsg(m); clearTimeout(timer.current); timer.current = setTimeout(() => setMsg(null), 3200); }, []);
   const ask = useCallback((_topic: string, o?: AskOpts) => {
     // "Get a Quote" and "Contact" are one page. Any topic or kind a button carries is passed on to pre-fill the form.
-    if (pathname === ROUTES.contact) { const f = document.getElementById("form"); f?.scrollIntoView({ behavior: "smooth", block: "start" }); f?.querySelector<HTMLElement>("input")?.focus({ preventScroll: true }); return; }
+    if (pathname === ROUTES.contact) { const f = document.getElementById("form"); f?.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); f?.querySelector<HTMLElement>("input")?.focus({ preventScroll: true }); return; }
     nav(ROUTES.contact, { state: { kind: o?.kind, notes: o?.notes } });
   }, [nav, pathname]);
   useEffect(() => { window.scrollTo(0, 0); return () => clearTimeout(timer.current); }, []);
@@ -323,8 +323,9 @@ export function Shell({ children, testId }: { children: ReactNode; testId: strin
   return (
     <ShellCtx.Provider value={{ ask, say }}>
       <div className="tad" data-testid={testId}>
+        <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); const m = document.getElementById("main"); m?.focus({ preventScroll: true }); m?.scrollIntoView({ behavior: "auto", block: "start" }); }}>Skip to main content</a>
         <Header onQuote={() => ask("Get a quote")} say={say} />
-        <main>{children}</main>
+        <main id="main" tabIndex={-1}>{children}</main>
         <Footer say={say} onContact={() => ask("Contact us")} />
         <ContactDialog dlg={dlg} onClose={close} />
         {msg && <div className="tad-live" role="status">{msg}</div>}

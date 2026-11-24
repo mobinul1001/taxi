@@ -54,7 +54,7 @@
   .tad .tbl tbody tr:last-child { border-bottom: 0; }
   .tad .tbl tbody th { width: 100%; padding: 12px 16px 2px; border: 0; font-size: 17px; }
   .tad .tbl td { padding: 6px 16px; border: 0; }
-  .tad .tbl td::before { content: attr(data-label); display: block; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--blue); }
+  .tad .tbl td::before { content: attr(data-label); display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--blue-t); }
 }
 
 .tad .routes3 { margin-top: 32px; display: grid; gap: 18px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -137,7 +137,7 @@
 .tad .opt input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
 .tad .opt span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 99px; border: 1.5px solid var(--line); background: #fff; font-weight: 600; font-size: 15px; }
 .tad .opt input:checked + span { background: var(--ink); color: #fff; border-color: var(--ink); }
-.tad .opt input:focus-visible + span { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.tad .opt input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
 .tad .result { position: sticky; top: 92px; background: var(--navy-900); color: #fff; border-radius: 18px; padding: 24px; }
 .tad .result h3 { font-size: 22px; margin-top: 6px; }
 .tad .result p { color: var(--on-navy); margin-top: 10px; font-size: 15.5px; }
@@ -162,7 +162,7 @@
 .tad .mod input:checked ~ .bx { background: var(--blue); border-color: var(--blue); color: #fff; }
 .tad .mod input:checked ~ .tx { color: #fff; }
 .tad .mod:has(input:checked) { border-color: var(--blue-soft); background: rgba(43,99,255,.18); }
-.tad .mod:has(input:focus-visible) { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.tad .mod:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
 .tad .mod .tx { font-weight: 620; font-size: 15px; color: var(--on-navy); }
 .tad .mod .tx small { display: block; font-weight: 450; font-size: 13px; color: var(--on-navy-mute); margin-top: 1px; }
 .tad .sum { position: sticky; top: 92px; background: #fff; color: var(--ink); border-radius: 18px; padding: 22px; }
@@ -201,7 +201,7 @@
 .tad .cfg h2 { font-size: 16px; }
 .tad .cfg label.lb { display: block; font-size: 13px; font-weight: 650; margin: 14px 0 6px; }
 .tad .cfg input[type="text"] { width: 100%; min-height: 46px; border: 1.5px solid #cfd7ea; border-radius: 10px; padding: 0 12px; font: inherit; font-size: 16px; color: var(--ink); background: #fff; }
-.tad .cfg input[type="text"]:focus-visible { outline: 3px solid var(--cyan); outline-offset: 1px; }
+.tad .cfg input[type="text"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
 .tad .sws { display: flex; gap: 10px; flex-wrap: wrap; }
 .tad .sw { width: 44px; height: 44px; border-radius: 12px; border: 3px solid #fff; box-shadow: 0 0 0 1.5px #cfd7ea; cursor: pointer; display: grid; place-items: center; color: #fff; }
 .tad .sw[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--ink); }
@@ -304,7 +304,7 @@
 .tad .mx tbody th { font-weight: 600; }
 .tad .mx tbody tr:last-child th, .tad .mx tbody tr:last-child td { border-bottom: 0; }
 .tad .mx tbody tr:nth-child(even) { background: #f8f9fd; }
-@media (max-width: 559px) { .tad .mx { font-size: 14px; } .tad .mx th, .tad .mx td { padding: 11px 8px; } .tad .mx thead th { font-size: 11.5px; letter-spacing: .02em; } }
+@media (max-width: 559px) { .tad .mx { font-size: 14px; } .tad .mx th, .tad .mx td { padding: 11px 8px; } .tad .mx thead th { font-size: 12px; letter-spacing: .02em; } }
 
 /* ===== Services / Cost / Developers pages ===== */
 .tad .ledger { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 8px; box-shadow: 0 30px 60px -30px rgba(10,19,48,.35); }
@@ -344,7 +344,7 @@
 .tad .est .opt input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
 .tad .est .opt span { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 99px; border: 1.5px solid var(--line); background: #fff; font-weight: 620; font-size: 15px; }
 .tad .est .opt input:checked + span { background: #eaf0ff; border-color: var(--blue); color: #1b46c4; }
-.tad .est .opt input:focus-visible + span { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.tad .est .opt input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
 .tad .est .res { position: sticky; top: 88px; background: var(--navy-900); color: #fff; border-radius: 20px; padding: 24px; }
 .tad .est .res h3 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--cyan); }
 .tad .est .res .lvl { font-size: clamp(26px, 3vw, 34px); font-weight: 750; letter-spacing: -.03em; margin-top: 8px; }
@@ -382,7 +382,7 @@
 .tad .mdl input { position: absolute; opacity: 0; inset: 0; margin: 0; width: 100%; height: 100%; cursor: pointer; }
 .tad .mdl .c { display: block; height: 100%; background: #fff; border: 1.5px solid var(--line); border-radius: 16px; padding: 20px; }
 .tad .mdl input:checked + .c { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(43,99,255,.14); }
-.tad .mdl input:focus-visible + .c { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.tad .mdl input:focus-visible + .c { outline: 3px solid var(--focus); outline-offset: 2px; }
 .tad .mdl h3 { font-size: 19px; } .tad .mdl dl { margin: 12px 0 0; display: grid; gap: 10px; font-size: 14.5px; } .tad .mdl dt { font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); } .tad .mdl dd { margin: 2px 0 0; color: var(--mute); }
 .tad .rhy { margin-top: 30px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; position: relative; }
 .tad .rhy > li { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; position: relative; }
@@ -444,7 +444,7 @@
 .tad .fnd .chs span { display: inline-flex; flex-direction: column; justify-content: center; min-height: 44px; padding: 8px 16px; border-radius: 14px; border: 1.5px solid var(--line); background: #fff; font-weight: 640; font-size: 15px; }
 .tad .fnd .chs small { font-weight: 500; color: var(--mute); font-size: 12.5px; }
 .tad .fnd .chs input:checked + span { background: #eaf0ff; border-color: var(--blue); color: #1b46c4; }
-.tad .fnd .chs input:focus-visible + span { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.tad .fnd .chs input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
 .tad .mnav a { display: flex; width: 100%; align-items: center; min-height: 48px; padding: 0 4px; color: #e7ecff; font-size: 16px; font-weight: 560; border-bottom: 1px solid rgba(255,255,255,.06); }
 .tad .mnav .sub a { padding-left: 18px; font-size: 15px; font-weight: 500; color: var(--on-navy); }
 .tad .cform .field input, .tad .cform .field select { font: inherit; font-size: 16px; min-height: 48px; width: 100%; min-width: 0; padding: 0 14px; border-radius: 10px; border: 1.5px solid #cfd8ee; background: #fff; color: var(--ink); }
@@ -464,8 +464,8 @@
 .tad .toc { position: sticky; top: 88px; font-size: 14.5px; }
 .tad .toc p { font-weight: 700; margin-bottom: 8px; }
 .tad .toc ol { list-style: none; display: grid; gap: 2px; border-left: 2px solid var(--line); }
-.tad .toc a { display: block; padding: 7px 12px; color: var(--mute); min-height: 34px; }
-.tad .toc a:hover { color: var(--blue); }
+.tad .toc a { display: flex; align-items: center; padding: 7px 12px; color: var(--mute); min-height: 44px; }
+.tad .toc a:hover { color: var(--blue-t); }
 .tad .doc section { margin-top: 36px; scroll-margin-top: 90px; }
 .tad .doc h2 { font-size: clamp(22px, 2.4vw, 28px); }
 .tad .doc h3 { font-size: 17px; margin-top: 18px; }
@@ -563,7 +563,7 @@
 @media (max-width: 899px) { .tad .faq-layout { grid-template-columns: minmax(0, 1fr); gap: 8px; } .tad .faq-side { position: static; } .tad .faq-side ul { display: flex; flex-wrap: wrap; gap: 8px; } .tad .faq-side a { border: 1px solid var(--line); } }
 .tad .faq-search { margin-top: 22px; max-width: 560px; }
 .tad .faq-search input { width: 100%; min-height: 48px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); font: inherit; font-size: 16px; background: #fff; }
-.tad .faq-search input:focus-visible { outline: 3px solid #b9ccff; border-color: var(--blue); }
+.tad .faq-search input:focus-visible { outline: 3px solid var(--focus); border-color: var(--blue); }
 .tad .faq-count { margin-top: 8px; font-size: 14px; color: var(--mute); }
 .tad .faq-empty { padding: 28px 0; color: var(--mute); }
 .tad .intg .eg { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin-top: auto; padding-top: 6px; }
