@@ -638,3 +638,7 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 
 ## v48 – Uber page URL
 - `/uber-clone-app-development/` is now `/uber-like-taxi-app-development/` (route, sitemap, prerender, share image). Old address 301s to the new one through `_redirects` (Netlify behaviour not tested here). Source file name unchanged.
+
+## v49 – Titles and sitemap
+- Services title: "Taxi App Development Services: Scope, Process & Support". Solutions title: "Taxi App Solutions by Business Model & Fleet Size". Meta descriptions updated to match.
+- sitemap.xml now lists every indexable page (legal pages and the HTML sitemap included): 23 URLs. Only the noindex thank-you page and the noindex prototype are left out. lastmod 2026-11-25.

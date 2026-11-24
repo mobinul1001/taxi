@@ -7,8 +7,8 @@ import { Faq, FinalCta, Pic, Shell, go, useShell } from "./shell";
 import { Illus } from "./covers";
 import { ROUTES } from "./routes";
 
-const TITLE = "Taxi App Development Solutions for Every Taxi Business";
-const DESC = "Taxi app development solutions by business model, operation and fleet size: taxi companies, ride-hailing, airport transfers, corporate and chauffeur services.";
+const TITLE = "Taxi App Solutions by Business Model & Fleet Size";
+const DESC = "Taxi app solutions by business model and fleet size: taxi companies, ride-hailing, airport transfers, corporate and chauffeur services.";
 const CRUMBS = [{ name: "Home", to: ROUTES.home }, { name: "Taxi App Solutions", to: ROUTES.solutions }];
 
 const FAQS: [string, string][] = [

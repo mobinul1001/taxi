@@ -12,9 +12,9 @@ import { ORIGIN, PATHS } from '../src/pages/company/routePaths';
  *  - Removes the St Lu-only files from public/ (map tiles, photos, driver image, the old placeholder sitemap).
  */
 
-/** Pages that belong in sitemap.xml. Legal pages and the HTML sitemap stay crawlable and indexable but are not
- *  listed: they are not landing pages. The thank-you page is noindex and never listed. */
-const SKIP = new Set<string>(['thankYou', 'privacy', 'terms', 'cookies', 'disclaimer', 'sitemap']);
+/** Pages that belong in sitemap.xml: every indexable page, legal pages and the HTML sitemap included. Only the
+ *  thank-you page is left out because it is noindex. */
+const SKIP = new Set<string>(['thankYou']);
 
 const postSlugs = () => [...fs.readFileSync(new URL('../src/pages/company/blogData.ts', import.meta.url), 'utf8').matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]);
 
@@ -22,7 +22,7 @@ const postSlugs = () => [...fs.readFileSync(new URL('../src/pages/company/blogDa
  * lastmod: blog posts use their own publish date. Other pages use PAGES_LASTMOD, a date edited by hand
  * when a page's content really changes (the repository history is too short to derive it honestly).
  */
-const PAGES_LASTMOD = '2026-11-24';
+const PAGES_LASTMOD = '2026-11-25';
 const blogDates = () => Object.fromEntries([...fs.readFileSync(new URL('../src/pages/company/blogData.ts', import.meta.url), 'utf8').matchAll(/slug:\s*"([^"]+)"[\s\S]*?date:\s*"(\d{4}-\d{2}-\d{2})"/g)].map((m) => [m[1], m[2]]));
 const lastmodOf = (u: string) => { const m = u.match(/\/blog\/([^/]+)\/$/); return (m && blogDates()[m[1]]) || PAGES_LASTMOD; };
 

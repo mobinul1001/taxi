@@ -7,8 +7,8 @@ import { Faq, FinalCta, Pic, Shell, Tick, go, useShell } from "./shell";
 import { ROUTES } from "./routes";
 import { Related } from "./related";
 
-const TITLE = "Taxi App Development Services: What You Get From Us";
-const DESC = "Taxi app development services from discovery and design to apps, dispatch dashboard, backend, launch and support. See the deliverables at each stage.";
+const TITLE = "Taxi App Development Services: Scope, Process & Support";
+const DESC = "Taxi app development services: discovery, design, apps, dispatch dashboard, backend, launch and support, with the scope, process and deliverables at each stage.";
 const CRUMBS = [{ name: "Home", to: ROUTES.home }, { name: "Taxi App Development", to: ROUTES.dev }, { name: "Taxi App Development Services", to: ROUTES.services }];
 
 const FAQS: [string, string][] = [
