@@ -26,14 +26,16 @@ Built from the live titles, H1s and H2s of the 31 built pages (24 Nov 2026). The
 
 ## Blog posts and where they should send readers
 
-| Post | Query it serves | Links to |
-|---|---|---|
-| Choosing a payment setup for your taxi app | taxi app payment options | /taxi-booking-app-development/, /taxi-app-development-cost/ |
-| How taxi dispatch works | how taxi dispatch works | /taxi-dispatch-software/ |
-| What to build first in a taxi app MVP | taxi app MVP features | /features/, /pricing/ |
-| Launching a taxi app in a new market | launch a taxi app | /taxi-app-solutions/, /taxi-app-development-services/ |
-| Driver onboarding and document checks | taxi driver onboarding | /taxi-app-development/, /features/ |
-| What we learned designing the St Lu prototype | case-study story | /portfolio/ |
+| Post | Query it serves | Link in the post today (CTA) | Suggested extra link |
+|---|---|---|---|
+| Choosing a payment setup for your taxi app | taxi app payment options | /taxi-booking-app-development/ | /taxi-app-development-cost/ |
+| How taxi dispatch works | how taxi dispatch works | /taxi-dispatch-software/ | none needed |
+| What to build first in a taxi app MVP | taxi app MVP features | /features/ | /pricing/ |
+| Launching a taxi app in a new market | launch a taxi app | /contact/ | /taxi-app-solutions/ |
+| Driver onboarding and document checks | taxi driver onboarding | /features/ | /taxi-app-development/ |
+| What we learned designing the St Lu prototype | case-study story | /portfolio/ | none needed |
+
+The "today" column is read from the post data. The "suggested" column is a proposal, not implemented. Other in-body links in the posts were not audited here.
 
 ## Overlaps to watch (cannibalization risks)
 
