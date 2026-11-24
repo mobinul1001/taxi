@@ -562,3 +562,12 @@ Audited 16 pages at 1280px for sections with no icon, mockup or diagram. Icons (
 - **Build fix**: `public-agency` is now copied recursively.
 - **Lighthouse (mobile, simulated throttling, local server, sandbox Chromium; noisy)**: home 60 and 77 on two runs, FAQ 84, /taxi-app-development/ 78; Accessibility 95-98, Best practices 100, SEO 100. LCP about 4.8 s: the H1 is the LCP element and it appears only after the JavaScript bundle runs, because pages are client-rendered (only the head and a link list are prerendered). Failing audits seen: colour contrast, heading order, unused CSS (about 247 KiB). Cache warnings come from the local test server; Netlify `_headers` sets long caching for /assets/.
 - Not done: prerendering the page body (would fix LCP), CSS splitting, a web manifest, Search Console verification.
+
+## v38 — Accessibility step 1: contrast and heading order
+
+- New `--blue-t: #2255e8` for blue text (eyebrows, text links, the white-label step labels): 5.5:1 on the light grey, 5.2:1 on the pale blue. Buttons and fills keep `--blue`. Links on dark panels stay light blue (`--blue-soft`).
+- Mockup grey text darkened from `#64708f` to `#56627f` (5.4:1); the blue "On trip" chip uses a darker ink.
+- Decorative step numbers on the home Process cards darkened to pass 3:1.
+- Footer column titles changed from h4 to h3, fixing the skipped heading level on every page.
+- Result: Lighthouse accessibility 100 on all 29 pages checked (28 indexable plus thank-you), mobile run on a local server. Lighthouse covers automated checks only; keyboard, screen reader and focus order were not tested by hand.
+- Still to do in later steps: text under 12px at 375px, tap targets, focus states, skip link, reduced motion.

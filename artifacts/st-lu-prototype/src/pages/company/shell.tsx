@@ -267,24 +267,24 @@ function Footer({ onContact }: { say: Say; onContact: () => void }) {
       <div className="wrap">
         <div className="ftr-grid">
           <div>
-            <h4>TaxiAppDevelopment.org</h4>
+            <h3>TaxiAppDevelopment.org</h3>
             <p style={{ fontSize: 15 }}>Taxi app, ride-hailing and dispatch software for taxi operators, fleets and start-ups.</p>
             <ul className="soc" aria-label="Social media (links coming soon)">{SOCIALS.map(([n, I]) => <li key={n}><span className="soc-i" role="img" aria-label={n}><I size={18} aria-hidden /></span></li>)}</ul>
             <p style={{ fontSize: 14, marginTop: 14, color: "var(--on-navy-mute)" }}>Serving the USA, UK, Canada, Australia, Europe and the Caribbean.</p>
           </div>
           <div>
-            <h4>Services</h4>
+            <h3>Services</h3>
             <ul>{page("Taxi App Development", ROUTES.dev)}{page("Taxi Booking App Development", ROUTES.booking)}{page("Custom Taxi App Development", ROUTES.custom)}{page("White Label Taxi App", ROUTES.whiteLabel)}{page("Uber-Like App Development", ROUTES.uber)}{page("Taxi Dispatch Software", ROUTES.dispatch)}{page("Taxi App Development Services", ROUTES.services)}{page("Taxi App Features", ROUTES.features)}</ul>
           </div>
           <div>
-            <h4>Company</h4>
+            <h3>Company</h3>
             <ul>{page("About Us", ROUTES.about)}{page("Portfolio", ROUTES.portfolio)}{page("Pricing", ROUTES.pricing)}{page("Blog", ROUTES.blog)}{page("Book a Demo", ROUTES.demo)}{page("Taxi App Developers", ROUTES.developers)}{page("Taxi App Solutions", ROUTES.solutions)}{page("Taxi App Development Cost", ROUTES.cost)}{page("FAQ", ROUTES.faq)}{page("Contact", ROUTES.contact)}</ul>
           </div>
           <div>
-            <h4>Contact</h4>
+            <h3>Contact</h3>
             <p style={{ fontSize: 15 }}><button type="button" onClick={onContact} style={{ background: "none", border: 0, color: "#6c9bff", fontWeight: 650, padding: 0, minHeight: 36, textDecoration: "underline" }}>Send us a message</button> through the contact form.</p>
             <p style={{ fontSize: 15, display: "flex", gap: 8, alignItems: "flex-start" }}><Clock size={16} aria-hidden style={{ marginTop: 4, flex: "none" }} /><span>Monday to Friday, 9:00 AM to 5:00 PM<br />Eastern Time (ET), USA</span></p>
-            <h4 style={{ marginTop: 20 }}>Stay in the loop</h4>
+            <h3 style={{ marginTop: 20 }}>Stay in the loop</h3>
             <form className="news" onSubmit={subscribe}>
               <label className="sr" htmlFor="tad-news">Email address</label>
               <input id="tad-news" name="email" type="email" required placeholder="Your email" autoComplete="email" />

@@ -218,7 +218,7 @@
 .tad .yw li { display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px 22px; padding: 20px 0; border-top: 1px solid var(--line); align-items: start; }
 .tad .yw .n { width: 44px; height: 44px; border-radius: 12px; background: var(--blue); color: #fff; display: grid; place-items: center; font-weight: 750; font-size: 14px; }
 .tad .yw h3 { font-size: 18px; align-self: center; }
-.tad .yw b { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 3px; }
+.tad .yw b { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-t); margin-bottom: 3px; }
 .tad .yw p { color: var(--mute); font-size: 15px; }
 @media (max-width: 899px) { .tad .yw li { grid-template-columns: 44px minmax(0, 1fr); } .tad .yw li > div { grid-column: 1 / -1; } }
 .tad .askl { margin-top: 26px; display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); counter-reset: a; }
@@ -593,3 +593,6 @@
 .tad .drv > li > .xic { margin-bottom: 10px; }
 .tad .exc > li .xic { width: 36px; height: 36px; background: #fff1e6; color: #c2540a; margin-bottom: 8px; }
 .tad .bud > li .xic { width: 38px; height: 38px; margin-bottom: 8px; }
+
+/* v38: links on dark panels keep the light blue */
+.tad .est .res .link, .tad .result .link, .tad .res .link { color: var(--blue-soft); }

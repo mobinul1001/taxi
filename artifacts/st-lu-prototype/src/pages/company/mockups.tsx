@@ -17,7 +17,7 @@ export function Scaled({ w, h, children, className }: { w: number; h: number; ch
 }
 
 type Accent = { a: string; soft: string; ink?: string };
-export const BLUE: Accent = { a: "#2b63ff", soft: "#eaf0ff" };
+export const BLUE: Accent = { a: "#2b63ff", soft: "#eaf0ff", ink: "#1b46c4" };
 export const STLU: Accent = { a: "#ea6a12", soft: "#fff0e2" };
 
 /** A stylised street map: roads, water and a route from pickup to destination. Not a real place. */
@@ -52,13 +52,13 @@ export function PassengerScreen({ accent = BLUE, brand = "" }: { accent?: Accent
       <div className="st" style={{ position: "relative" }}><span>9:41</span><span>5G</span></div>
       <div className="m-card" style={{ position: "absolute", left: 10, right: 10, top: 40, padding: "9px 11px" }}>
         <div className="m-row"><span className="m-dot" style={{ background: accent.a }} /><span style={{ fontWeight: 650 }}>{brand || "Pickup point"}</span></div>
-        <div className="m-row" style={{ marginTop: 7 }}><span className="m-dot" style={{ background: "#0a1330", borderRadius: 2 }} /><span style={{ color: "#64708f" }}>Where to?</span></div>
+        <div className="m-row" style={{ marginTop: 7 }}><span className="m-dot" style={{ background: "#0a1330", borderRadius: 2 }} /><span style={{ color: "#56627f" }}>Where to?</span></div>
       </div>
       <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, background: "#fff", borderRadius: "20px 20px 0 0", padding: "12px 12px 14px", boxShadow: "0 -10px 30px rgba(10,19,48,.12)" }}>
         <div style={{ width: 34, height: 4, background: "#dde3f1", borderRadius: 3, margin: "0 auto 10px" }} />
         {[["Economy", "4 min", true], ["Comfort", "6 min", false], ["Van, 6 seats", "9 min", false]].map(([n, t, on]) => (
           <div key={n as string} className="m-row" style={{ padding: "8px 9px", borderRadius: 11, marginBottom: 5, background: on ? accent.soft : "#f6f8fc", boxShadow: on ? `inset 0 0 0 1.5px ${accent.a}` : "none" }}>
-            <Car size={17} color={on ? accent.a : "#64708f"} /><div style={{ flex: 1 }}><b style={{ fontWeight: 650 }}>{n}</b><div style={{ color: "#64708f", fontSize: 11 }}>{t} away</div></div><b>Fare est.</b>
+            <Car size={17} color={on ? accent.a : "#56627f"} /><div style={{ flex: 1 }}><b style={{ fontWeight: 650 }}>{n}</b><div style={{ color: "#56627f", fontSize: 11 }}>{t} away</div></div><b>Fare est.</b>
           </div>
         ))}
         <span className="m-btn" style={{ background: accent.a, marginTop: 8 }}>Confirm ride</span>
@@ -73,7 +73,7 @@ export function DriverScreen({ accent = BLUE }: { accent?: Accent }) {
       <div className="st"><span>9:41</span><span>5G</span></div>
       <div style={{ padding: "14px 12px 0" }}>
         <div className="m-row" style={{ justifyContent: "space-between" }}>
-          <div><div style={{ color: "#64708f", fontSize: 11 }}>Today</div><b style={{ fontSize: 22, letterSpacing: "-.02em" }}>$186.50</b></div>
+          <div><div style={{ color: "#56627f", fontSize: 11 }}>Today</div><b style={{ fontSize: 22, letterSpacing: "-.02em" }}>$186.50</b></div>
           <span className="m-chip" style={{ background: "#d9f7ea", color: "#0a7a4f" }}><span className="m-dot" style={{ background: "#12b76a", width: 7, height: 7 }} />Online</span>
         </div>
         <div className="m-card" style={{ marginTop: 12, overflow: "hidden" }}><RouteMap w={196} h={116} accent={accent} style={{ display: "block", width: 196, height: 116 }} /></div>
@@ -83,7 +83,7 @@ export function DriverScreen({ accent = BLUE }: { accent?: Accent }) {
           <div className="m-row" style={{ marginTop: 5 }}><span className="m-dot" style={{ background: "#0a1330", borderRadius: 2 }} /><span>Harbour Hotel</span></div>
           <div className="m-row" style={{ marginTop: 10, gap: 6 }}><span className="m-btn" style={{ flex: 1, background: accent.a }}>Accept</span></div>
         </div>
-        <div className="m-row" style={{ marginTop: 10, justifyContent: "space-around", color: "#64708f", fontSize: 11 }}><span>Trips</span><span>Earnings</span><span>Profile</span></div>
+        <div className="m-row" style={{ marginTop: 10, justifyContent: "space-around", color: "#56627f", fontSize: 11 }}><span>Trips</span><span>Earnings</span><span>Profile</span></div>
       </div>
     </div>
   );
@@ -102,7 +102,7 @@ export function RideCard({ accent = BLUE, style }: { accent?: Accent; style?: CS
       </div>
       <div className="m-row" style={{ marginTop: 11 }}>
         <span style={{ width: 38, height: 38, borderRadius: "50%", background: `linear-gradient(135deg, ${accent.a}, #22d3ee)`, display: "grid", placeItems: "center", color: "#fff", fontWeight: 700 }}>MJ</span>
-        <div style={{ flex: 1 }}><b style={{ fontSize: 13 }}>Marcus J.</b><div className="m-row" style={{ gap: 3, color: "#64708f", fontSize: 11.5 }}><Star size={11} fill="#f5b301" color="#f5b301" />4.9 · Toyota Noah</div></div>
+        <div style={{ flex: 1 }}><b style={{ fontSize: 13 }}>Marcus J.</b><div className="m-row" style={{ gap: 3, color: "#56627f", fontSize: 11.5 }}><Star size={11} fill="#f5b301" color="#f5b301" />4.9 · Toyota Noah</div></div>
       </div>
       <div className="m-bar" style={{ marginTop: 11 }}><div style={{ width: "64%", height: "100%", borderRadius: 4, background: accent.a }} /></div>
     </div>
@@ -113,17 +113,17 @@ export function LiveWidget({ style }: { style?: CSSProperties }) {
   return (
     <div className="m-card" style={{ padding: "9px 13px 9px 10px", display: "flex", alignItems: "center", gap: 9, ...style }}>
       <span className="pulse" style={{ width: 30, height: 30, borderRadius: "50%", background: "#0a1330", display: "grid", placeItems: "center", color: "#22d3ee" }}><Navigation size={14} /></span>
-      <div><b style={{ fontSize: 12.5 }}>Live tracking</b><div style={{ color: "#64708f", fontSize: 11.5 }}>Driver is 1.2 km away</div></div>
+      <div><b style={{ fontSize: 12.5 }}>Live tracking</b><div style={{ color: "#56627f", fontSize: 11.5 }}>Driver is 1.2 km away</div></div>
     </div>
   );
 }
 
 export function AdminDash({ w = 560, accent = BLUE, title = "Operations" }: { w?: number; accent?: Accent; title?: string }) {
   const bars = [38, 52, 44, 66, 58, 80, 72, 90, 70, 96, 84, 62];
-  const rows = [["Pickup: Airport", "Assigned", "#d9f7ea", "#0a7a4f"], ["Pickup: Harbour", "Pending", "#fff1d6", "#9a5b00"], ["Pickup: Old Town", "On trip", accent.soft, accent.a]];
+  const rows = [["Pickup: Airport", "Assigned", "#d9f7ea", "#0a7a4f"], ["Pickup: Harbour", "Pending", "#fff1d6", "#9a5b00"], ["Pickup: Old Town", "On trip", accent.soft, accent.ink ?? accent.a]];
   return (
     <div className="browser" style={{ width: w }}>
-      <div className="tb"><i /><i /><i /><span style={{ marginLeft: 10, color: "#64708f", fontSize: 11, fontWeight: 600 }}>Admin dashboard</span></div>
+      <div className="tb"><i /><i /><i /><span style={{ marginLeft: 10, color: "#56627f", fontSize: 11, fontWeight: 600 }}>Admin dashboard</span></div>
       <div style={{ display: "flex", height: 292 }}>
         <div style={{ width: 118, background: "#0a1330", color: "#c7d2ef", padding: "14px 10px", display: "grid", gap: 4, alignContent: "start", fontSize: 11.5 }}>
           <b style={{ color: "#fff", marginBottom: 8 }}>Dispatch</b>
@@ -132,7 +132,7 @@ export function AdminDash({ w = 560, accent = BLUE, title = "Operations" }: { w?
         <div style={{ flex: 1, padding: 12, background: "#f4f6fb", minWidth: 0 }}>
           <b style={{ fontSize: 13 }}>{title}</b>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 7, marginTop: 8 }}>
-            {[[Users, "Drivers"], [Car, "Active trips"], [BarChart3, "Bookings"]].map(([I, l]) => { const Ic = I as typeof Users; return <div key={l as string} className="m-card" style={{ padding: 8, boxShadow: "0 0 0 1px #e2e8f4" }}><Ic size={13} color={accent.a} /><div style={{ color: "#64708f", fontSize: 10.5, marginTop: 3 }}>{l as string}</div><div className="m-bar" style={{ width: "58%", marginTop: 5, background: accent.soft }} /></div>; })}
+            {[[Users, "Drivers"], [Car, "Active trips"], [BarChart3, "Bookings"]].map(([I, l]) => { const Ic = I as typeof Users; return <div key={l as string} className="m-card" style={{ padding: 8, boxShadow: "0 0 0 1px #e2e8f4" }}><Ic size={13} color={accent.a} /><div style={{ color: "#56627f", fontSize: 10.5, marginTop: 3 }}>{l as string}</div><div className="m-bar" style={{ width: "58%", marginTop: 5, background: accent.soft }} /></div>; })}
           </div>
           <div className="m-card" style={{ marginTop: 8, padding: "8px 10px", boxShadow: "0 0 0 1px #e2e8f4", display: "flex", alignItems: "flex-end", gap: 5, height: 64, flex: "none" }}>
             {bars.map((b, i) => <span key={i} style={{ flex: 1, height: `${b}%`, borderRadius: 3, background: i === 9 ? accent.a : accent.soft === "#eaf0ff" ? "#c7d6ff" : "#ffd2ad" }} />)}
@@ -197,7 +197,7 @@ export function MatchVis() {
     <div aria-hidden className="mk" style={{ marginTop: "auto", display: "grid", gap: 7 }}>
       {[["Nearest driver", "1.1 km", true], ["Driver 2", "2.4 km", false], ["Driver 3", "3.0 km", false]].map(([n, d, on]) => (
         <div key={n as string} className="m-row" style={{ padding: "8px 12px", borderRadius: 10, background: on ? "#eaf0ff" : "#f6f8fc", boxShadow: on ? "inset 0 0 0 1.5px #2b63ff" : "none", fontSize: 13.5, fontWeight: 600 }}>
-          <Car size={15} color={on ? "#2b63ff" : "#64708f"} /><span style={{ flex: 1 }}>{n}</span><span style={{ color: "#4b5878" }}>{d}</span>
+          <Car size={15} color={on ? "#2b63ff" : "#56627f"} /><span style={{ flex: 1 }}>{n}</span><span style={{ color: "#4b5878" }}>{d}</span>
         </div>
       ))}
     </div>
