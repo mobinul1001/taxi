@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+"""Wraps the St Lu prototype copy inside the agency site with a slim, always-visible top bar.
+
+The built prototype index.html becomes app.html (same folder, so its relative assets still resolve). A new
+index.html holds the bar and an iframe that fills the rest of the window, so every prototype screen keeps its own
+full-height layout. The address hash (for example #/admin) is passed to the app and kept in step with it, so links
+such as /st-lucia-taxi-app/#/admin still open the right screen. Usage: embed-shell.py <built prototype folder>
+"""
+import os, sys
+
+d = sys.argv[1]
+src, dst = os.path.join(d, "index.html"), os.path.join(d, "app.html")
+if os.path.exists(dst):
+    sys.exit("app.html already exists: run this on a fresh build only")
+os.rename(src, dst)
+
+SHELL = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>St Lu Taxi And Tours prototype | TaxiAppDevelopment.org</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#16181d" />
+<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<style>
+  html, body { margin: 0; height: 100%; background: #16181d; }
+  body { display: flex; flex-direction: column; height: 100dvh; font: 500 12.5px/1 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .bar { flex: none; display: flex; align-items: center; gap: 12px; height: 38px; padding: 0 14px; background: #16181d; color: #fff; }
+  .bar a { color: #fff; text-decoration: none; }
+  .bar a:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; border-radius: 6px; }
+  .back { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; white-space: nowrap; min-height: 28px; }
+  .back svg { flex: none; }
+  .tag { color: #aab3c5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .sp { flex: 1; }
+  .cta { background: #2b63ff; border-radius: 7px; padding: 7px 11px; font-weight: 600; white-space: nowrap; }
+  .cta:hover { background: #3b72ff; }
+  .tag-s { display: none; color: #aab3c5; }
+  iframe { flex: 1; min-height: 0; width: 100%; border: 0; background: #fff; display: block; }
+  @media (max-width: 899px) { .tag { display: none; } .tag-s { display: inline; } .cta { display: none; } }
+  @media (max-width: 519px) { .bar { height: 34px; padding: 0 10px; } .tag-s { display: none; } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="back" href="/" target="_top" data-testid="link-back-agency"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to TaxiAppDevelopment.org</a>
+  <span class="tag">Case study: St Lu Taxi and Tours, design prototype</span>
+  <span class="sp"></span>
+  <span class="tag-s">Case study</span>
+  <a class="cta" href="/portfolio/" target="_top">View portfolio</a>
+</header>
+<iframe id="app" title="St Lu Taxi And Tours prototype" src="about:blank" allow="geolocation"></iframe>
+<script>
+(function () {
+  var f = document.getElementById("app");
+  f.src = "app.html" + location.hash;
+  function inner() { try { return f.contentWindow.location.hash; } catch (e) { return null; } }
+  window.addEventListener("hashchange", function () {
+    try { if (inner() !== location.hash) f.contentWindow.location.hash = location.hash; } catch (e) {}
+  });
+  setInterval(function () {
+    var h = inner();
+    if (h !== null && h !== location.hash) history.replaceState(null, "", location.pathname + location.search + h);
+  }, 400);
+  f.addEventListener("load", function () {
+    try { var t = f.contentDocument.title; if (t) document.title = t + " | TaxiAppDevelopment.org"; } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
+"""
+open(src, "w").write(SHELL)
+print("embed shell written in", d)

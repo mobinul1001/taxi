@@ -339,3 +339,6 @@
 .tad .ftr-bot { align-items: center; }
 .tad .ftr-bot > span { line-height: 44px; }
 .tad .ftr-legal { align-items: center; }
+
+/* Footer: columns sized to their content (long link names in the first two, the shortest list third) */
+@media (min-width: 900px) { .tad .ftr-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.1fr) minmax(0, .75fr) minmax(0, 1.2fr); } }

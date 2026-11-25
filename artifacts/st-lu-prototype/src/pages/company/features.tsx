@@ -56,15 +56,22 @@ function Body() {
   const shown = CATS.filter((c) => cat === "all" || c.id === cat);
   return (
     <>
-      <section className="hero hero-l hero-svc" id="top">
+      <section className="hero hero-b" id="top">
         <div className="wrap">
-          <Crumbs items={CRUMBS} />
-          <p className="eyebrow">Features</p>
-          <h1>Taxi App Features: <em>Choose What Your First Release Needs</em></h1>
-          <p className="sub">Every feature a taxi platform can include, grouped by who uses it. Not every project needs all of them. We help you pick the must-haves and leave the rest for later.</p>
-          <div className="hero-btns">
-            <button type="button" className="btn btn-primary" onClick={() => ask("Discuss features", { kind: "Not sure yet" })}>Discuss Your Features</button>
-            <Link className="btn btn-outline" to={ROUTES.pricing}>See Pricing</Link>
+          <Crumbs items={CRUMBS} dark />
+          <div className="grid2">
+            <div>
+              <p className="eyebrow light">Features</p>
+              <h1>Taxi App Features: <em>Choose What Your First Release Needs</em></h1>
+              <p className="sub">Every feature a taxi platform can include, grouped by who uses it. Not every project needs all of them. We help you pick the must-haves and leave the rest for later.</p>
+              <div className="hero-btns">
+                <button type="button" className="btn btn-primary" onClick={() => ask("Discuss features", { kind: "Not sure yet" })}>Discuss Your Features</button>
+                <Link className="btn btn-ghost-dark" to={ROUTES.pricing}>See Pricing</Link>
+              </div>
+            </div>
+            <div className="gl-list gl-4" role="img" aria-label={`${F.length} features in four parts: ${CATS.map((c) => `${c.label} ${F.filter((f) => f[0] === c.id).length}`).join(", ")}`}>
+              {CATS.map((c) => <div key={c.id} className="gl-i"><span className="gl-ic"><c.icon size={20} aria-hidden /></span><div><b>{c.label}</b><small>{c.blurb}</small></div><em>{F.filter((f) => f[0] === c.id).length}<span> features</span></em></div>)}
+            </div>
           </div>
         </div>
       </section>

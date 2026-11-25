@@ -647,3 +647,18 @@ Measured first at 375px across 21 pages (text outside decorative mockups; links 
 - `/book-a-demo/` and `/sitemap/` are no longer routed, linked (header menu, footer, 404 page, Related blocks, portfolio note) or listed in sitemap.xml. Source files stay. `_redirects`: `/book-a-demo` goes to `/contact/`, `/sitemap` goes to `/` (301; Netlify behaviour not tested here). The portfolio note now links to Contact instead of the demo page.
 - Homepage FAQ section: a "View all frequently asked questions" link to `/faq/` under the question list (`moreTo` prop on `Faq`, used only on the homepage).
 - sitemap.xml now has 21 URLs.
+
+## v51 (local, not pushed) – Premium heroes, mobile and web app views in the demo
+- Agency site: contact, pricing and features heroes are now the dark navy hero used by the other pages (glass cards for packages and feature counts; contact keeps the form on the right and lists what helps us most in chips). The About "who we build for" section has icon cards on the right. The custom taxi app module diagram is rebuilt on a symmetric grid; the white label hero now shows the phone on a soft glow with two chips that follow the name and colour typed on the left.
+- Prototype: new `/phone` page ("Mobile app"): the app inside a phone frame, scaled to fit the window height so the whole screen is visible on laptops and tablets. Narrow screens (under 560px) go straight to the app. The old full-screen responsive app is now the "Web app" card (`/app`). The start page shows three large cards: Mobile app, Web app, Admin Panel.
+- Verified only in Chromium on a local server: no overflow on 30 agency pages, St Lu tests 37/37.
+
+## v52 (local, not pushed) – Sticky back bar, footer columns, contact form
+- The prototype copy inside the agency site is now wrapped by `scripts/embed-shell.py`: the built app moves to `st-lucia-taxi-app/app.html` and a new `index.html` holds a slim always-visible top bar ("Back to TaxiAppDevelopment.org", a "Case study" label, a "View portfolio" button) above an iframe with the app. The address hash is passed on, so `/st-lucia-taxi-app/#/admin` and the other links still open the right screen. The old back button on the start page is removed. The St Lu build itself is unchanged.
+- Footer columns are sized to their content (Services and Learn wider, Company narrower).
+- Contact form: the optional Company field is removed.
+
+## v53 (local, not pushed): tablet card fix + premium pass on start page and landing page
+- Start page (`hub.tsx`): third big card spans the row on tablet (no empty gap); big cards get soft gradient, top accent bar and glow; small cards become icon-left rows; Sample data becomes a dark green panel with large amber numbers.
+- Landing (`landing.tsx`): trust bar floats over the hero edge; rounder, deeper cards for destinations, fleet and prices; How it works as numbered step cards with a dashed connector; Why book with us on a dark green band with glass cards.
+- Design only: no copy, route, data or behaviour change. Checked locally: tsc, St Lu e2e 37/37, no horizontal overflow or page errors at 390/820/1440, light and dark.

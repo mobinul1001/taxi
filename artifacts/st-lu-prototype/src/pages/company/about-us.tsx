@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Ic } from "./sectionicons";
 import { StluLink } from "./stluLink";
-import { ArrowRight, Boxes, Code2, Smartphone } from "lucide-react";
+import { ArrowRight, Boxes, Building2, Car, Code2, Plane, Rocket, Smartphone } from "lucide-react";
 import { AdminDash, Phone, PassengerScreen, DriverScreen, STLU, Scaled } from "./mockups";
 import { Crumbs, crumbLd, useSeo } from "./seo";
 import { MarketsStrip } from "./markets";
@@ -81,11 +81,17 @@ function Body() {
 
       <section className="sec sec-white" id="who" aria-labelledby="h-who">
         <div className="wrap">
-          <p className="eyebrow">Who we build for</p>
-          <h2 className="h2 wide" id="h-who">Businesses we design taxi platforms for</h2>
-          <p className="lede">Our work is aimed at businesses that move people for a living and need software that matches how they operate.</p>
-          <Tick items={["Taxi companies and owner-operators moving from phone bookings to an app", "Airport transfer and tour transport businesses", "Ride-hailing start-ups building a marketplace under their own brand", "Fleets and corporate or chauffeur services that need dispatch and account billing"]} />
-          <p className="note">Not sure which of these describes you? Our <Link to={ROUTES.solutions}>taxi app solutions guide</Link> maps each business type to a setup, and the <Link to={ROUTES.faq}>FAQ</Link> answers common questions.</p>
+          <div className="who-grid">
+            <div>
+              <p className="eyebrow">Who we build for</p>
+              <h2 className="h2 wide" id="h-who">Businesses we design taxi platforms for</h2>
+              <p className="lede">Our work is aimed at businesses that move people for a living and need software that matches how they operate.</p>
+              <p className="note">Not sure which of these describes you? Our <Link to={ROUTES.solutions}>taxi app solutions guide</Link> maps each business type to a setup, and the <Link to={ROUTES.faq}>FAQ</Link> answers common questions.</p>
+            </div>
+            <ul className="who-list">
+              {([[Car, "Taxi companies and owner-operators moving from phone bookings to an app"], [Plane, "Airport transfer and tour transport businesses"], [Rocket, "Ride-hailing start-ups building a marketplace under their own brand"], [Building2, "Fleets and corporate or chauffeur services that need dispatch and account billing"]] as const).map(([I, t]) => <li key={t}><span className="gl-ic"><I size={20} aria-hidden /></span>{t}</li>)}
+            </ul>
+          </div>
         </div>
       </section>
 

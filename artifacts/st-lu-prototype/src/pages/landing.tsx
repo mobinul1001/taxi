@@ -200,8 +200,9 @@ export default function Landing() {
         </section>
 
         {/* trust bar */}
-        <section aria-label="Why book with St Lu" className="border-b border-line bg-paper">
-          <ul className={`${wrap} grid grid-cols-1 gap-x-6 gap-y-5 py-7 min-[440px]:grid-cols-2 lg:grid-cols-4`}>
+        <section aria-label="Why book with St Lu" className="relative z-10">
+          <div className={`${wrap} -mt-6 md:-mt-8 lg:-mt-14`}>
+          <ul className="grid grid-cols-1 gap-x-6 gap-y-5 rounded-3xl border border-line bg-paper p-6 shadow-float min-[440px]:grid-cols-2 lg:grid-cols-4 lg:p-7">
             {trust.map(([I, t, b]) => (
               <li key={t} className="flex items-center gap-3">
                 <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-ok text-green"><I size={20} /></span>
@@ -209,12 +210,13 @@ export default function Landing() {
               </li>
             ))}
           </ul>
+          </div>
         </section>
 
         {/* On a phone the full "How it works" section is four screens down, past the destinations, the
             fleet and the prices. These three lines answer "how does this work?" while the hero is still
             in mind; the full section stays where it is for wider screens. */}
-        <section aria-label="How it works" className="border-b border-line bg-ground md:hidden">
+        <section aria-label="How it works" className="mt-4 border-b border-line bg-ground md:hidden">
           <ol className={`${wrap} flex flex-col gap-3 py-6`} data-testid="list-how-mobile">
             {steps.slice(0, 3).map(([Icon, ti], n) => (
               <li key={ti} className="flex items-center gap-3">
@@ -235,7 +237,7 @@ export default function Landing() {
           <div className="mt-8 grid auto-rows-[220px] grid-cols-2 gap-3 sm:auto-rows-[250px] sm:gap-4 lg:auto-rows-[280px] lg:grid-cols-4">
             {dests.map((d, i) => (
               <button key={d.name} type="button" data-testid={`card-dest-${d.to.toLowerCase().replace(/ /g, "-")}-${i}`} onClick={() => { setF((x) => ({ ...x, to: d.to })); toBook(); }}
-                className={`tap group relative min-w-0 overflow-hidden rounded-2xl text-left text-white shadow-card ${i === 0 ? "col-span-2 lg:row-span-2" : ""} ${i === 5 ? "col-span-2 lg:col-span-4" : ""}`}>
+                className={`tap group relative min-w-0 overflow-hidden rounded-3xl text-left text-white shadow-pop ${i === 0 ? "col-span-2 lg:row-span-2" : ""} ${i === 5 ? "col-span-2 lg:col-span-4" : ""}`}>
                 <span className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"><Photo slot={d.slot} fill sizes={i === 0 || i === 5 ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 50vw"} /></span>
                 <span aria-hidden className="scrim-card absolute inset-0" />
                 <span className="absolute inset-x-4 bottom-4 block sm:inset-x-5 sm:bottom-5">
@@ -254,7 +256,7 @@ export default function Landing() {
             <div className="max-w-[640px]"><p className={eyebrow}>Fleet</p><h2 className={h2}>Clean, licensed, air-conditioned</h2><p className="mt-3 text-[17px] text-mute">Every vehicle is licensed for hire and insured. Dispatch matches the vehicle to your group and luggage.</p></div>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {fleet.map((v) => (
-                <article key={v.name} className="lift flex flex-col overflow-hidden rounded-2xl border border-line bg-ground shadow-card">
+                <article key={v.name} className="lift flex flex-col overflow-hidden rounded-3xl border border-line bg-ground shadow-pop">
                   <div className="relative aspect-[3/2] overflow-hidden md:aspect-[4/3] xl:aspect-[3/2]"><Photo slot={v.slot} fill pos={v.pos} sizes="(min-width: 768px) 33vw, 100vw" /></div>
                   <div className="flex flex-1 flex-col p-5">
                     <div className="flex flex-wrap items-end justify-between gap-x-3 gap-y-1">
@@ -280,11 +282,11 @@ export default function Landing() {
           <div className="max-w-[640px]"><p className={eyebrow}>Fixed prices in USD</p><h2 className={h2}>Prices you see before you fly</h2><p className="mt-3 text-[17px] text-mute">Fixed per vehicle. No surge, no hidden fees.</p></div>
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {priced.map(({ k, slot, note, feat, pos }) => (
-              <article key={k} className={`lift flex min-w-0 overflow-hidden rounded-2xl border bg-paper shadow-card ${feat ? "border-green ring-4 ring-green/10" : "border-line"}`}>
-                <div className="relative w-[34%] max-w-[190px] shrink-0 overflow-hidden"><Photo slot={slot} fill pos={pos} sizes="(min-width: 1024px) 190px, 34vw" /></div>
-                <div className="min-w-0 flex-1 p-4 sm:p-5">
+              <article key={k} className={`lift flex min-w-0 overflow-hidden rounded-3xl border shadow-card ${feat ? "border-green bg-gradient-to-br from-paper to-ok/60 ring-4 ring-green/10" : "border-line bg-paper"}`}>
+                <div className="relative w-[36%] max-w-[220px] shrink-0 overflow-hidden"><Photo slot={slot} fill pos={pos} sizes="(min-width: 1024px) 190px, 34vw" /></div>
+                <div className="min-w-0 flex-1 p-5 sm:p-6">
                   <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1">
-                    <h3 className="text-[17px] font-bold">{k}</h3>
+                    <h3 className="font-display text-[20px] font-bold">{k}</h3>
                     {feat && <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-orange px-2.5 py-1 text-[12px] font-bold text-orange-ink"><Star size={11} className="fill-current" />Most booked</span>}
                   </div>
                   <p className="t-display tnum mt-1 text-[34px] text-green">{money(s.prices[k])}<span className="ml-1.5 whitespace-nowrap font-sans text-[13px] font-medium tracking-normal text-mute max-[379px]:ml-0 max-[379px]:block">per vehicle</span></p>
@@ -299,15 +301,13 @@ export default function Landing() {
         <section id="how" className="border-y border-line bg-paper">
           <div className={`${wrap} ${sec}`}>
             <div className="max-w-[640px]"><p className={eyebrow}>How it works</p><h2 className={h2}>From the runway to your hotel, sorted</h2></div>
-            <ol className="mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="relative mt-12 grid gap-x-5 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+              <span aria-hidden className="absolute left-[12%] right-[12%] top-[34px] hidden h-px border-t-2 border-dashed border-green/25 lg:block" />
               {steps.map(([Icon, ti, b], n) => (
-                <li key={ti}>
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-ok text-green"><Icon size={22} /></span>
-                    <span className="h-px flex-1 bg-line" aria-hidden />
-                    <span className="t-display tnum text-[22px] text-mute">0{n + 1}</span>
-                  </div>
-                  <h3 className="mt-4 text-[18px] font-bold">{ti}</h3><p className="mt-1.5 text-[14.5px] leading-relaxed text-mute">{b}</p>
+                <li key={ti} className="relative overflow-hidden rounded-3xl border border-line bg-ground p-6 pt-7 shadow-card">
+                  <span aria-hidden className="t-display tnum pointer-events-none absolute -right-1 -top-3 select-none text-[84px] leading-none text-green/[.07]">0{n + 1}</span>
+                  <span className="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-green text-white shadow-e2 ring-4 ring-paper"><Icon size={24} /></span>
+                  <h3 className="relative mt-5 font-display text-[20px] font-bold leading-snug">{ti}</h3><p className="relative mt-1.5 text-[14.5px] leading-relaxed text-mute">{b}</p>
                 </li>
               ))}
             </ol>
@@ -318,20 +318,21 @@ export default function Landing() {
             prototype should carry, however clearly they are labelled: the client would have to delete
             them before launch, and anyone seeing the page in between reads them as real guests. What
             earns the space instead is what the company can actually stand behind. */}
-        <section aria-label="Why book with St Lu" className="border-t border-line bg-paper">
-          <div className={`${wrap} ${sec}`}>
-            <div className="max-w-[640px]"><p className={eyebrow}>Why book with us</p><h2 className={h2}>Every ride, on the same terms</h2></div>
-            <ul className="mt-9 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4" data-testid="list-trust">
+        <section aria-label="Why book with St Lu" className="on-dark relative overflow-hidden bg-[#0C2A1F] text-white">
+          <span aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-orange/15 blur-3xl" /><span aria-hidden className="pointer-events-none absolute -bottom-32 left-1/4 h-96 w-96 rounded-full bg-green-400/15 blur-3xl" />
+          <div className={`${wrap} ${sec} relative`}>
+            <div className="max-w-[640px]"><p className="t-eyebrow text-hl">Why book with us</p><h2 className={`${h2} text-white`}>Every ride, on the same terms</h2></div>
+            <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" data-testid="list-trust">
               {[[BadgeCheck, "Fixed price, per vehicle", "The price you see when you book is the price you pay. No surge, no per-person maths, no haggling at the kerb."],
                 [RotateCcw, "Free cancellation for 24h", "Plans change. Cancel up to 24 hours before pickup and the card is refunded in full."],
                 [ShieldCheck, "Licensed and insured drivers", "Every driver on the platform holds a current taxi licence and insurance, checked by the office."],
                 [CreditCard, "Card payment, no cash", "Pay by card through Stripe when you book. Nothing to settle with the driver."]].map(([Icon, ti, b]) => {
                   const I = Icon as typeof BadgeCheck;
                   return (
-                    <li key={ti as string}>
-                      <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-ok text-green"><I size={22} /></span>
-                      <h3 className="t-title mt-4 text-[18px]">{ti as string}</h3>
-                      <p className="mt-2 text-[14.5px] leading-relaxed text-mute">{b as string}</p>
+                    <li key={ti as string} className="rounded-3xl border border-white/10 bg-white/[.06] p-6 backdrop-blur-sm">
+                      <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-orange text-orange-ink"><I size={22} /></span>
+                      <h3 className="t-title mt-4 text-[19px] text-white">{ti as string}</h3>
+                      <p className="mt-2 text-[14.5px] leading-relaxed text-white/75">{b as string}</p>
                     </li>
                   );
                 })}
@@ -344,7 +345,7 @@ export default function Landing() {
           <div className={`${wrap} ${sec} grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]`}>
             <div><p className={eyebrow}>Help</p><h2 className={h2}>Questions</h2><p className="mt-3 max-w-[360px] text-[16px] text-mute">Still unsure? Our dispatchers answer on phone and WhatsApp.</p>
               <a href={tel} className="tap mt-5 inline-flex min-h-12 items-center gap-2 whitespace-nowrap rounded-lg border border-line-strong bg-paper px-4 text-[15px] font-semibold shadow-e1 hover:border-green/60"><Phone size={17} className="text-green" />{phone}</a></div>
-            <div className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-ground">
+            <div className="divide-y divide-line overflow-hidden rounded-3xl border border-line bg-ground shadow-card">
               {faq.map(([q, a]) => (
                 <details key={q} className="group px-5 open:bg-paper"><summary className="flex min-h-[60px] cursor-pointer list-none items-center justify-between gap-3 py-2 text-[16px] font-semibold [&::-webkit-details-marker]:hidden">{q}<span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ok text-green transition-transform group-open:rotate-180"><ChevronDown size={18} /></span></summary><p className="pb-5 pr-10 text-[15px] leading-relaxed text-mute">{a}</p></details>
               ))}

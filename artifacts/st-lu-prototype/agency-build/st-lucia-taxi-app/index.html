@@ -1,99 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#FAF6EE" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#06120D" media="(prefers-color-scheme: dark)" />
-    <meta name="format-detection" content="telephone=no" />
-    <title>St Lu Taxi And Tours</title>
-    <meta name="description" content="St Lu Taxi And Tours: fixed price airport transfers, private tours and chauffeur service across St. Lucia. Book, pay and track your driver in one app." />
-    <!-- This is a prototype on a demo address. Indexing it would put a second copy of the company's
-         own words in search results, competing with their real site. -->
-    <meta name="robots" content="noindex, nofollow" />
-    <link rel="canonical" href="https://demo.stluciantaxiandtours.com/" />
-    <!-- Social networks fetch these from their own servers, so every URL here has to be absolute:
-         a relative og:image is why a shared link showed a card with no picture. -->
-    <meta property="og:title" content="St Lu Taxi And Tours" />
-    <meta property="og:description" content="St Lu Taxi And Tours: fixed price airport transfers, private tours and chauffeur service across St. Lucia. Book, pay and track your driver in one app." />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="St Lu Taxi And Tours" />
-    <meta property="og:url" content="https://demo.stluciantaxiandtours.com/" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content="https://demo.stluciantaxiandtours.com/og-share.jpg" />
-    <meta property="og:image:width" content="1424" />
-    <meta property="og:image:height" content="752" />
-    <meta property="og:image:alt" content="The Pitons above the coast road at golden hour" />
-    <meta name="twitter:image" content="https://demo.stluciantaxiandtours.com/og-share.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="St Lu Taxi And Tours" />
-    <meta name="twitter:description" content="St Lu Taxi And Tours: fixed price airport transfers, private tours and chauffeur service across St. Lucia. Book, pay and track your driver in one app." />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "TaxiService",
-        "name": "St Lu Taxi And Tours",
-        "url": "https://demo.stluciantaxiandtours.com/",
-        "image": "https://demo.stluciantaxiandtours.com/og-share.jpg",
-        "description": "Fixed price airport transfers, private tours, round trips and chauffeur service across St. Lucia.",
-        "telephone": "+1-758-732-4553",
-        "email": "info@stluciantaxiandtours.com",
-        "areaServed": { "@type": "Country", "name": "Saint Lucia" },
-        "provider": {
-          "@type": "LocalBusiness",
-          "name": "St Lu Taxi And Tours",
-          "telephone": "+1-758-732-4553",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Morne Fortune",
-            "addressLocality": "Castries",
-            "addressCountry": "LC"
-          }
-        }
-      }
-    </script>
-    <!-- The app needs its JavaScript before it can draw anything. Without this the first paint on a
-         slow connection was a blank white page for half a minute; these few lines need no stylesheet
-         and no script, so something branded is on screen almost immediately. -->
-    <style>
-      #boot { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; background: #FAF6EE; color: #2A2420; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-      #boot p { margin: 0; font-size: 14px; letter-spacing: .02em; color: #6B6058; }
-      #boot .mark { display: flex; align-items: center; gap: 12px; }
-      #boot .dot { width: 46px; height: 46px; border-radius: 14px; background: #1F6B45; display: flex; align-items: center; justify-content: center; }
-      #boot .dot svg { width: 26px; height: 26px; }
-      #boot .name { font-size: 21px; font-weight: 700; letter-spacing: -.01em; }
-      #boot .sub { display: block; font-size: 10.5px; font-weight: 600; letter-spacing: .18em; color: #6B6058; }
-      #boot .bar { width: 132px; height: 3px; border-radius: 3px; background: #E7DFD0; overflow: hidden; }
-      #boot .bar i { display: block; width: 40%; height: 100%; border-radius: 3px; background: #E07A3F; animation: boot 1.1s ease-in-out infinite; }
-      @keyframes boot { 0% { transform: translateX(-100%); } 100% { transform: translateX(330%); } }
-      @media (prefers-reduced-motion: reduce) { #boot .bar i { animation: none; width: 100%; } }
-      @media (prefers-color-scheme: dark) {
-        #boot { background: #06120D; color: #F4EFE6; }
-        #boot p, #boot .sub { color: #9A9188; }
-        #boot .bar { background: #16281F; }
-      }
-    </style>
-    <script type="module" crossorigin src="./assets/index-C43gxe0G.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/react-JPq-ZrGQ.js">
-    <link rel="modulepreload" crossorigin href="./assets/vendor-CsiNGu5i.js">
-    <link rel="modulepreload" crossorigin href="./assets/router-D8u4Bidf.js">
-    <link rel="stylesheet" data-app-css href="./assets/vendor-mZN0Rwgl.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/vendor-mZN0Rwgl.css"></noscript>
-    <link rel="stylesheet" data-app-css href="./assets/index-CWWKh8tI.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/index-CWWKh8tI.css"></noscript>
-  </head>
-  <body>
-    <div id="root">
-      <div id="boot">
-        <span class="mark">
-          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17l1.5-5.5A2 2 0 0 1 9.4 10h5.2a2 2 0 0 1 1.9 1.5L18 17M7 17v2M17 17v2"/><circle cx="8" cy="14" r="0.6"/><circle cx="16" cy="14" r="0.6"/></svg></span>
-          <span><span class="name">St Lu</span><span class="sub">TAXI &amp; TOURS</span></span>
-        </span>
-        <span class="bar"><i></i></span>
-        <p>Loading&hellip;</p>
-      </div>
-    </div>
-    <noscript><p style="font-family:sans-serif;padding:24px">St Lu needs JavaScript to run. Please turn JavaScript on and reload.</p></noscript>
-    <script src="./compat.js"></script>
-  </body>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>St Lu Taxi And Tours prototype | TaxiAppDevelopment.org</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#16181d" />
+<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<style>
+  html, body { margin: 0; height: 100%; background: #16181d; }
+  body { display: flex; flex-direction: column; height: 100dvh; font: 500 12.5px/1 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .bar { flex: none; display: flex; align-items: center; gap: 12px; height: 38px; padding: 0 14px; background: #16181d; color: #fff; }
+  .bar a { color: #fff; text-decoration: none; }
+  .bar a:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; border-radius: 6px; }
+  .back { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; white-space: nowrap; min-height: 28px; }
+  .back svg { flex: none; }
+  .tag { color: #aab3c5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .sp { flex: 1; }
+  .cta { background: #2b63ff; border-radius: 7px; padding: 7px 11px; font-weight: 600; white-space: nowrap; }
+  .cta:hover { background: #3b72ff; }
+  .tag-s { display: none; color: #aab3c5; }
+  iframe { flex: 1; min-height: 0; width: 100%; border: 0; background: #fff; display: block; }
+  @media (max-width: 899px) { .tag { display: none; } .tag-s { display: inline; } .cta { display: none; } }
+  @media (max-width: 519px) { .bar { height: 34px; padding: 0 10px; } .tag-s { display: none; } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="back" href="/" target="_top" data-testid="link-back-agency"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to TaxiAppDevelopment.org</a>
+  <span class="tag">Case study: St Lu Taxi and Tours, design prototype</span>
+  <span class="sp"></span>
+  <span class="tag-s">Case study</span>
+  <a class="cta" href="/portfolio/" target="_top">View portfolio</a>
+</header>
+<iframe id="app" title="St Lu Taxi And Tours prototype" src="about:blank" allow="geolocation"></iframe>
+<script>
+(function () {
+  var f = document.getElementById("app");
+  f.src = "app.html" + location.hash;
+  function inner() { try { return f.contentWindow.location.hash; } catch (e) { return null; } }
+  window.addEventListener("hashchange", function () {
+    try { if (inner() !== location.hash) f.contentWindow.location.hash = location.hash; } catch (e) {}
+  });
+  setInterval(function () {
+    var h = inner();
+    if (h !== null && h !== location.hash) history.replaceState(null, "", location.pathname + location.search + h);
+  }, 400);
+  f.addEventListener("load", function () {
+    try { var t = f.contentDocument.title; if (t) document.title = t + " | TaxiAppDevelopment.org"; } catch (e) {}
+  });
+})();
+</script>
+</body>
 </html>

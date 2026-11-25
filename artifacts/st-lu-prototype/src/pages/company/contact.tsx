@@ -1,7 +1,7 @@
 import { useId, useRef, useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { submitEnquiry, thanksState } from "./formFlow";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check, Clock } from "lucide-react";
 import { Crumbs, crumbLd, faqLd, useSeo, siteRef } from "./seo";
 import { Faq, FinalCta, Pic, Shell, Tick, go } from "./shell";
 import { ROUTES, canonicalOf } from "./routes";
@@ -74,7 +74,6 @@ function Form() {
         <div className="field"><label htmlFor={`${id}-name`}>Your name *</label><input id={`${id}-name`} name="name" autoComplete="name" required {...f("name")} />{errs.name && <span className="err" id={`${id}-name-e`}>{errs.name}</span>}</div>
         <div className="field"><label htmlFor={`${id}-email`}>Work email *</label><input id={`${id}-email`} name="email" type="email" autoComplete="email" required {...f("email")} />{errs.email && <span className="err" id={`${id}-email-e`}>{errs.email}</span>}</div>
       </div>
-      <div className="field"><label htmlFor={`${id}-co`}>Company <i>(optional)</i></label><input id={`${id}-co`} name="company" autoComplete="organization" /></div>
       <div className="row2">
         <div className="field"><label htmlFor={`${id}-biz`}>Type of business</label><select id={`${id}-biz`} name="business" defaultValue={BIZ[0]}>{BIZ.map((k) => <option key={k}>{k}</option>)}</select></div>
         <div className="field"><label htmlFor={`${id}-kind`}>What do you want to build?</label><select id={`${id}-kind`} name="kind" defaultValue={st?.kind && KINDS.includes(st.kind) ? st.kind : "Not sure yet"}>{KINDS.map((k) => <option key={k}>{k}</option>)}</select></div>
@@ -96,16 +95,17 @@ function Body() {
   });
   return (
     <>
-      <section className="hero hero-l hero-svc" id="top">
+      <section className="hero hero-b" id="top">
         <div className="wrap">
-          <Crumbs items={CRUMBS} />
+          <Crumbs items={CRUMBS} dark />
           <div className="grid2" style={{ alignItems: "start" }}>
             <div>
-              <p className="eyebrow">Taxi app development company contact</p>
+              <p className="eyebrow light">Taxi app development company contact</p>
               <h1>Talk to Us About Your <em>Taxi App Project</em></h1>
               <p className="sub">Tell us about your taxi or ride-hailing business. We will reply with questions and a suggested scope, with no obligation to continue.</p>
-              <h2 style={{ fontSize: 17, marginTop: 26 }}>What helps us most</h2>
-              <Tick items={["Your type of business and the city you serve", "Roughly how many vehicles or drivers", "The apps you need, or what you already have", "Anything that must work a particular way"]} />
+              <h2 className="gl-h">What helps us most</h2>
+              <ul className="gl-chips">{["Your type of business and the city you serve", "Roughly how many vehicles or drivers", "The apps you need, or what you already have", "Anything that must work a particular way"].map((t) => <li key={t}><Check size={16} aria-hidden />{t}</li>)}</ul>
+              <p className="gl-note"><Clock size={16} aria-hidden /> We reply during working hours: Monday to Friday, 9:00 AM to 5:00 PM Eastern Time (ET).</p>
             </div>
             <Form />
           </div>
@@ -116,14 +116,16 @@ function Body() {
         <div className="wrap">
           <p className="eyebrow">What happens next</p>
           <h2 className="h2 wide" id="h-next">From your message to a clear next step</h2>
+          <div className="next-grid">
           <ol className="rhy" style={{ listStyle: "none", padding: 0 }}>{NEXT.map(([h, p], i) => <li key={h}><span className="when">Step {i + 1}</span><h3>{h}</h3><p>{p}</p></li>)}</ol>
-          <Pic label="Example project brief with business type, fleet and apps filled in. Illustrative." className="brief-wrap" style={{ marginTop: 28, maxWidth: 520 }}>
+          <Pic label="Example project brief with business type, fleet and apps filled in. Illustrative." className="brief-wrap">
             <div className="brief">
               <h3>Project brief (example)</h3>
               <dl><div><dt>Business</dt><dd>Airport transfer operator</dd></div><div><dt>Fleet</dt><dd>Small, growing</dd></div><div><dt>Apps</dt><dd>Passenger, driver, admin</dd></div></dl>
               <span className="tag2">Illustrative example, not a real client.</span>
             </div>
           </Pic>
+          </div>
         </div>
       </section>
 

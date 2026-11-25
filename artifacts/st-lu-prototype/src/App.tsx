@@ -35,6 +35,7 @@ const DeviceLab = lazy(() => import("@/pages/lab").then((m) => ({ default: m.Dev
 import { PhoneFrame } from "@/components/mobile";
 import { startTicker, useAppState } from "@/lib/store";
 import Hub from "@/pages/hub";
+const PhoneView = lazy(() => import("@/pages/phoneview"));
 import Landing from "@/pages/landing";
 import JobLink from "@/pages/job-link";
 import { AppIndex, Login, Welcome } from "@/pages/app/entry";
@@ -150,6 +151,7 @@ function App() {
           <Route path={ROUTES.features} element={<TadFeatures />} />
         <Route path="/demo" element={<GuidedDemo />} />
         <Route path="/lab" element={<DeviceLab />} />
+        <Route path="/phone" element={<PhoneView />} />
         <Route path="/previews/messages" element={<Messages />} />
         <Route path="/screens" element={<Screens />} />
         <Route path="/job/:token" element={<JobLink />} />

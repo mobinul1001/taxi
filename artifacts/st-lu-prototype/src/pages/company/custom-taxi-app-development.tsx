@@ -201,8 +201,10 @@ function Arch() {
 }
 
 const TILES: [string, typeof Smartphone, number, number][] = [
-  ["Passenger app", Smartphone, 8, 24], ["Driver app", Navigation, 338, 8], ["Admin dashboard", LayoutDashboard, 360, 170],
-  ["Pricing rules", Tag, 6, 170], ["Dispatch logic", Users, 24, 330], ["Payments", CreditCard, 190, 350], ["Your systems", Map, 340, 320], ["Reports", FileText, 190, 14],
+  // Centres of the eight modules around the core (x, y), on a 520 x 420 canvas: three on top, one each side, three below.
+  ["Passenger app", Smartphone, 90, 38], ["Reports", FileText, 260, 38], ["Driver app", Navigation, 430, 38],
+  ["Pricing rules", Tag, 86, 210], ["Admin dashboard", LayoutDashboard, 434, 210],
+  ["Dispatch logic", Users, 90, 382], ["Payments", CreditCard, 260, 382], ["Your systems", Map, 430, 382],
 ];
 
 function Body() {
@@ -229,10 +231,12 @@ function Body() {
             <Pic label="Modules of a custom taxi platform arranged around a single core: apps, pricing rules, dispatch logic, payments, reports and your own systems">
               <Scaled w={520} h={420}>
                 <svg width="520" height="420" viewBox="0 0 520 420" style={{ position: "absolute", inset: 0 }} role="presentation">
-                  {TILES.map(([n, , x, y]) => <line key={n} x1="260" y1="210" x2={x + 70} y2={y + 22} stroke="#2b63ff" strokeWidth="2" strokeDasharray="5 6" strokeOpacity=".7" />)}
+                  <circle cx="260" cy="210" r="104" fill="none" stroke="#fff" strokeOpacity=".07" />
+                  <circle cx="260" cy="210" r="172" fill="none" stroke="#fff" strokeOpacity=".05" />
+                  {TILES.map(([n, , x, y]) => <line key={n} x1="260" y1="210" x2={x} y2={y} stroke="#4f86ff" strokeWidth="1.6" strokeDasharray="4 6" strokeOpacity=".65" />)}
                 </svg>
-                {TILES.map(([n, I, x, y]) => <span key={n} className="mod-t" style={{ left: x, top: y }}><I size={17} />{n}</span>)}
-                <span className="mod-t core" style={{ left: 168, top: 182 }}><Puzzle size={20} />Your platform</span>
+                {TILES.map(([n, I, x, y]) => <span key={n} className="mod-t" style={{ left: x - (y === 210 ? 84 : 75), top: y - 22, width: y === 210 ? 168 : 150 }}><I size={17} />{n}</span>)}
+                <span className="mod-t core" style={{ left: 185, top: 180 }}><Puzzle size={20} />Your platform</span>
               </Scaled>
             </Pic>
           </div>

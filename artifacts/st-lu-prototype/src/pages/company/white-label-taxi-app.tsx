@@ -110,8 +110,11 @@ function Hero() {
               <button type="button" className="btn btn-ghost-dark" onClick={() => go("included")}>What&rsquo;s Included</button>
             </div>
           </div>
-          <Pic label={`White label passenger app preview showing the company name ${name.trim() || "Your Taxi Co"} and the chosen brand colour. Illustrative.`} className="stagebg">
-            <Scaled w={220} h={450}><Phone><BrandPhone name={name} color={color} /></Phone></Scaled>
+          <Pic label={`White label passenger app preview showing the company name ${name.trim() || "Your Taxi Co"} and the chosen brand colour. Illustrative.`} className="wl-stage">
+            <span className="wl-ring r1" aria-hidden /><span className="wl-ring r2" aria-hidden />
+            <div className="wl-phone"><Scaled w={220} h={450}><Phone><BrandPhone name={name} color={color} /></Phone></Scaled></div>
+            <span className="wl-chip a" aria-hidden><i style={{ background: color }}>{(name.trim()[0] || "Y").toUpperCase()}</i><span><small>App name</small>{name.trim() || "Your Taxi Co"}</span></span>
+            <span className="wl-chip b" aria-hidden><i className="sw2" style={{ background: color }} /><span><small>Colour</small>{color.toUpperCase()}</span></span>
           </Pic>
         </div>
       </div>

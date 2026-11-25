@@ -126,7 +126,8 @@
 @media (max-width: 899px) { .tad .hero-b .grid2 { grid-template-columns: minmax(0, 1fr); } }
 .tad .mod-t { position: absolute; background: #fff; color: var(--ink); border-radius: 14px; padding: 12px 14px; font-weight: 650; font-size: 14px; display: flex; gap: 9px; align-items: center; box-shadow: 0 16px 36px -14px rgba(0,0,0,.6); white-space: nowrap; }
 .tad .mod-t svg { color: var(--blue); flex: none; }
-.tad .mod-t.core { background: linear-gradient(135deg, #2b63ff, #1b46c4); color: #fff; font-size: 17px; padding: 20px 26px; }
+.tad .mod-t { box-sizing: border-box; height: 44px; padding: 0 12px; font-size: 13.5px; }
+.tad .mod-t.core { width: 150px !important; height: 60px; justify-content: center; background: linear-gradient(135deg, #2b63ff, #1b46c4); color: #fff; font-size: 15.5px; padding: 0 12px; box-shadow: 0 0 0 8px rgba(43,99,255,.18), 0 18px 40px -12px rgba(43,99,255,.7); }
 .tad .mod-t.core svg { color: #fff; }
 
 .tad .decide { margin-top: 30px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 36px); align-items: start; }
@@ -416,7 +417,7 @@
 .tad .biz > li { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
 .tad .biz h3 { font-size: 19px; } .tad .biz p { color: var(--mute); font-size: 15px; } .tad .biz b { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 3px; }
 .tad .biz .chips { margin-top: auto; }
-.tad .cform { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: clamp(20px, 3vw, 32px); box-shadow: 0 30px 60px -30px rgba(10,19,48,.35); }
+.tad .cform { color: var(--ink); --focus: var(--blue-t); background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: clamp(20px, 3vw, 32px); box-shadow: 0 30px 60px -30px rgba(10,19,48,.35); }
 .tad .cform h2 { font-size: clamp(22px, 2.4vw, 28px); }
 .tad .cform .field { display: grid; gap: 6px; margin-top: 16px; }
 .tad .cform .field label { font-weight: 650; font-size: 15px; }
@@ -641,3 +642,51 @@
 .tad .intg .chips-t li { font-size: 13px; padding: 6px 11px; }
 @media (min-width: 1100px) { .tad .intg .chips-t li { white-space: nowrap; } }
 @media (min-width: 900px) { .tad .intg > li > p:not(.eg) { min-height: 6.4em; } .tad .intg .eg { margin-top: 0; } }
+
+/* White label hero: phone on a soft glow with two chips that follow the name and colour typed on the left */
+.tad .wl-stage { position: relative; min-height: 520px; display: grid; place-items: center; }
+.tad .wl-ring { position: absolute; left: 50%; top: 50%; border-radius: 50%; transform: translate(-50%, -50%); border: 1px solid rgba(255,255,255,.08); pointer-events: none; }
+.tad .wl-ring.r1 { width: 380px; height: 380px; background: radial-gradient(closest-side, rgba(43,99,255,.38), rgba(43,99,255,0)); border-color: rgba(255,255,255,.10); }
+.tad .wl-ring.r2 { width: 500px; height: 500px; }
+.tad .wl-phone { position: relative; width: 220px; z-index: 1; filter: drop-shadow(0 30px 40px rgba(0,0,0,.45)); }
+.tad .wl-chip { position: absolute; z-index: 2; display: flex; align-items: center; gap: 9px; padding: 9px 12px 9px 9px; border-radius: 14px; background: #fff; color: var(--ink); font-weight: 650; font-size: 13.5px; box-shadow: 0 18px 36px -14px rgba(0,0,0,.6); width: 146px; box-sizing: border-box; }
+.tad .wl-chip > span { display: grid; line-height: 1.25; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tad .wl-chip small { font-size: 11px; font-weight: 600; color: var(--mute); letter-spacing: .04em; text-transform: uppercase; }
+.tad .wl-chip i { flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; color: #fff; font-style: normal; font-weight: 700; }
+.tad .wl-chip i.sw2 { border-radius: 50%; box-shadow: inset 0 0 0 3px rgba(255,255,255,.55); }
+.tad .wl-chip.a { left: 0; top: 7%; } .tad .wl-chip.b { right: 0; bottom: 7%; }
+@media (max-width: 899px) { .tad .wl-stage { min-height: 500px; } .tad .wl-chip.a { left: 3%; } .tad .wl-chip.b { right: 3%; } }
+@media (max-width: 420px) { .tad .wl-ring.r2 { display: none; } .tad .wl-chip { width: 130px; font-size: 12.5px; } .tad .wl-chip.a { left: 0; top: 4%; } .tad .wl-chip.b { right: 0; bottom: 4%; } }
+
+/* ===== Premium hero pieces (contact, pricing, features) and the About "who" section ===== */
+.tad .gl-h { font-size: 16px; margin-top: 28px; color: #fff; letter-spacing: -.01em; }
+.tad .gl-chips { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tad .gl-chips li { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); color: #fff; font-size: 14.5px; line-height: 1.4; }
+.tad .gl-chips svg { flex: none; margin-top: 2px; color: var(--cyan); }
+.tad .gl-note { display: flex; gap: 10px; align-items: flex-start; margin-top: 18px; font-size: 14.5px; color: var(--on-navy); line-height: 1.5; }
+.tad .gl-note svg { flex: none; margin-top: 2px; color: var(--cyan); }
+.tad .gl-list { display: grid; gap: 14px; align-content: center; }
+.tad .gl-i { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 20px 22px; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05)); border: 1px solid rgba(255,255,255,.16); color: #fff; box-shadow: 0 24px 50px -28px rgba(0,0,0,.7); }
+.tad .gl-i.pop { border-color: rgba(79,134,255,.8); background: linear-gradient(180deg, rgba(43,99,255,.34), rgba(43,99,255,.16)); }
+.tad .gl-ic { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; background: rgba(43,99,255,.22); border: 1px solid rgba(255,255,255,.16); color: #fff; flex: none; }
+.tad .gl-i b { display: block; font-size: 18px; letter-spacing: -.01em; }
+.tad .gl-i small { display: block; margin-top: 3px; font-size: 13.5px; color: var(--on-navy-mute); line-height: 1.4; }
+.tad .gl-i em { font-style: normal; font-weight: 750; font-size: 17px; color: #fff; text-align: right; }
+.tad .gl-4 .gl-i em { font-size: 28px; font-weight: 800; color: var(--cyan); letter-spacing: -.02em; }
+.tad .gl-4 .gl-i { padding: 16px 22px; }
+.tad .next-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(24px, 4vw, 56px); align-items: start; margin-top: 30px; }
+.tad .next-grid .rhy { margin-top: 0; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.tad .next-grid .rhy > li { padding: 18px 20px 18px 74px; }
+.tad .next-grid .rhy > li::after { display: none; }
+.tad .next-grid .rhy .when { position: absolute; left: 20px; top: 18px; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: #eaf0ff; color: var(--blue); font-size: 0; counter-increment: st; }
+.tad .next-grid .rhy { counter-reset: st; }
+.tad .next-grid .rhy .when::before { content: counter(st); font-size: 15px; font-weight: 800; letter-spacing: 0; }
+.tad .next-grid .rhy h3 { margin-top: 0; }
+.tad .next-grid .brief-wrap { position: sticky; top: 96px; }
+.tad .who-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.tad .who-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.tad .who-list li { display: flex; gap: 16px; align-items: center; padding: 16px 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); font-weight: 600; color: var(--ink); line-height: 1.4; box-shadow: 0 14px 30px -24px rgba(15,35,90,.5); }
+.tad .who-list .gl-ic { background: #eaf0ff; border-color: #d6e2ff; color: var(--blue); }
+@media (max-width: 1023px) { .tad .next-grid, .tad .who-grid { grid-template-columns: minmax(0, 1fr); } .tad .next-grid .brief-wrap { position: static; max-width: 520px; } }
+@media (max-width: 560px) { .tad .gl-chips { grid-template-columns: minmax(0, 1fr); } .tad .gl-i { padding: 16px; gap: 12px; } .tad .gl-i em { font-size: 15px; } .tad .gl-4 .gl-i em { font-size: 24px; } }
+.tad .gl-4 .gl-i em span { font-size: 13px; font-weight: 600; letter-spacing: 0; color: var(--on-navy-mute); }

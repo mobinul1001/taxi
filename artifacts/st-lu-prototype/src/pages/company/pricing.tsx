@@ -58,21 +58,21 @@ function Body() {
   useSeo({ title: TITLE, description: DESC, path: ROUTES.pricing, ld: [crumbLd(CRUMBS), webPageLd(TITLE, DESC, ROUTES.pricing), faqLd(FAQS)] });
   return (
     <>
-      <section className="hero hero-l hero-svc" id="top">
+      <section className="hero hero-b" id="top">
         <div className="wrap">
-          <Crumbs items={CRUMBS} />
+          <Crumbs items={CRUMBS} dark />
           <div className="grid2">
             <div>
-              <p className="eyebrow">Pricing</p>
+              <p className="eyebrow light">Pricing</p>
               <h1>Taxi App Pricing: <em>Packages for Every Stage</em></h1>
               <p className="sub">Three packages: two with indicative price ranges and Custom priced on request, with timelines and what each includes. Every project is then quoted in writing against the scope we agree with you.</p>
               <div className="hero-btns">
                 <button type="button" className="btn btn-primary" onClick={() => ask("Get a quote", { kind: "Not sure yet" })}>Get a Quote</button>
-                <Link className="btn btn-outline" to={ROUTES.cost}>Read the Cost Guide</Link>
+                <Link className="btn btn-ghost-dark" to={ROUTES.cost}>Read the Cost Guide</Link>
               </div>
             </div>
-            <div className="pkg-sum" role="img" aria-label="Indicative price ranges: MVP 5 to 15 thousand dollars, Growth 16 to 30 thousand, Custom priced on request">
-              {PKGS.map((p) => <div key={p.name}><p.icon size={20} aria-hidden /><b>{p.name}</b><span>{p.range}</span></div>)}
+            <div className="gl-list" role="img" aria-label="Indicative price ranges: MVP 5 to 15 thousand dollars, Growth 16 to 30 thousand, Custom priced on request">
+              {PKGS.map((p) => <div key={p.name} className={p.name === "Growth" ? "gl-i pop" : "gl-i"}><span className="gl-ic"><p.icon size={20} aria-hidden /></span><div><b>{p.name}</b><small>{p.time}</small></div><em>{p.range}</em></div>)}
             </div>
           </div>
         </div>
